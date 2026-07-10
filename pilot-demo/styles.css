@@ -14,6 +14,7 @@
   --video-bg: #111315;
   --shadow: 0 10px 26px rgba(18, 24, 31, 0.06);
   --shadow-soft: 0 4px 14px rgba(18, 24, 31, 0.04);
+  --column-gap: 18px;
 }
 
 * {
@@ -199,7 +200,7 @@ h2 {
 .video-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: var(--column-gap);
   align-items: start;
 }
 
@@ -275,8 +276,8 @@ video {
 
 .response-grid {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--column-gap);
   margin-top: 22px;
   align-items: stretch;
 }
@@ -388,13 +389,27 @@ textarea {
   margin-top: 14px;
 }
 
-.trial-actions,
+.trial-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--column-gap);
+  margin-top: 16px;
+}
+
 .export-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-top: 16px;
+}
+
+#notSureButton {
+  justify-self: start;
+}
+
+#nextButton {
+  justify-self: end;
 }
 
 .primary-action,
@@ -478,6 +493,7 @@ textarea {
   .trial-topbar,
   .video-grid,
   .response-grid,
+  .trial-actions,
   .summary-grid {
     grid-template-columns: 1fr;
   }
@@ -507,10 +523,14 @@ textarea {
     text-align: left;
   }
 
-  .trial-actions,
   .export-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  #notSureButton,
+  #nextButton {
+    justify-self: stretch;
   }
 
   .primary-action,
