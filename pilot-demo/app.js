@@ -260,7 +260,7 @@
     trialView: $("#trialView"),
     doneView: $("#doneView"),
     languageLabel: $("#languageLabel"),
-    languageSelect: $("#languageSelect"),
+    languageButtons: $$("[data-locale]"),
     themeLabel: $("#themeLabel"),
     themeSelect: $("#themeSelect"),
     trialMeta: $("#trialMeta"),
@@ -363,7 +363,11 @@
     document.documentElement.lang = LANG_ATTR[currentLocale];
     document.title = text("documentTitle");
     els.languageLabel.textContent = text("languageLabel");
-    els.languageSelect.value = currentLocale;
+    els.languageButtons.forEach((button) => {
+      const selected = button.dataset.locale === currentLocale;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
     els.themeLabel.textContent = text("themeLabel");
     if (els.themeSelect) {
       els.themeSelect.querySelector('option[value="neutral"]').textContent = text("themeNeutral");
@@ -963,14 +967,16 @@
 
   els.restartButton.addEventListener("click", restart);
 
-  els.languageSelect.addEventListener("change", () => {
-    currentLocale = normalizeLocale(els.languageSelect.value) || "en";
-    localStorage.setItem(LOCALE_STORAGE_KEY, currentLocale);
-    if (session) {
-      session.ui_locale = currentLocale;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    }
-    applyLocale();
+  els.languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      currentLocale = normalizeLocale(button.dataset.locale) || "en";
+      localStorage.setItem(LOCALE_STORAGE_KEY, currentLocale);
+      if (session) {
+        session.ui_locale = currentLocale;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+      }
+      applyLocale();
+    });
   });
 
   els.themeSelect.addEventListener("change", () => {
