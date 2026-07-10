@@ -27,3 +27,5 @@ This version is static. It stores responses in the browser and exports JSON/CSV 
 Before external participant collection, connect a backend, Google Sheets/API endpoint, or survey platform so participants do not need to manually download and return files.
 
 The demo does not collect participant background fields. If background information is needed later, collect it after the task or through the recruitment/survey system.
+
+The primary task is the A/B choice. The mismatch reason field is optional and should be treated as a lightweight diagnostic tag, not as the main outcome.

@@ -22,6 +22,7 @@
 
 html {
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -62,7 +64,8 @@ button:focus-visible {
 }
 
 .shell {
-  width: min(1240px, calc(100% - 32px));
+  width: calc(100% - 32px);
+  max-width: 1240px;
   margin: 0 auto;
   padding: 22px 0 42px;
 }
@@ -116,6 +119,7 @@ h1 {
   max-width: 760px;
   font-size: 22px;
   line-height: 1.18;
+  overflow-wrap: break-word;
 }
 
 .task-line {
@@ -189,6 +193,7 @@ h2 {
   color: #2d3136;
   font-size: 17px;
   line-height: 1.45;
+  overflow-wrap: break-word;
 }
 
 .video-grid {
@@ -199,6 +204,7 @@ h2 {
 }
 
 .video-card {
+  min-width: 0;
   display: grid;
   overflow: hidden;
   background: var(--surface);
@@ -272,6 +278,7 @@ video {
   grid-template-columns: 1.08fr 0.92fr;
   gap: 14px;
   margin-top: 22px;
+  align-items: stretch;
 }
 
 .media-status {
@@ -283,12 +290,27 @@ video {
 
 .question-block,
 .notes-field {
+  min-width: 0;
   display: grid;
-  gap: 9px;
   padding: 14px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+.question-block {
+  min-height: 120px;
+  grid-template-rows: 18px 44px 16px;
+  gap: 10px;
+}
+
+.confidence-block,
+.mismatch-block {
+  align-content: start;
+}
+
+.notes-field {
+  gap: 9px;
 }
 
 .question-label,
@@ -296,17 +318,19 @@ video {
   color: var(--muted);
   font-size: 13px;
   font-weight: 740;
+  line-height: 18px;
 }
 
 .confidence-row {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
+  min-height: 44px;
 }
 
 .confidence-row button {
   min-width: 0;
-  min-height: 44px;
+  height: 44px;
   color: var(--muted);
   background: #f8f5ef;
   border: 1px solid var(--line);
@@ -324,9 +348,18 @@ video {
 
 .scale-labels {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   color: var(--muted);
   font-size: 12px;
+  line-height: 16px;
+}
+
+.field-hint {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
 }
 
 select,
@@ -437,7 +470,8 @@ textarea {
 
 @media (max-width: 900px) {
   .shell {
-    width: min(100% - 22px, 720px);
+    width: calc(100% - 28px);
+    max-width: 720px;
     padding-top: 22px;
   }
 
@@ -454,7 +488,11 @@ textarea {
   }
 
   h1 {
-    font-size: 28px;
+    font-size: 22px;
+  }
+
+  .task-line {
+    font-size: 13px;
   }
 
   .transcript-card {

@@ -12,8 +12,8 @@
         <div class="trial-topbar">
           <div>
             <p class="eyebrow" id="trialMeta">Trial</p>
-            <h1>Choose the video whose motion fits the speech better.</h1>
-            <p class="task-line">Watch both videos with the same audio, then answer.</p>
+            <h1>Which motion fits better?</h1>
+            <p class="task-line">Watch both videos with the same speech audio, then answer.</p>
           </div>
           <div class="progress-wrap" aria-label="Progress">
             <div class="progress-track">
@@ -48,7 +48,7 @@
         <div class="media-status" id="mediaStatus">Loading videos...</div>
 
         <div class="response-grid">
-          <div class="question-block">
+          <div class="question-block confidence-block">
             <span class="question-label">Confidence</span>
             <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
               <button type="button" data-confidence="1">1</button>
@@ -63,11 +63,12 @@
             </div>
           </div>
 
-          <label class="question-block">
-            <span class="question-label">Main reason the worse video felt off (optional)</span>
+          <label class="question-block mismatch-block">
+            <span class="question-label">Mismatch reason (optional)</span>
             <select id="mismatchSelect">
               <option value="">Select one</option>
             </select>
+            <span class="field-hint">Skip if unclear.</span>
           </label>
         </div>
 
