@@ -1,266 +1,1016 @@
 {
-  "version": "pilot_demo_v0",
-  "built_at": "2026-07-11T05:14:35+08:00",
+  "version": "pilot_demo_v1_20",
+  "built_at": "2026-07-11T06:49:29+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "participant",
   "samples": {
-    "item001_scott_disney_hug_positive": {
-      "sample_id": "item001_scott_disney_hug_positive",
-      "base_id": "item001_scott_disney_hug",
+    "item001_scott_doctor_strange_movie_excited_positive": {
+      "sample_id": "item001_scott_doctor_strange_movie_excited_positive",
+      "base_id": "item001_scott_doctor_strange_movie_excited",
       "condition": "positive",
       "speaker": "scott",
       "language": "english",
-      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item001_scott_disney_hug_positive.mp4"
+      "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_positive.mp4"
     },
-    "item001_scott_disney_hug_context_swap": {
-      "sample_id": "item001_scott_disney_hug_context_swap",
-      "base_id": "item001_scott_disney_hug",
+    "item001_scott_doctor_strange_movie_excited_context_swap": {
+      "sample_id": "item001_scott_doctor_strange_movie_excited_context_swap",
+      "base_id": "item001_scott_doctor_strange_movie_excited",
       "condition": "context_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item001_scott_disney_hug_context_swap.mp4"
+      "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_context_swap.mp4"
     },
-    "item001_scott_disney_hug_arms_swap": {
-      "sample_id": "item001_scott_disney_hug_arms_swap",
-      "base_id": "item001_scott_disney_hug",
+    "item001_scott_doctor_strange_movie_excited_arms_swap": {
+      "sample_id": "item001_scott_doctor_strange_movie_excited_arms_swap",
+      "base_id": "item001_scott_doctor_strange_movie_excited",
       "condition": "arms_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item001_scott_disney_hug_arms_swap.mp4"
+      "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_arms_swap.mp4"
     },
-    "item002_scott_throw_friend_positive": {
-      "sample_id": "item002_scott_throw_friend_positive",
-      "base_id": "item002_scott_throw_friend",
+    "item002_scott_both_surprised_see_each_positive": {
+      "sample_id": "item002_scott_both_surprised_see_each_positive",
+      "base_id": "item002_scott_both_surprised_see_each",
       "condition": "positive",
       "speaker": "scott",
       "language": "english",
-      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_throw_friend_positive.mp4"
+      "render_path": "assets/videos/item002_scott_both_surprised_see_each_positive.mp4"
     },
-    "item002_scott_throw_friend_context_swap": {
-      "sample_id": "item002_scott_throw_friend_context_swap",
-      "base_id": "item002_scott_throw_friend",
+    "item002_scott_both_surprised_see_each_context_swap": {
+      "sample_id": "item002_scott_both_surprised_see_each_context_swap",
+      "base_id": "item002_scott_both_surprised_see_each",
       "condition": "context_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_throw_friend_context_swap.mp4"
+      "render_path": "assets/videos/item002_scott_both_surprised_see_each_context_swap.mp4"
     },
-    "item002_scott_throw_friend_arms_swap": {
-      "sample_id": "item002_scott_throw_friend_arms_swap",
-      "base_id": "item002_scott_throw_friend",
+    "item002_scott_both_surprised_see_each_arms_swap": {
+      "sample_id": "item002_scott_both_surprised_see_each_arms_swap",
+      "base_id": "item002_scott_both_surprised_see_each",
       "condition": "arms_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_throw_friend_arms_swap.mp4"
+      "render_path": "assets/videos/item002_scott_both_surprised_see_each_arms_swap.mp4"
     },
-    "item003_scott_masked_toys_positive": {
-      "sample_id": "item003_scott_masked_toys_positive",
-      "base_id": "item003_scott_masked_toys",
+    "item003_scott_happy_see_new_movie_positive": {
+      "sample_id": "item003_scott_happy_see_new_movie_positive",
+      "base_id": "item003_scott_happy_see_new_movie",
       "condition": "positive",
       "speaker": "scott",
       "language": "english",
-      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item003_scott_masked_toys_positive.mp4"
+      "render_path": "assets/videos/item003_scott_happy_see_new_movie_positive.mp4"
     },
-    "item003_scott_masked_toys_context_swap": {
-      "sample_id": "item003_scott_masked_toys_context_swap",
-      "base_id": "item003_scott_masked_toys",
+    "item003_scott_happy_see_new_movie_context_swap": {
+      "sample_id": "item003_scott_happy_see_new_movie_context_swap",
+      "base_id": "item003_scott_happy_see_new_movie",
       "condition": "context_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item003_scott_masked_toys_context_swap.mp4"
+      "render_path": "assets/videos/item003_scott_happy_see_new_movie_context_swap.mp4"
     },
-    "item003_scott_masked_toys_arms_swap": {
-      "sample_id": "item003_scott_masked_toys_arms_swap",
-      "base_id": "item003_scott_masked_toys",
+    "item003_scott_happy_see_new_movie_arms_swap": {
+      "sample_id": "item003_scott_happy_see_new_movie_arms_swap",
+      "base_id": "item003_scott_happy_see_new_movie",
       "condition": "arms_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item003_scott_masked_toys_arms_swap.mp4"
+      "render_path": "assets/videos/item003_scott_happy_see_new_movie_arms_swap.mp4"
     },
-    "item004_scott_threaten_friend_positive": {
-      "sample_id": "item004_scott_threaten_friend_positive",
-      "base_id": "item004_scott_threaten_friend",
+    "item004_scott_life_front_row_people_positive": {
+      "sample_id": "item004_scott_life_front_row_people_positive",
+      "base_id": "item004_scott_life_front_row_people",
       "condition": "positive",
       "speaker": "scott",
       "language": "english",
-      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_threaten_friend_positive.mp4"
+      "render_path": "assets/videos/item004_scott_life_front_row_people_positive.mp4"
     },
-    "item004_scott_threaten_friend_context_swap": {
-      "sample_id": "item004_scott_threaten_friend_context_swap",
-      "base_id": "item004_scott_threaten_friend",
+    "item004_scott_life_front_row_people_context_swap": {
+      "sample_id": "item004_scott_life_front_row_people_context_swap",
+      "base_id": "item004_scott_life_front_row_people",
       "condition": "context_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_threaten_friend_context_swap.mp4"
+      "render_path": "assets/videos/item004_scott_life_front_row_people_context_swap.mp4"
     },
-    "item004_scott_threaten_friend_arms_swap": {
-      "sample_id": "item004_scott_threaten_friend_arms_swap",
-      "base_id": "item004_scott_threaten_friend",
+    "item004_scott_life_front_row_people_arms_swap": {
+      "sample_id": "item004_scott_life_front_row_people_arms_swap",
+      "base_id": "item004_scott_life_front_row_people",
       "condition": "arms_swap",
       "speaker": "scott",
       "language": "english",
-      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_threaten_friend_arms_swap.mp4"
+      "render_path": "assets/videos/item004_scott_life_front_row_people_arms_swap.mp4"
     },
-    "item005_wayne_go_breakfast_positive": {
-      "sample_id": "item005_wayne_go_breakfast_positive",
-      "base_id": "item005_wayne_go_breakfast",
+    "item005_lu_stood_before_people_different_positive": {
+      "sample_id": "item005_lu_stood_before_people_different_positive",
+      "base_id": "item005_lu_stood_before_people_different",
+      "condition": "positive",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_lu_stood_before_people_different_positive.mp4"
+    },
+    "item005_lu_stood_before_people_different_context_swap": {
+      "sample_id": "item005_lu_stood_before_people_different_context_swap",
+      "base_id": "item005_lu_stood_before_people_different",
+      "condition": "context_swap",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_lu_stood_before_people_different_context_swap.mp4"
+    },
+    "item005_lu_stood_before_people_different_arms_swap": {
+      "sample_id": "item005_lu_stood_before_people_different_arms_swap",
+      "base_id": "item005_lu_stood_before_people_different",
+      "condition": "arms_swap",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_lu_stood_before_people_different_arms_swap.mp4"
+    },
+    "item006_scott_tosses_paper_bucket_easily_positive": {
+      "sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
+      "base_id": "item006_scott_tosses_paper_bucket_easily",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_positive.mp4"
+    },
+    "item006_scott_tosses_paper_bucket_easily_context_swap": {
+      "sample_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
+      "base_id": "item006_scott_tosses_paper_bucket_easily",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_context_swap.mp4"
+    },
+    "item006_scott_tosses_paper_bucket_easily_arms_swap": {
+      "sample_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
+      "base_id": "item006_scott_tosses_paper_bucket_easily",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_arms_swap.mp4"
+    },
+    "item007_wayne_have_ball_feet_perhaps_positive": {
+      "sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
+      "base_id": "item007_wayne_have_ball_feet_perhaps",
       "condition": "positive",
       "speaker": "wayne",
       "language": "english",
-      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_wayne_go_breakfast_positive.mp4"
+      "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_positive.mp4"
     },
-    "item005_wayne_go_breakfast_context_swap": {
-      "sample_id": "item005_wayne_go_breakfast_context_swap",
-      "base_id": "item005_wayne_go_breakfast",
+    "item007_wayne_have_ball_feet_perhaps_context_swap": {
+      "sample_id": "item007_wayne_have_ball_feet_perhaps_context_swap",
+      "base_id": "item007_wayne_have_ball_feet_perhaps",
       "condition": "context_swap",
       "speaker": "wayne",
       "language": "english",
-      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_wayne_go_breakfast_context_swap.mp4"
+      "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_context_swap.mp4"
     },
-    "item005_wayne_go_breakfast_arms_swap": {
-      "sample_id": "item005_wayne_go_breakfast_arms_swap",
-      "base_id": "item005_wayne_go_breakfast",
+    "item007_wayne_have_ball_feet_perhaps_arms_swap": {
+      "sample_id": "item007_wayne_have_ball_feet_perhaps_arms_swap",
+      "base_id": "item007_wayne_have_ball_feet_perhaps",
       "condition": "arms_swap",
       "speaker": "wayne",
       "language": "english",
-      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
       "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_wayne_go_breakfast_arms_swap.mp4"
+      "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_arms_swap.mp4"
+    },
+    "item008_luqi_next_attraction_regretted_discussion_positive": {
+      "sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
+      "base_id": "item008_luqi_next_attraction_regretted_discussion",
+      "condition": "positive",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_positive.mp4"
+    },
+    "item008_luqi_next_attraction_regretted_discussion_context_swap": {
+      "sample_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
+      "base_id": "item008_luqi_next_attraction_regretted_discussion",
+      "condition": "context_swap",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_context_swap.mp4"
+    },
+    "item008_luqi_next_attraction_regretted_discussion_arms_swap": {
+      "sample_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
+      "base_id": "item008_luqi_next_attraction_regretted_discussion",
+      "condition": "arms_swap",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_arms_swap.mp4"
+    },
+    "item009_nidal_want_start_comparing_themselves_positive": {
+      "sample_id": "item009_nidal_want_start_comparing_themselves_positive",
+      "base_id": "item009_nidal_want_start_comparing_themselves",
+      "condition": "positive",
+      "speaker": "nidal",
+      "language": "english",
+      "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_positive.mp4"
+    },
+    "item009_nidal_want_start_comparing_themselves_context_swap": {
+      "sample_id": "item009_nidal_want_start_comparing_themselves_context_swap",
+      "base_id": "item009_nidal_want_start_comparing_themselves",
+      "condition": "context_swap",
+      "speaker": "nidal",
+      "language": "english",
+      "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_context_swap.mp4"
+    },
+    "item009_nidal_want_start_comparing_themselves_arms_swap": {
+      "sample_id": "item009_nidal_want_start_comparing_themselves_arms_swap",
+      "base_id": "item009_nidal_want_start_comparing_themselves",
+      "condition": "arms_swap",
+      "speaker": "nidal",
+      "language": "english",
+      "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_arms_swap.mp4"
+    },
+    "item010_hailing_its_gonna_take_lot_positive": {
+      "sample_id": "item010_hailing_its_gonna_take_lot_positive",
+      "base_id": "item010_hailing_its_gonna_take_lot",
+      "condition": "positive",
+      "speaker": "hailing",
+      "language": "english",
+      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_positive.mp4"
+    },
+    "item010_hailing_its_gonna_take_lot_context_swap": {
+      "sample_id": "item010_hailing_its_gonna_take_lot_context_swap",
+      "base_id": "item010_hailing_its_gonna_take_lot",
+      "condition": "context_swap",
+      "speaker": "hailing",
+      "language": "english",
+      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_context_swap.mp4"
+    },
+    "item010_hailing_its_gonna_take_lot_arms_swap": {
+      "sample_id": "item010_hailing_its_gonna_take_lot_arms_swap",
+      "base_id": "item010_hailing_its_gonna_take_lot",
+      "condition": "arms_swap",
+      "speaker": "hailing",
+      "language": "english",
+      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_arms_swap.mp4"
+    },
+    "item011_wayne_school_youll_outside_able_positive": {
+      "sample_id": "item011_wayne_school_youll_outside_able_positive",
+      "base_id": "item011_wayne_school_youll_outside_able",
+      "condition": "positive",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item011_wayne_school_youll_outside_able_positive.mp4"
+    },
+    "item011_wayne_school_youll_outside_able_context_swap": {
+      "sample_id": "item011_wayne_school_youll_outside_able_context_swap",
+      "base_id": "item011_wayne_school_youll_outside_able",
+      "condition": "context_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item011_wayne_school_youll_outside_able_context_swap.mp4"
+    },
+    "item011_wayne_school_youll_outside_able_arms_swap": {
+      "sample_id": "item011_wayne_school_youll_outside_able_arms_swap",
+      "base_id": "item011_wayne_school_youll_outside_able",
+      "condition": "arms_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item011_wayne_school_youll_outside_able_arms_swap.mp4"
+    },
+    "item012_yingqing_toys_floor_free_play_positive": {
+      "sample_id": "item012_yingqing_toys_floor_free_play_positive",
+      "base_id": "item012_yingqing_toys_floor_free_play",
+      "condition": "positive",
+      "speaker": "yingqing",
+      "language": "english",
+      "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_positive.mp4"
+    },
+    "item012_yingqing_toys_floor_free_play_context_swap": {
+      "sample_id": "item012_yingqing_toys_floor_free_play_context_swap",
+      "base_id": "item012_yingqing_toys_floor_free_play",
+      "condition": "context_swap",
+      "speaker": "yingqing",
+      "language": "english",
+      "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_context_swap.mp4"
+    },
+    "item012_yingqing_toys_floor_free_play_arms_swap": {
+      "sample_id": "item012_yingqing_toys_floor_free_play_arms_swap",
+      "base_id": "item012_yingqing_toys_floor_free_play",
+      "condition": "arms_swap",
+      "speaker": "yingqing",
+      "language": "english",
+      "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_arms_swap.mp4"
+    },
+    "item013_wayne_quickly_easy_can_walk_positive": {
+      "sample_id": "item013_wayne_quickly_easy_can_walk_positive",
+      "base_id": "item013_wayne_quickly_easy_can_walk",
+      "condition": "positive",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_positive.mp4"
+    },
+    "item013_wayne_quickly_easy_can_walk_context_swap": {
+      "sample_id": "item013_wayne_quickly_easy_can_walk_context_swap",
+      "base_id": "item013_wayne_quickly_easy_can_walk",
+      "condition": "context_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_context_swap.mp4"
+    },
+    "item013_wayne_quickly_easy_can_walk_arms_swap": {
+      "sample_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
+      "base_id": "item013_wayne_quickly_easy_can_walk",
+      "condition": "arms_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_arms_swap.mp4"
+    },
+    "item014_lu_put_have_picture_blue_positive": {
+      "sample_id": "item014_lu_put_have_picture_blue_positive",
+      "base_id": "item014_lu_put_have_picture_blue",
+      "condition": "positive",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item014_lu_put_have_picture_blue_positive.mp4"
+    },
+    "item014_lu_put_have_picture_blue_context_swap": {
+      "sample_id": "item014_lu_put_have_picture_blue_context_swap",
+      "base_id": "item014_lu_put_have_picture_blue",
+      "condition": "context_swap",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item014_lu_put_have_picture_blue_context_swap.mp4"
+    },
+    "item014_lu_put_have_picture_blue_arms_swap": {
+      "sample_id": "item014_lu_put_have_picture_blue_arms_swap",
+      "base_id": "item014_lu_put_have_picture_blue",
+      "condition": "arms_swap",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item014_lu_put_have_picture_blue_arms_swap.mp4"
+    },
+    "item015_luqi_two_people_careful_about_positive": {
+      "sample_id": "item015_luqi_two_people_careful_about_positive",
+      "base_id": "item015_luqi_two_people_careful_about",
+      "condition": "positive",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item015_luqi_two_people_careful_about_positive.mp4"
+    },
+    "item015_luqi_two_people_careful_about_context_swap": {
+      "sample_id": "item015_luqi_two_people_careful_about_context_swap",
+      "base_id": "item015_luqi_two_people_careful_about",
+      "condition": "context_swap",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item015_luqi_two_people_careful_about_context_swap.mp4"
+    },
+    "item015_luqi_two_people_careful_about_arms_swap": {
+      "sample_id": "item015_luqi_two_people_careful_about_arms_swap",
+      "base_id": "item015_luqi_two_people_careful_about",
+      "condition": "arms_swap",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item015_luqi_two_people_careful_about_arms_swap.mp4"
+    },
+    "item016_jorge_want_have_one_type_positive": {
+      "sample_id": "item016_jorge_want_have_one_type_positive",
+      "base_id": "item016_jorge_want_have_one_type",
+      "condition": "positive",
+      "speaker": "jorge",
+      "language": "english",
+      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item016_jorge_want_have_one_type_positive.mp4"
+    },
+    "item016_jorge_want_have_one_type_context_swap": {
+      "sample_id": "item016_jorge_want_have_one_type_context_swap",
+      "base_id": "item016_jorge_want_have_one_type",
+      "condition": "context_swap",
+      "speaker": "jorge",
+      "language": "english",
+      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item016_jorge_want_have_one_type_context_swap.mp4"
+    },
+    "item016_jorge_want_have_one_type_arms_swap": {
+      "sample_id": "item016_jorge_want_have_one_type_arms_swap",
+      "base_id": "item016_jorge_want_have_one_type",
+      "condition": "arms_swap",
+      "speaker": "jorge",
+      "language": "english",
+      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item016_jorge_want_have_one_type_arms_swap.mp4"
+    },
+    "item017_solomon_doing_yoga_about_three_positive": {
+      "sample_id": "item017_solomon_doing_yoga_about_three_positive",
+      "base_id": "item017_solomon_doing_yoga_about_three",
+      "condition": "positive",
+      "speaker": "solomon",
+      "language": "english",
+      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_positive.mp4"
+    },
+    "item017_solomon_doing_yoga_about_three_context_swap": {
+      "sample_id": "item017_solomon_doing_yoga_about_three_context_swap",
+      "base_id": "item017_solomon_doing_yoga_about_three",
+      "condition": "context_swap",
+      "speaker": "solomon",
+      "language": "english",
+      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_context_swap.mp4"
+    },
+    "item017_solomon_doing_yoga_about_three_arms_swap": {
+      "sample_id": "item017_solomon_doing_yoga_about_three_arms_swap",
+      "base_id": "item017_solomon_doing_yoga_about_three",
+      "condition": "arms_swap",
+      "speaker": "solomon",
+      "language": "english",
+      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_arms_swap.mp4"
+    },
+    "item018_scott_free_free_sport_anyone_positive": {
+      "sample_id": "item018_scott_free_free_sport_anyone_positive",
+      "base_id": "item018_scott_free_free_sport_anyone",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item018_scott_free_free_sport_anyone_positive.mp4"
+    },
+    "item018_scott_free_free_sport_anyone_context_swap": {
+      "sample_id": "item018_scott_free_free_sport_anyone_context_swap",
+      "base_id": "item018_scott_free_free_sport_anyone",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item018_scott_free_free_sport_anyone_context_swap.mp4"
+    },
+    "item018_scott_free_free_sport_anyone_arms_swap": {
+      "sample_id": "item018_scott_free_free_sport_anyone_arms_swap",
+      "base_id": "item018_scott_free_free_sport_anyone",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item018_scott_free_free_sport_anyone_arms_swap.mp4"
+    },
+    "item019_scott_past_two_theres_halflife_positive": {
+      "sample_id": "item019_scott_past_two_theres_halflife_positive",
+      "base_id": "item019_scott_past_two_theres_halflife",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_positive.mp4"
+    },
+    "item019_scott_past_two_theres_halflife_context_swap": {
+      "sample_id": "item019_scott_past_two_theres_halflife_context_swap",
+      "base_id": "item019_scott_past_two_theres_halflife",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_context_swap.mp4"
+    },
+    "item019_scott_past_two_theres_halflife_arms_swap": {
+      "sample_id": "item019_scott_past_two_theres_halflife_arms_swap",
+      "base_id": "item019_scott_past_two_theres_halflife",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_arms_swap.mp4"
+    },
+    "item020_scott_about_three_months_later_positive": {
+      "sample_id": "item020_scott_about_three_months_later_positive",
+      "base_id": "item020_scott_about_three_months_later",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item020_scott_about_three_months_later_positive.mp4"
+    },
+    "item020_scott_about_three_months_later_context_swap": {
+      "sample_id": "item020_scott_about_three_months_later_context_swap",
+      "base_id": "item020_scott_about_three_months_later",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item020_scott_about_three_months_later_context_swap.mp4"
+    },
+    "item020_scott_about_three_months_later_arms_swap": {
+      "sample_id": "item020_scott_about_three_months_later_arms_swap",
+      "base_id": "item020_scott_about_three_months_later",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item020_scott_about_three_months_later_arms_swap.mp4"
     }
   },
   "trial_pools": [
     {
-      "trial_pool_id": "item001_scott_disney_hug_context_swap",
-      "base_id": "item001_scott_disney_hug",
+      "trial_pool_id": "item001_scott_doctor_strange_movie_excited_context_swap",
+      "base_id": "item001_scott_doctor_strange_movie_excited",
       "speaker": "scott",
       "language": "english",
-      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
-      "positive_sample_id": "item001_scott_disney_hug_positive",
-      "negative_sample_id": "item001_scott_disney_hug_context_swap",
+      "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "positive_sample_id": "item001_scott_doctor_strange_movie_excited_positive",
+      "negative_sample_id": "item001_scott_doctor_strange_movie_excited_context_swap",
       "negative_type": "context_swap"
     },
     {
-      "trial_pool_id": "item001_scott_disney_hug_arms_swap",
-      "base_id": "item001_scott_disney_hug",
+      "trial_pool_id": "item001_scott_doctor_strange_movie_excited_arms_swap",
+      "base_id": "item001_scott_doctor_strange_movie_excited",
       "speaker": "scott",
       "language": "english",
-      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
-      "positive_sample_id": "item001_scott_disney_hug_positive",
-      "negative_sample_id": "item001_scott_disney_hug_arms_swap",
+      "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "positive_sample_id": "item001_scott_doctor_strange_movie_excited_positive",
+      "negative_sample_id": "item001_scott_doctor_strange_movie_excited_arms_swap",
       "negative_type": "arms_swap"
     },
     {
-      "trial_pool_id": "item002_scott_throw_friend_context_swap",
-      "base_id": "item002_scott_throw_friend",
+      "trial_pool_id": "item002_scott_both_surprised_see_each_context_swap",
+      "base_id": "item002_scott_both_surprised_see_each",
       "speaker": "scott",
       "language": "english",
-      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
-      "positive_sample_id": "item002_scott_throw_friend_positive",
-      "negative_sample_id": "item002_scott_throw_friend_context_swap",
+      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
+      "positive_sample_id": "item002_scott_both_surprised_see_each_positive",
+      "negative_sample_id": "item002_scott_both_surprised_see_each_context_swap",
       "negative_type": "context_swap"
     },
     {
-      "trial_pool_id": "item002_scott_throw_friend_arms_swap",
-      "base_id": "item002_scott_throw_friend",
+      "trial_pool_id": "item002_scott_both_surprised_see_each_arms_swap",
+      "base_id": "item002_scott_both_surprised_see_each",
       "speaker": "scott",
       "language": "english",
-      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
-      "positive_sample_id": "item002_scott_throw_friend_positive",
-      "negative_sample_id": "item002_scott_throw_friend_arms_swap",
+      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
+      "positive_sample_id": "item002_scott_both_surprised_see_each_positive",
+      "negative_sample_id": "item002_scott_both_surprised_see_each_arms_swap",
       "negative_type": "arms_swap"
     },
     {
-      "trial_pool_id": "item003_scott_masked_toys_context_swap",
-      "base_id": "item003_scott_masked_toys",
+      "trial_pool_id": "item003_scott_happy_see_new_movie_context_swap",
+      "base_id": "item003_scott_happy_see_new_movie",
       "speaker": "scott",
       "language": "english",
-      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
-      "positive_sample_id": "item003_scott_masked_toys_positive",
-      "negative_sample_id": "item003_scott_masked_toys_context_swap",
+      "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
+      "positive_sample_id": "item003_scott_happy_see_new_movie_positive",
+      "negative_sample_id": "item003_scott_happy_see_new_movie_context_swap",
       "negative_type": "context_swap"
     },
     {
-      "trial_pool_id": "item003_scott_masked_toys_arms_swap",
-      "base_id": "item003_scott_masked_toys",
+      "trial_pool_id": "item003_scott_happy_see_new_movie_arms_swap",
+      "base_id": "item003_scott_happy_see_new_movie",
       "speaker": "scott",
       "language": "english",
-      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
-      "positive_sample_id": "item003_scott_masked_toys_positive",
-      "negative_sample_id": "item003_scott_masked_toys_arms_swap",
+      "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
+      "positive_sample_id": "item003_scott_happy_see_new_movie_positive",
+      "negative_sample_id": "item003_scott_happy_see_new_movie_arms_swap",
       "negative_type": "arms_swap"
     },
     {
-      "trial_pool_id": "item004_scott_threaten_friend_context_swap",
-      "base_id": "item004_scott_threaten_friend",
+      "trial_pool_id": "item004_scott_life_front_row_people_context_swap",
+      "base_id": "item004_scott_life_front_row_people",
       "speaker": "scott",
       "language": "english",
-      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
-      "positive_sample_id": "item004_scott_threaten_friend_positive",
-      "negative_sample_id": "item004_scott_threaten_friend_context_swap",
+      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
+      "positive_sample_id": "item004_scott_life_front_row_people_positive",
+      "negative_sample_id": "item004_scott_life_front_row_people_context_swap",
       "negative_type": "context_swap"
     },
     {
-      "trial_pool_id": "item004_scott_threaten_friend_arms_swap",
-      "base_id": "item004_scott_threaten_friend",
+      "trial_pool_id": "item004_scott_life_front_row_people_arms_swap",
+      "base_id": "item004_scott_life_front_row_people",
       "speaker": "scott",
       "language": "english",
-      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
-      "positive_sample_id": "item004_scott_threaten_friend_positive",
-      "negative_sample_id": "item004_scott_threaten_friend_arms_swap",
+      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
+      "positive_sample_id": "item004_scott_life_front_row_people_positive",
+      "negative_sample_id": "item004_scott_life_front_row_people_arms_swap",
       "negative_type": "arms_swap"
     },
     {
-      "trial_pool_id": "item005_wayne_go_breakfast_context_swap",
-      "base_id": "item005_wayne_go_breakfast",
+      "trial_pool_id": "item005_lu_stood_before_people_different_context_swap",
+      "base_id": "item005_lu_stood_before_people_different",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "positive_sample_id": "item005_lu_stood_before_people_different_positive",
+      "negative_sample_id": "item005_lu_stood_before_people_different_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item005_lu_stood_before_people_different_arms_swap",
+      "base_id": "item005_lu_stood_before_people_different",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "positive_sample_id": "item005_lu_stood_before_people_different_positive",
+      "negative_sample_id": "item005_lu_stood_before_people_different_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
+      "base_id": "item006_scott_tosses_paper_bucket_easily",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "positive_sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
+      "negative_sample_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
+      "base_id": "item006_scott_tosses_paper_bucket_easily",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "positive_sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
+      "negative_sample_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item007_wayne_have_ball_feet_perhaps_context_swap",
+      "base_id": "item007_wayne_have_ball_feet_perhaps",
       "speaker": "wayne",
       "language": "english",
-      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
-      "positive_sample_id": "item005_wayne_go_breakfast_positive",
-      "negative_sample_id": "item005_wayne_go_breakfast_context_swap",
+      "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "positive_sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
+      "negative_sample_id": "item007_wayne_have_ball_feet_perhaps_context_swap",
       "negative_type": "context_swap"
     },
     {
-      "trial_pool_id": "item005_wayne_go_breakfast_arms_swap",
-      "base_id": "item005_wayne_go_breakfast",
+      "trial_pool_id": "item007_wayne_have_ball_feet_perhaps_arms_swap",
+      "base_id": "item007_wayne_have_ball_feet_perhaps",
       "speaker": "wayne",
       "language": "english",
-      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
-      "positive_sample_id": "item005_wayne_go_breakfast_positive",
-      "negative_sample_id": "item005_wayne_go_breakfast_arms_swap",
+      "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "positive_sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
+      "negative_sample_id": "item007_wayne_have_ball_feet_perhaps_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
+      "base_id": "item008_luqi_next_attraction_regretted_discussion",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "positive_sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
+      "negative_sample_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
+      "base_id": "item008_luqi_next_attraction_regretted_discussion",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "positive_sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
+      "negative_sample_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item009_nidal_want_start_comparing_themselves_context_swap",
+      "base_id": "item009_nidal_want_start_comparing_themselves",
+      "speaker": "nidal",
+      "language": "english",
+      "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "positive_sample_id": "item009_nidal_want_start_comparing_themselves_positive",
+      "negative_sample_id": "item009_nidal_want_start_comparing_themselves_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item009_nidal_want_start_comparing_themselves_arms_swap",
+      "base_id": "item009_nidal_want_start_comparing_themselves",
+      "speaker": "nidal",
+      "language": "english",
+      "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "positive_sample_id": "item009_nidal_want_start_comparing_themselves_positive",
+      "negative_sample_id": "item009_nidal_want_start_comparing_themselves_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item010_hailing_its_gonna_take_lot_context_swap",
+      "base_id": "item010_hailing_its_gonna_take_lot",
+      "speaker": "hailing",
+      "language": "english",
+      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "positive_sample_id": "item010_hailing_its_gonna_take_lot_positive",
+      "negative_sample_id": "item010_hailing_its_gonna_take_lot_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item010_hailing_its_gonna_take_lot_arms_swap",
+      "base_id": "item010_hailing_its_gonna_take_lot",
+      "speaker": "hailing",
+      "language": "english",
+      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "positive_sample_id": "item010_hailing_its_gonna_take_lot_positive",
+      "negative_sample_id": "item010_hailing_its_gonna_take_lot_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item011_wayne_school_youll_outside_able_context_swap",
+      "base_id": "item011_wayne_school_youll_outside_able",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "positive_sample_id": "item011_wayne_school_youll_outside_able_positive",
+      "negative_sample_id": "item011_wayne_school_youll_outside_able_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item011_wayne_school_youll_outside_able_arms_swap",
+      "base_id": "item011_wayne_school_youll_outside_able",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "positive_sample_id": "item011_wayne_school_youll_outside_able_positive",
+      "negative_sample_id": "item011_wayne_school_youll_outside_able_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item012_yingqing_toys_floor_free_play_context_swap",
+      "base_id": "item012_yingqing_toys_floor_free_play",
+      "speaker": "yingqing",
+      "language": "english",
+      "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "positive_sample_id": "item012_yingqing_toys_floor_free_play_positive",
+      "negative_sample_id": "item012_yingqing_toys_floor_free_play_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item012_yingqing_toys_floor_free_play_arms_swap",
+      "base_id": "item012_yingqing_toys_floor_free_play",
+      "speaker": "yingqing",
+      "language": "english",
+      "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "positive_sample_id": "item012_yingqing_toys_floor_free_play_positive",
+      "negative_sample_id": "item012_yingqing_toys_floor_free_play_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item013_wayne_quickly_easy_can_walk_context_swap",
+      "base_id": "item013_wayne_quickly_easy_can_walk",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "positive_sample_id": "item013_wayne_quickly_easy_can_walk_positive",
+      "negative_sample_id": "item013_wayne_quickly_easy_can_walk_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
+      "base_id": "item013_wayne_quickly_easy_can_walk",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "positive_sample_id": "item013_wayne_quickly_easy_can_walk_positive",
+      "negative_sample_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item014_lu_put_have_picture_blue_context_swap",
+      "base_id": "item014_lu_put_have_picture_blue",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "positive_sample_id": "item014_lu_put_have_picture_blue_positive",
+      "negative_sample_id": "item014_lu_put_have_picture_blue_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item014_lu_put_have_picture_blue_arms_swap",
+      "base_id": "item014_lu_put_have_picture_blue",
+      "speaker": "lu",
+      "language": "english",
+      "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "positive_sample_id": "item014_lu_put_have_picture_blue_positive",
+      "negative_sample_id": "item014_lu_put_have_picture_blue_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item015_luqi_two_people_careful_about_context_swap",
+      "base_id": "item015_luqi_two_people_careful_about",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "positive_sample_id": "item015_luqi_two_people_careful_about_positive",
+      "negative_sample_id": "item015_luqi_two_people_careful_about_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item015_luqi_two_people_careful_about_arms_swap",
+      "base_id": "item015_luqi_two_people_careful_about",
+      "speaker": "luqi",
+      "language": "english",
+      "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "positive_sample_id": "item015_luqi_two_people_careful_about_positive",
+      "negative_sample_id": "item015_luqi_two_people_careful_about_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item016_jorge_want_have_one_type_context_swap",
+      "base_id": "item016_jorge_want_have_one_type",
+      "speaker": "jorge",
+      "language": "english",
+      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "positive_sample_id": "item016_jorge_want_have_one_type_positive",
+      "negative_sample_id": "item016_jorge_want_have_one_type_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item016_jorge_want_have_one_type_arms_swap",
+      "base_id": "item016_jorge_want_have_one_type",
+      "speaker": "jorge",
+      "language": "english",
+      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "positive_sample_id": "item016_jorge_want_have_one_type_positive",
+      "negative_sample_id": "item016_jorge_want_have_one_type_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item017_solomon_doing_yoga_about_three_context_swap",
+      "base_id": "item017_solomon_doing_yoga_about_three",
+      "speaker": "solomon",
+      "language": "english",
+      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "positive_sample_id": "item017_solomon_doing_yoga_about_three_positive",
+      "negative_sample_id": "item017_solomon_doing_yoga_about_three_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item017_solomon_doing_yoga_about_three_arms_swap",
+      "base_id": "item017_solomon_doing_yoga_about_three",
+      "speaker": "solomon",
+      "language": "english",
+      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "positive_sample_id": "item017_solomon_doing_yoga_about_three_positive",
+      "negative_sample_id": "item017_solomon_doing_yoga_about_three_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item018_scott_free_free_sport_anyone_context_swap",
+      "base_id": "item018_scott_free_free_sport_anyone",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "positive_sample_id": "item018_scott_free_free_sport_anyone_positive",
+      "negative_sample_id": "item018_scott_free_free_sport_anyone_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item018_scott_free_free_sport_anyone_arms_swap",
+      "base_id": "item018_scott_free_free_sport_anyone",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "positive_sample_id": "item018_scott_free_free_sport_anyone_positive",
+      "negative_sample_id": "item018_scott_free_free_sport_anyone_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item019_scott_past_two_theres_halflife_context_swap",
+      "base_id": "item019_scott_past_two_theres_halflife",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "positive_sample_id": "item019_scott_past_two_theres_halflife_positive",
+      "negative_sample_id": "item019_scott_past_two_theres_halflife_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item019_scott_past_two_theres_halflife_arms_swap",
+      "base_id": "item019_scott_past_two_theres_halflife",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "positive_sample_id": "item019_scott_past_two_theres_halflife_positive",
+      "negative_sample_id": "item019_scott_past_two_theres_halflife_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item020_scott_about_three_months_later_context_swap",
+      "base_id": "item020_scott_about_three_months_later",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "positive_sample_id": "item020_scott_about_three_months_later_positive",
+      "negative_sample_id": "item020_scott_about_three_months_later_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item020_scott_about_three_months_later_arms_swap",
+      "base_id": "item020_scott_about_three_months_later",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "positive_sample_id": "item020_scott_about_three_months_later_positive",
+      "negative_sample_id": "item020_scott_about_three_months_later_arms_swap",
       "negative_type": "arms_swap"
     }
   ],
   "ui": {
-    "participant_trial_count": 5,
-    "review_trial_count": 10,
+    "participant_trial_count": 10,
+    "review_trial_count": 40,
     "mismatch_locations": [
       "Hands / arms",
       "Head / body movement",
