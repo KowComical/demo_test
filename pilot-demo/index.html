@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Co-speech Motion Consistency Pilot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="intro" class="panel intro-panel">
+        <div class="masthead">
+          <div>
+            <p class="eyebrow">Motion Consistency Pilot</p>
+            <h1>Which motion better matches the speech?</h1>
+          </div>
+          <div class="status-pill" id="assetStatus">Loading</div>
+        </div>
+
+        <p class="lead">
+          Each trial shows one transcript and two videos with the same speech audio. Choose the motion that feels more consistent with the speech and transcript.
+        </p>
+
+        <form id="startForm" class="start-grid">
+          <label class="field">
+            <span>English understanding</span>
+            <select name="english_level" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="native_or_near_native">Native / near-native</option>
+              <option value="fluent">Fluent</option>
+              <option value="comfortable">Comfortable</option>
+              <option value="limited">Limited</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Motion or animation background</span>
+            <select name="motion_background" required>
+              <option value="" selected disabled>Select one</option>
+              <option value="none">No</option>
+              <option value="some">Some</option>
+              <option value="research_or_professional">Research / professional</option>
+            </select>
+          </label>
+
+          <div class="field mode-field">
+            <span>Session mode</span>
+            <div class="segmented" role="radiogroup" aria-label="Session mode">
+              <label>
+                <input type="radio" name="mode" value="participant" checked />
+                <span>Participant</span>
+              </label>
+              <label>
+                <input type="radio" name="mode" value="review" />
+                <span>Review all</span>
+              </label>
+            </div>
+          </div>
+
+          <label class="check-row">
+            <input type="checkbox" name="media_ok" required />
+            <span>I can see the videos and hear audio on this device.</span>
+          </label>
+
+          <button type="submit" class="primary-action" id="startButton" disabled>Start</button>
+        </form>
+      </section>
+
+      <section id="trialView" class="panel trial-panel hidden">
+        <div class="trial-topbar">
+          <div>
+            <p class="eyebrow" id="trialMeta">Trial</p>
+            <h2>Choose the better match</h2>
+          </div>
+          <div class="progress-wrap" aria-label="Progress">
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span id="progressText">0 / 0</span>
+          </div>
+        </div>
+
+        <div class="transcript-card">
+          <span>Transcript</span>
+          <p id="transcriptText"></p>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card" id="cardA">
+            <div class="video-heading">
+              <span>Video A</span>
+              <button type="button" class="choice-button" data-choice="A">Choose A</button>
+            </div>
+            <video id="videoA" controls playsinline preload="metadata"></video>
+          </article>
+
+          <article class="video-card" id="cardB">
+            <div class="video-heading">
+              <span>Video B</span>
+              <button type="button" class="choice-button" data-choice="B">Choose B</button>
+            </div>
+            <video id="videoB" controls playsinline preload="metadata"></video>
+          </article>
+        </div>
+
+        <div class="response-grid">
+          <div class="question-block">
+            <span class="question-label">Confidence</span>
+            <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
+              <button type="button" data-confidence="1">1</button>
+              <button type="button" data-confidence="2">2</button>
+              <button type="button" data-confidence="3">3</button>
+              <button type="button" data-confidence="4">4</button>
+              <button type="button" data-confidence="5">5</button>
+            </div>
+          </div>
+
+          <label class="question-block">
+            <span class="question-label">Where is the mismatch?</span>
+            <select id="mismatchSelect">
+              <option value="">Select one</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="notes-field">
+          <span>Optional note</span>
+          <textarea id="noteText" rows="2" placeholder="Short observation, if useful"></textarea>
+        </label>
+
+        <div class="trial-actions">
+          <button type="button" class="secondary-action" id="notSureButton">Not sure</button>
+          <button type="button" class="primary-action" id="nextButton" disabled>Next</button>
+        </div>
+      </section>
+
+      <section id="doneView" class="panel done-panel hidden">
+        <p class="eyebrow">Complete</p>
+        <h2>Responses saved in this browser</h2>
+        <p class="lead small">
+          GitHub Pages is static, so this demo stores responses locally. Download the files below after testing.
+        </p>
+        <div class="summary-grid" id="summaryGrid"></div>
+        <div class="export-actions">
+          <button type="button" class="primary-action" id="downloadJson">Download JSON</button>
+          <button type="button" class="secondary-action" id="downloadCsv">Download CSV</button>
+          <button type="button" class="secondary-action" id="restartButton">Start new session</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="data/demo_manifest.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

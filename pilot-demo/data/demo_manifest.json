@@ -1,0 +1,273 @@
+{
+  "version": "pilot_demo_v0",
+  "built_at": "2026-07-11T02:47:31+08:00",
+  "title": "Co-speech Motion Consistency Pilot",
+  "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
+  "default_mode": "participant",
+  "samples": {
+    "item001_scott_disney_hug_positive": {
+      "sample_id": "item001_scott_disney_hug_positive",
+      "base_id": "item001_scott_disney_hug",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item001_scott_disney_hug_positive.mp4"
+    },
+    "item001_scott_disney_hug_context_swap": {
+      "sample_id": "item001_scott_disney_hug_context_swap",
+      "base_id": "item001_scott_disney_hug",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item001_scott_disney_hug_context_swap.mp4"
+    },
+    "item001_scott_disney_hug_arms_swap": {
+      "sample_id": "item001_scott_disney_hug_arms_swap",
+      "base_id": "item001_scott_disney_hug",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item001_scott_disney_hug_arms_swap.mp4"
+    },
+    "item002_scott_throw_friend_positive": {
+      "sample_id": "item002_scott_throw_friend_positive",
+      "base_id": "item002_scott_throw_friend",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item002_scott_throw_friend_positive.mp4"
+    },
+    "item002_scott_throw_friend_context_swap": {
+      "sample_id": "item002_scott_throw_friend_context_swap",
+      "base_id": "item002_scott_throw_friend",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item002_scott_throw_friend_context_swap.mp4"
+    },
+    "item002_scott_throw_friend_arms_swap": {
+      "sample_id": "item002_scott_throw_friend_arms_swap",
+      "base_id": "item002_scott_throw_friend",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item002_scott_throw_friend_arms_swap.mp4"
+    },
+    "item003_scott_masked_toys_positive": {
+      "sample_id": "item003_scott_masked_toys_positive",
+      "base_id": "item003_scott_masked_toys",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item003_scott_masked_toys_positive.mp4"
+    },
+    "item003_scott_masked_toys_context_swap": {
+      "sample_id": "item003_scott_masked_toys_context_swap",
+      "base_id": "item003_scott_masked_toys",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item003_scott_masked_toys_context_swap.mp4"
+    },
+    "item003_scott_masked_toys_arms_swap": {
+      "sample_id": "item003_scott_masked_toys_arms_swap",
+      "base_id": "item003_scott_masked_toys",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item003_scott_masked_toys_arms_swap.mp4"
+    },
+    "item004_scott_threaten_friend_positive": {
+      "sample_id": "item004_scott_threaten_friend_positive",
+      "base_id": "item004_scott_threaten_friend",
+      "condition": "positive",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item004_scott_threaten_friend_positive.mp4"
+    },
+    "item004_scott_threaten_friend_context_swap": {
+      "sample_id": "item004_scott_threaten_friend_context_swap",
+      "base_id": "item004_scott_threaten_friend",
+      "condition": "context_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item004_scott_threaten_friend_context_swap.mp4"
+    },
+    "item004_scott_threaten_friend_arms_swap": {
+      "sample_id": "item004_scott_threaten_friend_arms_swap",
+      "base_id": "item004_scott_threaten_friend",
+      "condition": "arms_swap",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item004_scott_threaten_friend_arms_swap.mp4"
+    },
+    "item005_wayne_go_breakfast_positive": {
+      "sample_id": "item005_wayne_go_breakfast_positive",
+      "base_id": "item005_wayne_go_breakfast",
+      "condition": "positive",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_wayne_go_breakfast_positive.mp4"
+    },
+    "item005_wayne_go_breakfast_context_swap": {
+      "sample_id": "item005_wayne_go_breakfast_context_swap",
+      "base_id": "item005_wayne_go_breakfast",
+      "condition": "context_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_wayne_go_breakfast_context_swap.mp4"
+    },
+    "item005_wayne_go_breakfast_arms_swap": {
+      "sample_id": "item005_wayne_go_breakfast_arms_swap",
+      "base_id": "item005_wayne_go_breakfast",
+      "condition": "arms_swap",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "duration_sec": 7.0,
+      "render_path": "assets/videos/item005_wayne_go_breakfast_arms_swap.mp4"
+    }
+  },
+  "trial_pools": [
+    {
+      "trial_pool_id": "item001_scott_disney_hug_context_swap",
+      "base_id": "item001_scott_disney_hug",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "positive_sample_id": "item001_scott_disney_hug_positive",
+      "negative_sample_id": "item001_scott_disney_hug_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item001_scott_disney_hug_arms_swap",
+      "base_id": "item001_scott_disney_hug",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "disney world like if there's any worlds over here and let's say that disney world's about in the center of orlando it",
+      "positive_sample_id": "item001_scott_disney_hug_positive",
+      "negative_sample_id": "item001_scott_disney_hug_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item002_scott_throw_friend_context_swap",
+      "base_id": "item002_scott_throw_friend",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "positive_sample_id": "item002_scott_throw_friend_positive",
+      "negative_sample_id": "item002_scott_throw_friend_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item002_scott_throw_friend_arms_swap",
+      "base_id": "item002_scott_throw_friend",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "you to throw that ball into this trash can picks up a trash can and put it right in front of the students there right in front",
+      "positive_sample_id": "item002_scott_throw_friend_positive",
+      "negative_sample_id": "item002_scott_throw_friend_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item003_scott_masked_toys_context_swap",
+      "base_id": "item003_scott_masked_toys",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "positive_sample_id": "item003_scott_masked_toys_positive",
+      "negative_sample_id": "item003_scott_masked_toys_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item003_scott_masked_toys_arms_swap",
+      "base_id": "item003_scott_masked_toys",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "was the masked man that was stalking him in order to keep the loop going so there's that two of them running around at the same time he",
+      "positive_sample_id": "item003_scott_masked_toys_positive",
+      "negative_sample_id": "item003_scott_masked_toys_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item004_scott_threaten_friend_context_swap",
+      "base_id": "item004_scott_threaten_friend",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "positive_sample_id": "item004_scott_threaten_friend_positive",
+      "negative_sample_id": "item004_scott_threaten_friend_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item004_scott_threaten_friend_arms_swap",
+      "base_id": "item004_scott_threaten_friend",
+      "speaker": "scott",
+      "language": "english",
+      "transcript": "kidnapped him they put him on the plane and this guy's trying to threaten these people like who is being who is this person and and his",
+      "positive_sample_id": "item004_scott_threaten_friend_positive",
+      "negative_sample_id": "item004_scott_threaten_friend_arms_swap",
+      "negative_type": "arms_swap"
+    },
+    {
+      "trial_pool_id": "item005_wayne_go_breakfast_context_swap",
+      "base_id": "item005_wayne_go_breakfast",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "positive_sample_id": "item005_wayne_go_breakfast_positive",
+      "negative_sample_id": "item005_wayne_go_breakfast_context_swap",
+      "negative_type": "context_swap"
+    },
+    {
+      "trial_pool_id": "item005_wayne_go_breakfast_arms_swap",
+      "base_id": "item005_wayne_go_breakfast",
+      "speaker": "wayne",
+      "language": "english",
+      "transcript": "what happens if he does this if he goes there if you go here if i go this what if i do this so there's many many",
+      "positive_sample_id": "item005_wayne_go_breakfast_positive",
+      "negative_sample_id": "item005_wayne_go_breakfast_arms_swap",
+      "negative_type": "arms_swap"
+    }
+  ],
+  "ui": {
+    "participant_trial_count": 5,
+    "review_trial_count": 10,
+    "mismatch_locations": [
+      "Hands / arms",
+      "Face",
+      "Head / body",
+      "Whole motion",
+      "Speech context",
+      "Not sure"
+    ]
+  }
+}
