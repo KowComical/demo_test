@@ -285,6 +285,15 @@ video {
   border-radius: 8px;
 }
 
+.response-panel.pending {
+  padding: 14px 16px;
+  background: var(--surface-soft);
+}
+
+.response-panel.pending .followup-content {
+  display: none;
+}
+
 .response-guidance {
   color: var(--muted);
   font-size: 13px;
@@ -292,7 +301,7 @@ video {
   line-height: 18px;
 }
 
-.response-panel.ready .response-guidance {
+.response-panel.active .response-guidance {
   color: var(--teal-dark);
 }
 

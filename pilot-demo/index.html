@@ -47,10 +47,10 @@
         </div>
         <div class="media-status" id="mediaStatus">Loading videos...</div>
 
-        <div class="response-panel" id="responsePanel">
+        <div class="response-panel pending" id="responsePanel">
           <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
 
-          <div class="question-block confidence-block">
+          <div class="question-block confidence-block followup-content">
             <span class="question-label">Confidence in your choice</span>
             <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
               <button type="button" data-confidence="1">1</button>
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          <label class="diagnostic-block">
+          <label class="diagnostic-block followup-content">
             <span class="question-label">Optional diagnostic</span>
             <select id="mismatchSelect">
               <option value="">Select one</option>

@@ -528,7 +528,8 @@
 
   function setResponseGuidance(message, ready) {
     els.responseGuidance.textContent = message;
-    els.responsePanel.classList.toggle("ready", ready);
+    els.responsePanel.classList.toggle("pending", !ready);
+    els.responsePanel.classList.toggle("active", ready);
   }
 
   function setMediaStatus(message, hidden) {
