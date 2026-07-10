@@ -1,6 +1,8 @@
 (() => {
   const MANIFEST_URL = "data/demo_manifest.json";
   const STORAGE_KEY = "dcc_pilot_demo_v0_session";
+  const LOCALE_STORAGE_KEY = "dcc_pilot_demo_locale";
+  const THEME_STORAGE_KEY = "dcc_pilot_demo_theme";
 
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -8,26 +10,290 @@
   const sessionMode = params.get("review") === "all" ? "review" : "participant";
   document.documentElement.dataset.mode = sessionMode;
 
+  const LOCALES = ["en", "zh", "ja", "es"];
+  const THEMES = ["neutral", "sage", "paper"];
+  const LANG_ATTR = { en: "en", zh: "zh-Hans", ja: "ja", es: "es" };
+  const MISMATCH_OPTIONS = [
+    {
+      value: "hands_arms",
+      labels: { en: "Hands / arms", zh: "手 / 手臂", ja: "手 / 腕", es: "Manos / brazos" },
+    },
+    {
+      value: "head_body",
+      labels: { en: "Head / body movement", zh: "头部 / 身体动作", ja: "頭 / 体の動き", es: "Cabeza / cuerpo" },
+    },
+    {
+      value: "timing_rhythm",
+      labels: { en: "Timing / rhythm", zh: "时机 / 节奏", ja: "タイミング / リズム", es: "Tiempo / ritmo" },
+    },
+    {
+      value: "gesture_meaning",
+      labels: { en: "Gesture meaning vs words", zh: "手势含义和台词不符", ja: "ジェスチャーの意味と発話", es: "Gesto vs palabras" },
+    },
+    {
+      value: "not_sure",
+      labels: { en: "Not sure", zh: "不确定", ja: "わからない", es: "No estoy seguro/a" },
+    },
+  ];
+
+  const I18N = {
+    en: {
+      documentTitle: "Co-speech Motion Consistency Pilot",
+      languageLabel: "Language",
+      themeLabel: "Theme",
+      themeNeutral: "Neutral",
+      themeSage: "Sage",
+      themePaper: "Paper",
+      pageTitle: "Which motion fits better?",
+      taskLine: "Watch both videos with the same speech audio, then answer.",
+      transcriptLabel: "Speech transcript",
+      videoA: "Video A",
+      videoB: "Video B",
+      chooseChoice: (side) => `Choose ${side}`,
+      selectedChoice: (side) => `Selected ${side}`,
+      loadingVideos: "Loading videos...",
+      responseChoose: "Choose Video A or Video B above first.",
+      responseSelected: (side) => `Selected Video ${side}. Now rate how confident you are.`,
+      responseNotSure: "You selected Not sure. You can continue.",
+      confidenceLabel: "Confidence in your choice",
+      low: "Low",
+      high: "High",
+      diagnosticLabel: "Optional diagnostic",
+      selectOne: "Select one",
+      diagnosticHint: "What made the less fitting video feel off? Skip if unclear.",
+      reviewNote: "Review note",
+      reviewPlaceholder: "For internal screening: unclear mismatch, technical artifact, or reason to discard this item",
+      notSure: "Not sure",
+      next: "Next",
+      finish: "Finish",
+      doneEyebrow: "Complete",
+      doneTitle: "Responses saved in this browser",
+      doneLead: "GitHub Pages is static, so this demo stores responses locally. Download the files below after testing.",
+      downloadJson: "Download JSON",
+      downloadCsv: "Download CSV",
+      restart: "Start new session",
+      demoUnavailable: "Demo unavailable",
+      demoLoadError: "The demo data could not be loaded. Please refresh the page.",
+      videoLoadError: "One of the videos could not be loaded. Please refresh the page.",
+      trialMeta: (index, total, condition) => `Trial ${index} of ${total}${condition ? ` · ${condition}` : ""}`,
+      progress: (done, total) => `${done} / ${total} answered`,
+      modes: { participant: "Participant", review: "Review" },
+      negTypes: { context_swap: "Context swap", arms_swap: "Arms swap" },
+      summaryMode: "Mode",
+      summaryAnswered: "Answered",
+      summaryAccuracy: "Accuracy",
+      summaryAvgConfidence: "Avg confidence",
+    },
+    zh: {
+      documentTitle: "共语音动作一致性试测",
+      languageLabel: "语言",
+      themeLabel: "配色",
+      themeNeutral: "清爽",
+      themeSage: "浅绿",
+      themePaper: "纸感",
+      pageTitle: "哪个动作更匹配？",
+      taskLine: "请观看两段使用同一语音的视频，然后作答。",
+      transcriptLabel: "台词文本",
+      videoA: "视频 A",
+      videoB: "视频 B",
+      chooseChoice: (side) => `选择 ${side}`,
+      selectedChoice: (side) => `已选择 ${side}`,
+      loadingVideos: "正在加载视频...",
+      responseChoose: "请先在上方选择视频 A 或视频 B。",
+      responseSelected: (side) => `已选择视频 ${side}。请给出你的信心评分。`,
+      responseNotSure: "你选择了不确定，可以继续。",
+      confidenceLabel: "对本次选择的信心",
+      low: "低",
+      high: "高",
+      diagnosticLabel: "可选诊断",
+      selectOne: "请选择",
+      diagnosticHint: "较差视频哪里不对？不清楚可以跳过。",
+      reviewNote: "内部备注",
+      reviewPlaceholder: "内部筛题用：不明显、技术破绽，或需要丢弃的原因",
+      notSure: "不确定",
+      next: "下一题",
+      finish: "完成",
+      doneEyebrow: "完成",
+      doneTitle: "结果已保存在本浏览器",
+      doneLead: "GitHub Pages 是静态页面，所以这个 demo 会把回答保存在本地浏览器。测试结束后请下载文件。",
+      downloadJson: "下载 JSON",
+      downloadCsv: "下载 CSV",
+      restart: "重新开始",
+      demoUnavailable: "Demo 暂不可用",
+      demoLoadError: "无法加载 demo 数据。请刷新页面。",
+      videoLoadError: "有视频无法加载。请刷新页面。",
+      trialMeta: (index, total, condition) => `第 ${index} / ${total} 题${condition ? ` · ${condition}` : ""}`,
+      progress: (done, total) => `已答 ${done} / ${total}`,
+      modes: { participant: "参与者", review: "内部检查" },
+      negTypes: { context_swap: "上下文错配", arms_swap: "手臂错配" },
+      summaryMode: "模式",
+      summaryAnswered: "已答",
+      summaryAccuracy: "正确率",
+      summaryAvgConfidence: "平均信心",
+    },
+    ja: {
+      documentTitle: "共発話モーション一貫性パイロット",
+      languageLabel: "言語",
+      themeLabel: "配色",
+      themeNeutral: "Neutral",
+      themeSage: "Sage",
+      themePaper: "Paper",
+      pageTitle: "どちらの動きがより合っていますか？",
+      taskLine: "同じ音声の2つの動画を見てから回答してください。",
+      transcriptLabel: "発話テキスト",
+      videoA: "動画 A",
+      videoB: "動画 B",
+      chooseChoice: (side) => `${side} を選ぶ`,
+      selectedChoice: (side) => `${side} を選択中`,
+      loadingVideos: "動画を読み込み中...",
+      responseChoose: "まず上の動画 A または動画 B を選んでください。",
+      responseSelected: (side) => `動画 ${side} を選択しました。自信度を評価してください。`,
+      responseNotSure: "「わからない」を選択しました。続行できます。",
+      confidenceLabel: "選択への自信度",
+      low: "低い",
+      high: "高い",
+      diagnosticLabel: "任意の診断",
+      selectOne: "選択してください",
+      diagnosticHint: "合わない動画の違和感の原因です。不明なら空欄で構いません。",
+      reviewNote: "レビュー用メモ",
+      reviewPlaceholder: "内部確認用：違いが不明瞭、技術的問題、除外理由など",
+      notSure: "わからない",
+      next: "次へ",
+      finish: "完了",
+      doneEyebrow: "完了",
+      doneTitle: "回答はこのブラウザに保存されました",
+      doneLead: "GitHub Pages は静的ページのため、この demo は回答をブラウザ内に保存します。終了後にファイルをダウンロードしてください。",
+      downloadJson: "JSON をダウンロード",
+      downloadCsv: "CSV をダウンロード",
+      restart: "新しく開始",
+      demoUnavailable: "Demo を利用できません",
+      demoLoadError: "Demo データを読み込めませんでした。ページを更新してください。",
+      videoLoadError: "動画の読み込みに失敗しました。ページを更新してください。",
+      trialMeta: (index, total, condition) => `${index} / ${total} 問目${condition ? ` · ${condition}` : ""}`,
+      progress: (done, total) => `${done} / ${total} 回答済み`,
+      modes: { participant: "参加者", review: "レビュー" },
+      negTypes: { context_swap: "文脈入れ替え", arms_swap: "腕の入れ替え" },
+      summaryMode: "モード",
+      summaryAnswered: "回答数",
+      summaryAccuracy: "正答率",
+      summaryAvgConfidence: "平均自信度",
+    },
+    es: {
+      documentTitle: "Piloto de consistencia de movimiento",
+      languageLabel: "Idioma",
+      themeLabel: "Tema",
+      themeNeutral: "Neutral",
+      themeSage: "Verde suave",
+      themePaper: "Papel",
+      pageTitle: "¿Qué movimiento encaja mejor?",
+      taskLine: "Mira ambos videos con el mismo audio y luego responde.",
+      transcriptLabel: "Transcripción",
+      videoA: "Video A",
+      videoB: "Video B",
+      chooseChoice: (side) => `Elegir ${side}`,
+      selectedChoice: (side) => `${side} elegido`,
+      loadingVideos: "Cargando videos...",
+      responseChoose: "Primero elige Video A o Video B arriba.",
+      responseSelected: (side) => `Elegiste Video ${side}. Ahora indica tu confianza.`,
+      responseNotSure: "Elegiste No estoy seguro/a. Puedes continuar.",
+      confidenceLabel: "Confianza en tu elección",
+      low: "Baja",
+      high: "Alta",
+      diagnosticLabel: "Diagnóstico opcional",
+      selectOne: "Selecciona una opción",
+      diagnosticHint: "¿Qué se sintió raro en el video menos adecuado? Puedes omitirlo.",
+      reviewNote: "Nota de revisión",
+      reviewPlaceholder: "Para revisión interna: caso ambiguo, artefacto técnico o razón para descartarlo",
+      notSure: "No estoy seguro/a",
+      next: "Siguiente",
+      finish: "Finalizar",
+      doneEyebrow: "Completado",
+      doneTitle: "Respuestas guardadas en este navegador",
+      doneLead: "GitHub Pages es estático, así que este demo guarda las respuestas localmente. Descarga los archivos al terminar.",
+      downloadJson: "Descargar JSON",
+      downloadCsv: "Descargar CSV",
+      restart: "Nueva sesión",
+      demoUnavailable: "Demo no disponible",
+      demoLoadError: "No se pudieron cargar los datos del demo. Actualiza la página.",
+      videoLoadError: "Uno de los videos no se pudo cargar. Actualiza la página.",
+      trialMeta: (index, total, condition) => `Pregunta ${index} de ${total}${condition ? ` · ${condition}` : ""}`,
+      progress: (done, total) => `${done} / ${total} respondidas`,
+      modes: { participant: "Participante", review: "Revisión" },
+      negTypes: { context_swap: "Cambio de contexto", arms_swap: "Cambio de brazos" },
+      summaryMode: "Modo",
+      summaryAnswered: "Respondidas",
+      summaryAccuracy: "Precisión",
+      summaryAvgConfidence: "Confianza media",
+    },
+  };
+
+  function normalizeLocale(value) {
+    if (!value) return "";
+    const lowered = value.toLowerCase();
+    if (lowered.startsWith("zh")) return "zh";
+    if (lowered.startsWith("ja")) return "ja";
+    if (lowered.startsWith("es")) return "es";
+    if (lowered.startsWith("en")) return "en";
+    return LOCALES.includes(lowered) ? lowered : "";
+  }
+
+  function initialLocale() {
+    return (
+      normalizeLocale(params.get("lang")) ||
+      normalizeLocale(localStorage.getItem(LOCALE_STORAGE_KEY)) ||
+      normalizeLocale(navigator.language) ||
+      "en"
+    );
+  }
+
+  function initialTheme() {
+    const requested = params.get("theme") || localStorage.getItem(THEME_STORAGE_KEY) || "neutral";
+    return THEMES.includes(requested) ? requested : "neutral";
+  }
+
+  let currentLocale = initialLocale();
+  let currentTheme = initialTheme();
+  document.documentElement.lang = LANG_ATTR[currentLocale];
+  document.documentElement.dataset.theme = currentTheme;
+
   const els = {
     trialView: $("#trialView"),
     doneView: $("#doneView"),
+    languageLabel: $("#languageLabel"),
+    languageSelect: $("#languageSelect"),
+    themeLabel: $("#themeLabel"),
+    themeSelect: $("#themeSelect"),
     trialMeta: $("#trialMeta"),
+    pageTitle: $("#pageTitle"),
+    taskLine: $("#taskLine"),
     progressFill: $("#progressFill"),
     progressText: $("#progressText"),
+    transcriptLabel: $("#transcriptLabel"),
     transcriptText: $("#transcriptText"),
     mediaStatus: $("#mediaStatus"),
     responsePanel: $("#responsePanel"),
     responseGuidance: $("#responseGuidance"),
+    videoALabel: $("#videoALabel"),
+    videoBLabel: $("#videoBLabel"),
     cardA: $("#cardA"),
     cardB: $("#cardB"),
     videoA: $("#videoA"),
     videoB: $("#videoB"),
     confidenceRow: $("#confidenceRow"),
+    confidenceLabel: $("#confidenceLabel"),
+    lowLabel: $("#lowLabel"),
+    highLabel: $("#highLabel"),
+    diagnosticLabel: $("#diagnosticLabel"),
     mismatchSelect: $("#mismatchSelect"),
+    diagnosticHint: $("#diagnosticHint"),
+    reviewNoteLabel: $("#reviewNoteLabel"),
     noteText: $("#noteText"),
     notSureButton: $("#notSureButton"),
     nextButton: $("#nextButton"),
     summaryGrid: $("#summaryGrid"),
+    doneEyebrow: $("#doneEyebrow"),
+    doneTitle: $("#doneTitle"),
+    doneLead: $("#doneLead"),
     downloadJson: $("#downloadJson"),
     downloadCsv: $("#downloadCsv"),
     restartButton: $("#restartButton"),
@@ -43,6 +309,91 @@
 
   function nowIso() {
     return new Date().toISOString();
+  }
+
+  function tr() {
+    return I18N[currentLocale] || I18N.en;
+  }
+
+  function text(key, ...args) {
+    const value = tr()[key];
+    return typeof value === "function" ? value(...args) : value;
+  }
+
+  function conditionLabel(type) {
+    return tr().negTypes[type] || titleCase(type || "");
+  }
+
+  function applyTheme() {
+    document.documentElement.dataset.theme = currentTheme;
+    if (els.themeSelect) els.themeSelect.value = currentTheme;
+  }
+
+  function updateChoiceButtonLabels() {
+    $$("[data-choice]").forEach((button) => {
+      const side = button.dataset.choice;
+      const selected = draft?.choice_side === side;
+      button.textContent = selected ? text("selectedChoice", side) : text("chooseChoice", side);
+    });
+  }
+
+  function refreshProgressText() {
+    if (!session) return;
+    const completed = session.current_index;
+    const total = session.trial_count;
+    const trial = session.trials[session.current_index];
+    const reviewCondition =
+      session.mode === "review" && trial ? conditionLabel(trial.negative_type) : "";
+    els.trialMeta.textContent = text("trialMeta", Math.min(completed + 1, total), total, reviewCondition);
+    els.progressText.textContent = text("progress", Math.min(completed, total), total);
+    els.nextButton.textContent = completed + 1 === total ? text("finish") : text("next");
+  }
+
+  function refreshResponseGuidance() {
+    if (!draft?.choice_side) {
+      setResponseGuidance(text("responseChoose"), false);
+    } else if (draft.choice_side === "not_sure") {
+      setResponseGuidance(text("responseNotSure"), true);
+    } else {
+      setResponseGuidance(text("responseSelected", draft.choice_side), true);
+    }
+  }
+
+  function applyLocale() {
+    document.documentElement.lang = LANG_ATTR[currentLocale];
+    document.title = text("documentTitle");
+    els.languageLabel.textContent = text("languageLabel");
+    els.languageSelect.value = currentLocale;
+    els.themeLabel.textContent = text("themeLabel");
+    if (els.themeSelect) {
+      els.themeSelect.querySelector('option[value="neutral"]').textContent = text("themeNeutral");
+      els.themeSelect.querySelector('option[value="sage"]').textContent = text("themeSage");
+      els.themeSelect.querySelector('option[value="paper"]').textContent = text("themePaper");
+    }
+    els.pageTitle.textContent = text("pageTitle");
+    els.taskLine.textContent = text("taskLine");
+    els.transcriptLabel.textContent = text("transcriptLabel");
+    els.videoALabel.textContent = text("videoA");
+    els.videoBLabel.textContent = text("videoB");
+    els.confidenceLabel.textContent = text("confidenceLabel");
+    els.lowLabel.textContent = text("low");
+    els.highLabel.textContent = text("high");
+    els.diagnosticLabel.textContent = text("diagnosticLabel");
+    els.diagnosticHint.textContent = text("diagnosticHint");
+    els.reviewNoteLabel.textContent = text("reviewNote");
+    els.noteText.placeholder = text("reviewPlaceholder");
+    els.notSureButton.textContent = text("notSure");
+    els.downloadJson.textContent = text("downloadJson");
+    els.downloadCsv.textContent = text("downloadCsv");
+    els.restartButton.textContent = text("restart");
+    els.doneEyebrow.textContent = text("doneEyebrow");
+    els.doneTitle.textContent = text("doneTitle");
+    els.doneLead.textContent = text("doneLead");
+    populateMismatchOptions();
+    updateChoiceButtonLabels();
+    refreshProgressText();
+    refreshResponseGuidance();
+    if (!els.doneView.classList.contains("hidden") && session) renderSummary();
   }
 
   function makeId(prefix) {
@@ -90,18 +441,21 @@
   }
 
   function populateMismatchOptions() {
-    const options = manifest.ui?.mismatch_locations || [];
+    const previous = els.mismatchSelect.value;
     els.mismatchSelect.replaceChildren();
     const first = document.createElement("option");
     first.value = "";
-    first.textContent = "Select one";
+    first.textContent = text("selectOne");
     els.mismatchSelect.append(first);
-    options.forEach((label) => {
+    MISMATCH_OPTIONS.forEach((item) => {
       const option = document.createElement("option");
-      option.value = label.toLowerCase().replaceAll(" / ", "_").replaceAll(" ", "_");
-      option.textContent = label;
+      option.value = item.value;
+      option.textContent = item.labels[currentLocale] || item.labels.en;
       els.mismatchSelect.append(option);
     });
+    if (previous && MISMATCH_OPTIONS.some((item) => item.value === previous)) {
+      els.mismatchSelect.value = previous;
+    }
   }
 
   async function loadManifest() {
@@ -114,6 +468,7 @@
         manifest = await response.json();
       }
       populateMismatchOptions();
+      applyLocale();
       if (!restoreSession()) startSession(sessionMode);
     } catch (error) {
       showLoadError();
@@ -123,10 +478,10 @@
 
   function showLoadError() {
     setVisible("trial");
-    els.trialMeta.textContent = "Demo unavailable";
+    els.trialMeta.textContent = text("demoUnavailable");
     els.progressText.textContent = "0 / 0";
     els.progressFill.style.width = "0%";
-    els.transcriptText.textContent = "The demo data could not be loaded. Please refresh the page.";
+    els.transcriptText.textContent = text("demoLoadError");
     [els.videoA, els.videoB].forEach(clearVideo);
     $$("[data-choice], [data-confidence]").forEach((button) => {
       button.disabled = true;
@@ -238,23 +593,23 @@
     $$("[data-choice]").forEach((button) => {
       const selected = button.dataset.choice === choice;
       button.classList.toggle("selected", selected);
-      button.textContent = selected ? `Selected ${button.dataset.choice}` : `Choose ${button.dataset.choice}`;
     });
+    updateChoiceButtonLabels();
     if (choice === "not_sure") {
       draft.confidence = "";
       els.mismatchSelect.value = "";
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
       setFollowupControlsEnabled(false);
-      setResponseGuidance("You selected Not sure. You can continue.", true);
+      setResponseGuidance(text("responseNotSure"), true);
     } else if (choice) {
       setFollowupControlsEnabled(true);
-      setResponseGuidance(`Selected Video ${choice}. Now rate how confident you are.`, true);
+      setResponseGuidance(text("responseSelected", choice), true);
     } else {
       draft.confidence = "";
       els.mismatchSelect.value = "";
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
       setFollowupControlsEnabled(false);
-      setResponseGuidance("Choose Video A or Video B above first.", false);
+      setResponseGuidance(text("responseChoose"), false);
     }
     updateNextState();
   }
@@ -287,17 +642,16 @@
     const trial = currentTrial();
     const completed = session.current_index;
     const total = session.trial_count;
-    const conditionLabel =
-      session.mode === "review" ? ` · ${titleCase(trial.negative_type)}` : "";
+    const reviewCondition = session.mode === "review" ? conditionLabel(trial.negative_type) : "";
 
     setVisible("trial");
-    setMediaStatus("Loading videos...", false);
+    setMediaStatus(text("loadingVideos"), false);
     setResponseControlsEnabled(false);
-    setResponseGuidance("Choose Video A or Video B above first.", false);
-    els.trialMeta.textContent = `Trial ${completed + 1} of ${total}${conditionLabel}`;
-    els.progressText.textContent = `${completed} / ${total} answered`;
+    setResponseGuidance(text("responseChoose"), false);
+    els.trialMeta.textContent = text("trialMeta", completed + 1, total, reviewCondition);
+    els.progressText.textContent = text("progress", completed, total);
     els.progressFill.style.width = `${(completed / total) * 100}%`;
-    els.nextButton.textContent = completed + 1 === total ? "Finish" : "Next";
+    els.nextButton.textContent = completed + 1 === total ? text("finish") : text("next");
     els.transcriptText.textContent = trial.transcript;
 
     clearVideo(els.videoA);
@@ -316,8 +670,8 @@
     els.notSureButton.classList.remove("selected");
     $$("[data-choice]").forEach((button) => {
       button.classList.remove("selected");
-      button.textContent = `Choose ${button.dataset.choice}`;
     });
+    updateChoiceButtonLabels();
     $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
     els.mismatchSelect.value = "";
     els.noteText.value = "";
@@ -398,12 +752,12 @@
         ).toFixed(1)
       : "n/a";
     const items = [
-      ["Mode", titleCase(session.mode)],
-      ["Answered", `${answered} / ${session.trial_count}`],
-      ["Avg confidence", avgConfidence],
+      [text("summaryMode"), tr().modes[session.mode] || titleCase(session.mode)],
+      [text("summaryAnswered"), `${answered} / ${session.trial_count}`],
+      [text("summaryAvgConfidence"), avgConfidence],
     ];
     if (session.mode === "review") {
-      items.splice(2, 0, ["Accuracy", accuracy]);
+      items.splice(2, 0, [text("summaryAccuracy"), accuracy]);
     }
 
     els.summaryGrid.replaceChildren();
@@ -545,7 +899,7 @@
       mediaReady = true;
       setMediaStatus("", true);
       setResponseControlsEnabled(true);
-      setResponseGuidance("Choose Video A or Video B above first.", false);
+      setResponseGuidance(text("responseChoose"), false);
       updateNextState();
     }
   }
@@ -555,7 +909,7 @@
     if (token !== currentVideoToken) return;
     mediaReady = false;
     setResponseControlsEnabled(false);
-    setMediaStatus("One of the videos could not be loaded. Please refresh the page.", false);
+    setMediaStatus(text("videoLoadError"), false);
     updateNextState();
   }
 
@@ -597,5 +951,19 @@
 
   els.restartButton.addEventListener("click", restart);
 
+  els.languageSelect.addEventListener("change", () => {
+    currentLocale = normalizeLocale(els.languageSelect.value) || "en";
+    localStorage.setItem(LOCALE_STORAGE_KEY, currentLocale);
+    applyLocale();
+  });
+
+  els.themeSelect.addEventListener("change", () => {
+    currentTheme = THEMES.includes(els.themeSelect.value) ? els.themeSelect.value : "neutral";
+    localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
+    applyTheme();
+  });
+
+  applyTheme();
+  applyLocale();
   loadManifest();
 })();

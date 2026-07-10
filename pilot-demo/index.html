@@ -12,26 +12,49 @@
         <div class="trial-topbar">
           <div>
             <p class="eyebrow" id="trialMeta">Trial</p>
-            <h1>Which motion fits better?</h1>
-            <p class="task-line">Watch both videos with the same speech audio, then answer.</p>
+            <h1 id="pageTitle">Which motion fits better?</h1>
+            <p class="task-line" id="taskLine">Watch both videos with the same speech audio, then answer.</p>
           </div>
-          <div class="progress-wrap" aria-label="Progress">
-            <div class="progress-track">
-              <div class="progress-fill" id="progressFill"></div>
+          <div class="top-side">
+            <div class="top-controls" aria-label="Display options">
+              <label class="compact-field">
+                <span id="languageLabel">Language</span>
+                <select id="languageSelect">
+                  <option value="en">English</option>
+                  <option value="zh">中文</option>
+                  <option value="ja">日本語</option>
+                  <option value="es">Español</option>
+                </select>
+              </label>
+
+              <label class="compact-field theme-field review-only">
+                <span id="themeLabel">Theme</span>
+                <select id="themeSelect">
+                  <option value="neutral">Neutral</option>
+                  <option value="sage">Sage</option>
+                  <option value="paper">Paper</option>
+                </select>
+              </label>
             </div>
-            <span id="progressText">0 / 0</span>
+
+            <div class="progress-wrap" aria-label="Progress">
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <span id="progressText">0 / 0</span>
+            </div>
           </div>
         </div>
 
         <div class="transcript-card">
-          <span>Speech transcript</span>
+          <span id="transcriptLabel">Speech transcript</span>
           <p id="transcriptText"></p>
         </div>
 
         <div class="video-grid">
           <article class="video-card" id="cardA">
             <div class="video-heading">
-              <span>Video A</span>
+              <span id="videoALabel">Video A</span>
             </div>
             <video id="videoA" controls playsinline preload="metadata"></video>
             <button type="button" class="choice-button" data-choice="A">Choose A</button>
@@ -39,7 +62,7 @@
 
           <article class="video-card" id="cardB">
             <div class="video-heading">
-              <span>Video B</span>
+              <span id="videoBLabel">Video B</span>
             </div>
             <video id="videoB" controls playsinline preload="metadata"></video>
             <button type="button" class="choice-button" data-choice="B">Choose B</button>
@@ -51,7 +74,7 @@
           <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
 
           <div class="question-block confidence-block followup-content">
-            <span class="question-label">Confidence in your choice</span>
+            <span class="question-label" id="confidenceLabel">Confidence in your choice</span>
             <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
               <button type="button" data-confidence="1">1</button>
               <button type="button" data-confidence="2">2</button>
@@ -60,22 +83,22 @@
               <button type="button" data-confidence="5">5</button>
             </div>
             <div class="scale-labels" aria-hidden="true">
-              <span>Low</span>
-              <span>High</span>
+              <span id="lowLabel">Low</span>
+              <span id="highLabel">High</span>
             </div>
           </div>
 
           <label class="diagnostic-block followup-content">
-            <span class="question-label">Optional diagnostic</span>
+            <span class="question-label" id="diagnosticLabel">Optional diagnostic</span>
             <select id="mismatchSelect">
               <option value="">Select one</option>
             </select>
-            <span class="field-hint">What made the less fitting video feel off? Skip if unclear.</span>
+            <span class="field-hint" id="diagnosticHint">What made the less fitting video feel off? Skip if unclear.</span>
           </label>
         </div>
 
         <label class="notes-field review-only">
-          <span>Review note</span>
+          <span id="reviewNoteLabel">Review note</span>
           <textarea id="noteText" rows="2" placeholder="For internal screening: unclear mismatch, technical artifact, or reason to discard this item"></textarea>
         </label>
 
@@ -86,9 +109,9 @@
       </section>
 
       <section id="doneView" class="panel done-panel hidden">
-        <p class="eyebrow">Complete</p>
-        <h2>Responses saved in this browser</h2>
-        <p class="lead small">
+        <p class="eyebrow" id="doneEyebrow">Complete</p>
+        <h2 id="doneTitle">Responses saved in this browser</h2>
+        <p class="lead small" id="doneLead">
           GitHub Pages is static, so this demo stores responses locally. Download the files below after testing.
         </p>
         <div class="summary-grid" id="summaryGrid"></div>
