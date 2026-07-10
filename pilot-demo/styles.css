@@ -274,12 +274,26 @@ video {
   border-color: rgba(15, 118, 110, 0.56);
 }
 
-.response-grid {
+.response-panel {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--column-gap);
+  grid-template-columns: 1fr;
+  gap: 10px;
   margin-top: 22px;
-  align-items: stretch;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.response-guidance {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.response-panel.ready .response-guidance {
+  color: var(--teal-dark);
 }
 
 .media-status {
@@ -290,31 +304,35 @@ video {
 }
 
 .question-block,
+.diagnostic-block,
 .notes-field {
   min-width: 0;
   display: grid;
-  padding: 14px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
 }
 
 .question-block {
-  min-height: 120px;
   grid-template-rows: 18px 44px 16px;
   gap: 10px;
 }
 
-.confidence-block,
-.mismatch-block {
-  align-content: start;
+.diagnostic-block {
+  max-width: 520px;
+  grid-template-rows: 18px 40px auto;
+  gap: 8px;
+  padding-top: 2px;
+  border-top: 1px solid var(--line);
 }
 
 .notes-field {
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
   gap: 9px;
 }
 
 .question-label,
+.diagnostic-block > span,
 .notes-field > span {
   color: var(--muted);
   font-size: 13px;
@@ -374,7 +392,7 @@ textarea {
 }
 
 select {
-  height: 44px;
+  height: 40px;
   padding: 0 12px;
 }
 
@@ -492,7 +510,6 @@ textarea {
 
   .trial-topbar,
   .video-grid,
-  .response-grid,
   .trial-actions,
   .summary-grid {
     grid-template-columns: 1fr;

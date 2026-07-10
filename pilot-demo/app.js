@@ -16,6 +16,8 @@
     progressText: $("#progressText"),
     transcriptText: $("#transcriptText"),
     mediaStatus: $("#mediaStatus"),
+    responsePanel: $("#responsePanel"),
+    responseGuidance: $("#responseGuidance"),
     cardA: $("#cardA"),
     cardB: $("#cardB"),
     videoA: $("#videoA"),
@@ -240,15 +242,25 @@
     });
     if (choice === "not_sure") {
       draft.confidence = "";
+      els.mismatchSelect.value = "";
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
+      setFollowupControlsEnabled(false);
+      setResponseGuidance("You selected Not sure. You can continue.", true);
+    } else if (choice) {
+      setFollowupControlsEnabled(true);
+      setResponseGuidance(`Selected Video ${choice}. Now rate how confident you are.`, true);
+    } else {
+      draft.confidence = "";
+      els.mismatchSelect.value = "";
+      $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
+      setFollowupControlsEnabled(false);
+      setResponseGuidance("Choose Video A or Video B above first.", false);
     }
     updateNextState();
   }
 
   function setConfidence(value) {
-    if (draft.choice_side === "not_sure") {
-      setChoice("");
-    }
+    if (!draft.choice_side || draft.choice_side === "not_sure") return;
     draft.confidence = value;
     $$("[data-confidence]").forEach((button) => {
       button.classList.toggle("selected", button.dataset.confidence === value);
@@ -281,6 +293,7 @@
     setVisible("trial");
     setMediaStatus("Loading videos...", false);
     setResponseControlsEnabled(false);
+    setResponseGuidance("Choose Video A or Video B above first.", false);
     els.trialMeta.textContent = `Trial ${completed + 1} of ${total}${conditionLabel}`;
     els.progressText.textContent = `${completed} / ${total} answered`;
     els.progressFill.style.width = `${(completed / total) * 100}%`;
@@ -308,6 +321,7 @@
     $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
     els.mismatchSelect.value = "";
     els.noteText.value = "";
+    setFollowupControlsEnabled(false);
     updateNextState();
   }
 
@@ -497,12 +511,24 @@
   }
 
   function setResponseControlsEnabled(enabled) {
-    $$("[data-choice], [data-confidence]").forEach((button) => {
+    $$("[data-choice]").forEach((button) => {
+      button.disabled = !enabled;
+    });
+    els.notSureButton.disabled = !enabled;
+    els.noteText.disabled = !enabled;
+    setFollowupControlsEnabled(false);
+  }
+
+  function setFollowupControlsEnabled(enabled) {
+    $$("[data-confidence]").forEach((button) => {
       button.disabled = !enabled;
     });
     els.mismatchSelect.disabled = !enabled;
-    els.noteText.disabled = !enabled;
-    els.notSureButton.disabled = !enabled;
+  }
+
+  function setResponseGuidance(message, ready) {
+    els.responseGuidance.textContent = message;
+    els.responsePanel.classList.toggle("ready", ready);
   }
 
   function setMediaStatus(message, hidden) {
@@ -518,6 +544,7 @@
       mediaReady = true;
       setMediaStatus("", true);
       setResponseControlsEnabled(true);
+      setResponseGuidance("Choose Video A or Video B above first.", false);
       updateNextState();
     }
   }
@@ -541,7 +568,6 @@
 
   els.notSureButton.addEventListener("click", () => {
     setChoice("not_sure");
-    if (!draft.confidence) setConfidence("1");
   });
 
   els.nextButton.addEventListener("click", submitTrial);

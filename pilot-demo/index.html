@@ -47,9 +47,11 @@
         </div>
         <div class="media-status" id="mediaStatus">Loading videos...</div>
 
-        <div class="response-grid">
+        <div class="response-panel" id="responsePanel">
+          <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
+
           <div class="question-block confidence-block">
-            <span class="question-label">Confidence</span>
+            <span class="question-label">Confidence in your choice</span>
             <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
               <button type="button" data-confidence="1">1</button>
               <button type="button" data-confidence="2">2</button>
@@ -63,12 +65,12 @@
             </div>
           </div>
 
-          <label class="question-block mismatch-block">
-            <span class="question-label">Mismatch reason (optional)</span>
+          <label class="diagnostic-block">
+            <span class="question-label">Optional diagnostic</span>
             <select id="mismatchSelect">
               <option value="">Select one</option>
             </select>
-            <span class="field-hint">Skip if unclear.</span>
+            <span class="field-hint">What made the less fitting video feel off? Skip if unclear.</span>
           </label>
         </div>
 
