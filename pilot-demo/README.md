@@ -10,8 +10,8 @@ Static GitHub Pages demo for the first 2AFC human-perception pilot.
 
 ## Modes
 
-- Participant: 5 trials, one randomized negative type per base item.
-- Review all: 10 trials, all current candidate A/B pairs for internal screening.
+- Participant: 5 trials, one randomized negative type per base item. This is the default mode at `pilot-demo/`.
+- Review all: 10 trials, all current candidate A/B pairs for internal screening. Use `pilot-demo/?review=all`.
 
 ## Current Scope
 
@@ -25,3 +25,5 @@ Static GitHub Pages demo for the first 2AFC human-perception pilot.
 This version is static. It stores responses in the browser and exports JSON/CSV from the completion page.
 
 Before external participant collection, connect a backend, Google Sheets/API endpoint, or survey platform so participants do not need to manually download and return files.
+
+The demo does not collect participant background fields. If background information is needed later, collect it after the task or through the recruitment/survey system.
