@@ -541,6 +541,8 @@
       started_at: nowIso(),
       completed_at: "",
       mode,
+      ui_locale: currentLocale,
+      ui_theme: currentTheme,
       trial_count: pools.length,
       trials: pools.map(makeTrial),
       current_index: 0,
@@ -558,6 +560,8 @@
         return false;
       }
       session = saved;
+      session.ui_locale = session.ui_locale || currentLocale;
+      session.ui_theme = session.ui_theme || currentTheme;
       if (session.completed_at || session.current_index >= session.trial_count) {
         showDone();
       } else {
@@ -708,6 +712,8 @@
       base_id: trial.base_id,
       speaker: trial.speaker,
       language: trial.language,
+      ui_locale: currentLocale,
+      ui_theme: currentTheme,
       negative_type: trial.negative_type,
       positive_sample_id: trial.positive_sample_id,
       negative_sample_id: trial.negative_sample_id,
@@ -800,6 +806,8 @@
       "session_id",
       "manifest_version",
       "mode",
+      "session_ui_locale",
+      "session_ui_theme",
       "session_started_at",
       "session_completed_at",
       "trial_count",
@@ -808,6 +816,8 @@
       "base_id",
       "speaker",
       "language",
+      "ui_locale",
+      "ui_theme",
       "transcript",
       "negative_type",
       "positive_sample_id",
@@ -832,6 +842,8 @@
       ...row,
       manifest_version: session.manifest_version,
       mode: session.mode,
+      session_ui_locale: session.ui_locale || "",
+      session_ui_theme: session.ui_theme || "",
       session_started_at: session.started_at,
       session_completed_at: session.completed_at,
       trial_count: session.trial_count,
@@ -954,12 +966,20 @@
   els.languageSelect.addEventListener("change", () => {
     currentLocale = normalizeLocale(els.languageSelect.value) || "en";
     localStorage.setItem(LOCALE_STORAGE_KEY, currentLocale);
+    if (session) {
+      session.ui_locale = currentLocale;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+    }
     applyLocale();
   });
 
   els.themeSelect.addEventListener("change", () => {
     currentTheme = THEMES.includes(els.themeSelect.value) ? els.themeSelect.value : "neutral";
     localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
+    if (session) {
+      session.ui_theme = currentTheme;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+    }
     applyTheme();
   });
 
