@@ -75,6 +75,14 @@ button:focus-visible {
   display: none !important;
 }
 
+.review-only {
+  display: none !important;
+}
+
+html[data-mode="review"] .review-only {
+  display: grid !important;
+}
+
 .trial-panel {
   padding-top: 6px;
 }

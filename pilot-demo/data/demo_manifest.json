@@ -1,6 +1,6 @@
 {
   "version": "pilot_demo_v0",
-  "built_at": "2026-07-11T02:47:31+08:00",
+  "built_at": "2026-07-11T05:14:35+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "participant",
@@ -263,10 +263,9 @@
     "review_trial_count": 10,
     "mismatch_locations": [
       "Hands / arms",
-      "Face",
-      "Head / body",
-      "Whole motion",
-      "Speech context",
+      "Head / body movement",
+      "Timing / rhythm",
+      "Gesture meaning vs words",
       "Not sure"
     ]
   }

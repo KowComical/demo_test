@@ -6,6 +6,7 @@
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
   const params = new URLSearchParams(window.location.search);
   const sessionMode = params.get("review") === "all" ? "review" : "participant";
+  document.documentElement.dataset.mode = sessionMode;
 
   const els = {
     trialView: $("#trialView"),
