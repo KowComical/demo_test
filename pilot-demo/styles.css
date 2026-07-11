@@ -456,9 +456,10 @@ video {
 
 .choice-button:hover:not(:disabled),
 .choice-button.selected {
-  color: var(--teal-dark);
-  background: #dff0ed;
-  border-color: rgba(15, 118, 110, 0.56);
+  color: #ffffff;
+  background: var(--teal);
+  border-color: var(--teal-dark);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
 }
 
 .choice-row {
@@ -477,9 +478,10 @@ video {
 
 .not-sure-action:hover:not(:disabled),
 .not-sure-action.selected {
-  color: var(--blue);
-  background: #e2e8f0;
-  border-color: rgba(52, 73, 106, 0.52);
+  color: #ffffff;
+  background: var(--blue);
+  border-color: #243858;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .response-panel {
@@ -595,9 +597,10 @@ video {
 
 .confidence-row button:hover,
 .confidence-row button.selected {
-  color: var(--blue);
-  background: var(--soft-blue);
-  border-color: rgba(52, 73, 106, 0.46);
+  color: #ffffff;
+  background: var(--blue);
+  border-color: #243858;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .doubt-options {

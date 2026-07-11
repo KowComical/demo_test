@@ -1,6 +1,6 @@
 {
-  "version": "pilot_demo_v1_1_clean_candidate",
-  "built_at": "2026-07-12T04:42:20+08:00",
+  "version": "pilot_demo_v1_1_participant_metrics",
+  "built_at": "2026-07-12T05:38:12+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "review",
@@ -659,7 +659,7 @@
     }
   ],
   "ui": {
-    "participant_trial_count": 10,
+    "participant_trial_count": 8,
     "review_trial_count": 20,
     "response_endpoint": "https://script.google.com/macros/s/AKfycbyZ-gIEAfwE5No5SyqganGJTnN-TgAX92tywXu4gG0mFJtp59NuyZBMobRqpJwSDeMXdw/exec",
     "response_endpoint_mode": "no-cors",

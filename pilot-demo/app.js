@@ -381,6 +381,7 @@
   let syncDuration = 0;
   let timelineDragging = false;
   let timelineFrame = 0;
+  let playbackStartedAt = 0;
 
   function nowIso() {
     return new Date().toISOString();
@@ -723,7 +724,16 @@
       doubt_tags: [],
       note: "",
       started_at: nowIso(),
+      playback_stats: {
+        play_count: 0,
+        pause_count: 0,
+        restart_count: 0,
+        seek_count: 0,
+        watched_time_ms: 0,
+        max_video_time_sec: 0,
+      },
     };
+    playbackStartedAt = 0;
     trialStartedAt = performance.now();
   }
 
@@ -769,6 +779,40 @@
       button.classList.toggle("selected", button.dataset.confidence === value);
     });
     updateNextState();
+  }
+
+  function playbackStats() {
+    if (!draft.playback_stats) {
+      draft.playback_stats = {
+        play_count: 0,
+        pause_count: 0,
+        restart_count: 0,
+        seek_count: 0,
+        watched_time_ms: 0,
+        max_video_time_sec: 0,
+      };
+    }
+    return draft.playback_stats;
+  }
+
+  function updateMaxVideoTime() {
+    const stats = playbackStats();
+    const current = Number(els.videoA.currentTime || 0);
+    if (Number.isFinite(current)) {
+      stats.max_video_time_sec = Math.max(Number(stats.max_video_time_sec || 0), Number(current.toFixed(3)));
+    }
+  }
+
+  function beginWatchTimer() {
+    if (!playbackStartedAt) playbackStartedAt = performance.now();
+  }
+
+  function flushWatchTimer() {
+    if (!playbackStartedAt) return;
+    const stats = playbackStats();
+    stats.watched_time_ms += Math.round(performance.now() - playbackStartedAt);
+    playbackStartedAt = 0;
+    updateMaxVideoTime();
   }
 
   function videos() {
@@ -827,6 +871,7 @@
 
   function pauseBothVideos() {
     videos().forEach((video) => video.pause());
+    flushWatchTimer();
     updatePlaybackLabels();
   }
 
@@ -839,6 +884,7 @@
     try {
       syncVideosTo(els.videoA.currentTime || els.videoB.currentTime || 0);
       await Promise.all(videos().map((video) => video.play()));
+      beginWatchTimer();
       scheduleTimelineUpdate();
     } catch (error) {
       pauseBothVideos();
@@ -854,6 +900,7 @@
 
   function resetPlaybackControls() {
     cancelAnimationFrame(timelineFrame);
+    playbackStartedAt = 0;
     syncDuration = 0;
     timelineDragging = false;
     els.syncTimeline.min = "0";
@@ -940,7 +987,10 @@
     if (els.nextButton.disabled) return;
 
     const trial = currentTrial();
+    flushWatchTimer();
+    updateMaxVideoTime();
     const responseTimeMs = Math.round(performance.now() - trialStartedAt);
+    const stats = playbackStats();
     const chosenSampleId =
       draft.choice_side === "A"
         ? trial.video_a_sample_id
@@ -976,6 +1026,12 @@
       mismatch_location: doubtTags.join(";"),
       note: els.noteText.value.trim(),
       response_time_ms: responseTimeMs,
+      play_count: Number(stats.play_count || 0),
+      pause_count: Number(stats.pause_count || 0),
+      restart_count: Number(stats.restart_count || 0),
+      seek_count: Number(stats.seek_count || 0),
+      watched_time_ms: Number(stats.watched_time_ms || 0),
+      max_video_time_sec: Number(stats.max_video_time_sec || 0),
       shown_at: draft.started_at,
       answered_at: nowIso(),
       backend_status: responseEndpoint() ? "pending" : "disabled",
@@ -1227,6 +1283,12 @@
       "mismatch_location",
       "note",
       "response_time_ms",
+      "play_count",
+      "pause_count",
+      "restart_count",
+      "seek_count",
+      "watched_time_ms",
+      "max_video_time_sec",
       "shown_at",
       "answered_at",
       "backend_status",
@@ -1361,16 +1423,23 @@
 
   els.playBothButton.addEventListener("click", () => {
     if (isAnyVideoPlaying()) {
+      playbackStats().pause_count += 1;
       pauseBothVideos();
     } else {
+      playbackStats().play_count += 1;
       playBothVideos();
     }
   });
 
-  els.restartBothButton.addEventListener("click", restartBothVideos);
+  els.restartBothButton.addEventListener("click", () => {
+    playbackStats().restart_count += 1;
+    restartBothVideos();
+  });
 
   els.syncTimeline.addEventListener("input", () => {
     timelineDragging = true;
+    playbackStats().seek_count += 1;
+    updateMaxVideoTime();
     syncVideosTo(els.syncTimeline.value);
   });
 
