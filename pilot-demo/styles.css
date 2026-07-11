@@ -442,9 +442,9 @@ video {
 }
 
 .choice-button {
-  width: calc(100% - 24px);
+  width: 100%;
   min-height: 48px;
-  margin: 12px;
+  margin: 0;
   padding: 0 16px;
   color: var(--teal-dark);
   background: var(--soft-teal);
@@ -461,14 +461,25 @@ video {
   border-color: rgba(15, 118, 110, 0.56);
 }
 
-.not-sure-row {
+.choice-row {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(138px, 170px) minmax(0, 1fr);
+  gap: var(--column-gap);
+  align-items: center;
   margin-top: 12px;
 }
 
-.not-sure-row .choice-button {
-  width: 100%;
-  margin: 0;
+.not-sure-action {
+  color: var(--blue);
+  background: var(--soft-blue);
+  border-color: rgba(52, 73, 106, 0.24);
+}
+
+.not-sure-action:hover:not(:disabled),
+.not-sure-action.selected {
+  color: var(--blue);
+  background: #e2e8f0;
+  border-color: rgba(52, 73, 106, 0.52);
 }
 
 .response-panel {
@@ -809,7 +820,7 @@ textarea {
   .transcript-card,
   .video-grid,
   .video-card,
-  .not-sure-row,
+  .choice-row,
   .playback-controls,
   .response-panel,
   .notes-field,
@@ -832,6 +843,17 @@ textarea {
   .trial-actions,
   .summary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .choice-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .choice-button {
+    min-height: 46px;
+    padding: 0 10px;
+    font-size: 14px;
   }
 
   .trial-topbar {

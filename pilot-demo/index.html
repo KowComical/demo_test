@@ -48,7 +48,6 @@
               <span id="videoALabel">Video A</span>
             </div>
             <video id="videoA" playsinline preload="metadata"></video>
-            <button type="button" class="choice-button" data-choice="A">Choose A</button>
           </article>
 
           <article class="video-card" id="cardB">
@@ -56,11 +55,12 @@
               <span id="videoBLabel">Video B</span>
             </div>
             <video id="videoB" playsinline preload="metadata"></video>
-            <button type="button" class="choice-button" data-choice="B">Choose B</button>
           </article>
         </div>
-        <div class="not-sure-row">
+        <div class="choice-row">
+          <button type="button" class="choice-button" data-choice="A">Choose A</button>
           <button type="button" class="choice-button not-sure-action" id="notSureButton">Not sure</button>
+          <button type="button" class="choice-button" data-choice="B">Choose B</button>
         </div>
         <div class="playback-controls" id="playbackControls" aria-label="Synchronized playback controls">
           <button type="button" class="secondary-action playback-button playback-main" id="playBothButton" disabled>Play</button>
