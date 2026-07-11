@@ -7,7 +7,11 @@
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
   const params = new URLSearchParams(window.location.search);
-  const sessionMode = params.get("review") === "all" ? "review" : "participant";
+  const requestedMode = params.get("mode");
+  const sessionMode =
+    requestedMode === "participant" || requestedMode === "review"
+      ? requestedMode
+      : "review";
   document.documentElement.dataset.mode = sessionMode;
 
   const LOCALES = ["en", "zh", "ja", "es"];

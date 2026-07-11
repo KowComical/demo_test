@@ -10,8 +10,8 @@ Static GitHub Pages demo for the first 2AFC human-perception pilot.
 
 ## Modes
 
-- Participant: 10 trials, one randomized negative type per sampled base item. This is the default mode at `pilot-demo/`.
-- Review all: 40 trials, all current candidate A/B pairs for internal screening. Use `pilot-demo/?review=all`.
+- Review all: 40 trials, all current candidate A/B pairs for internal screening. This is the default mode at `pilot-demo/`.
+- Participant: 10 trials, one randomized negative type per sampled base item. Use `pilot-demo/?mode=participant`.
 
 ## Current Scope
 

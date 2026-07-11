@@ -3,7 +3,7 @@ window.DEMO_MANIFEST = {
   "built_at": "2026-07-11T06:49:29+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
-  "default_mode": "participant",
+  "default_mode": "review",
   "samples": {
     "item001_scott_doctor_strange_movie_excited_positive": {
       "sample_id": "item001_scott_doctor_strange_movie_excited_positive",
