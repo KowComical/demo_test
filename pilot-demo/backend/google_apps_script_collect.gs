@@ -30,6 +30,7 @@ const HEADERS = [
   "answered_at",
   "ui_locale",
   "ui_theme",
+  "response_id",
 ];
 
 function doPost(e) {
@@ -48,6 +49,17 @@ function doPost(e) {
   }
 }
 
+function doGet(e) {
+  const params = (e && e.parameter) || {};
+  if (params.action === "verify_response") {
+    return jsonpResponse(params.callback, verifyResponse(params.response_id));
+  }
+  return jsonpResponse(params.callback, {
+    ok: true,
+    service: "dialogue_consistency_eval_collector",
+  });
+}
+
 function getSheet() {
   const spreadsheet = SPREADSHEET_ID
     ? SpreadsheetApp.openById(SPREADSHEET_ID)
@@ -64,7 +76,9 @@ function ensureHeaders(sheet) {
   if (existing.join("") === "") {
     range.setValues([HEADERS]);
     sheet.setFrozenRows(1);
+    return;
   }
+  range.setValues([HEADERS]);
 }
 
 function rowFromPayload(payload) {
@@ -105,11 +119,52 @@ function rowFromPayload(payload) {
     response.answered_at || "",
     response.ui_locale || session.ui_locale || "",
     response.ui_theme || session.ui_theme || "",
+    response.response_id || "",
   ];
+}
+
+function verifyResponse(responseId) {
+  if (!responseId) {
+    return { ok: false, found: false, error: "Missing response_id" };
+  }
+  const sheet = getSheet();
+  ensureHeaders(sheet);
+  const responseIdColumn = HEADERS.indexOf("response_id") + 1;
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    return { ok: true, found: false, response_id: responseId };
+  }
+  const values = sheet.getRange(2, responseIdColumn, lastRow - 1, 1).getValues();
+  for (let index = values.length - 1; index >= 0; index -= 1) {
+    if (String(values[index][0]) === String(responseId)) {
+      return {
+        ok: true,
+        found: true,
+        response_id: responseId,
+        row: index + 2,
+      };
+    }
+  }
+  return { ok: true, found: false, response_id: responseId };
 }
 
 function jsonResponse(value) {
   return ContentService
     .createTextOutput(JSON.stringify(value))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function jsonpResponse(callback, value) {
+  const safeCallback = /^[A-Za-z_$][0-9A-Za-z_$]*(\.[A-Za-z_$][0-9A-Za-z_$]*)*$/.test(callback || "")
+    ? callback
+    : "";
+  const body = safeCallback
+    ? safeCallback + "(" + JSON.stringify(value) + ");"
+    : JSON.stringify(value);
+  const mimeType = safeCallback
+    ? ContentService.MimeType.JAVASCRIPT
+    : ContentService.MimeType.JSON;
+  return ContentService
+    .createTextOutput(body)
+    .setMimeType(mimeType);
 }

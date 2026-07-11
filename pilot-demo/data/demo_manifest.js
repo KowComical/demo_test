@@ -1,6 +1,6 @@
 window.DEMO_MANIFEST = {
-  "version": "pilot_demo_v1_20_three_choice_row_ui",
-  "built_at": "2026-07-12T01:37:43+08:00",
+  "version": "pilot_demo_v1_20_backend_verify_ui",
+  "built_at": "2026-07-12T01:56:14+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "review",

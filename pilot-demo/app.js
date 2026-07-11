@@ -113,6 +113,7 @@
       backendReady: "Backend collection is enabled.",
       backendSaving: "Saving response to backend...",
       backendSaved: "Response sent to backend.",
+      backendVerified: "Response verified in backend.",
       backendUnconfirmed: "Response sent to backend. Confirmation is unavailable for this endpoint.",
       backendFailed: "Backend save failed. Response remains saved in this browser.",
     },
@@ -170,6 +171,7 @@
       backendReady: "后端收集已启用。",
       backendSaving: "正在提交本题回答到后端...",
       backendSaved: "本题回答已提交到后端。",
+      backendVerified: "后端已确认收到本题回答。",
       backendUnconfirmed: "本题回答已发送到后端；此端点无法返回确认状态。",
       backendFailed: "后端保存失败。本题回答仍保存在本浏览器。",
     },
@@ -227,6 +229,7 @@
       backendReady: "バックエンド収集が有効です。",
       backendSaving: "回答をバックエンドに保存中...",
       backendSaved: "回答をバックエンドに送信しました。",
+      backendVerified: "バックエンドで受信を確認しました。",
       backendUnconfirmed: "回答をバックエンドに送信しました。このエンドポイントでは確認できません。",
       backendFailed: "バックエンド保存に失敗しました。回答はこのブラウザに残っています。",
     },
@@ -284,6 +287,7 @@
       backendReady: "La recolección backend está activada.",
       backendSaving: "Guardando respuesta en el backend...",
       backendSaved: "Respuesta enviada al backend.",
+      backendVerified: "Respuesta verificada en el backend.",
       backendUnconfirmed: "Respuesta enviada al backend. Este endpoint no permite confirmación.",
       backendFailed: "Falló el guardado backend. La respuesta sigue guardada en este navegador.",
     },
@@ -948,6 +952,7 @@
     const doubtTags = selectedDoubtTags();
 
     const response = {
+      response_id: makeId("response"),
       session_id: session.session_id,
       reviewer_id: session.reviewer_id || "",
       trial_index: trial.trial_index,
@@ -1037,6 +1042,12 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload),
         });
+        const verified = await verifyBackendReceipt(endpoint, response.response_id);
+        if (verified) {
+          markBackendStatus(response, "sent_verified");
+          setSubmissionStatus("sent", text("backendVerified"));
+          return;
+        }
         markBackendStatus(response, "sent_unconfirmed");
         setSubmissionStatus("sent", text("backendUnconfirmed"));
         return;
@@ -1054,6 +1065,62 @@
       markBackendStatus(response, "failed", error instanceof Error ? error.message : String(error));
       setSubmissionStatus("failed", text("backendFailed"));
     }
+  }
+
+  function wait(ms) {
+    return new Promise((resolve) => {
+      window.setTimeout(resolve, ms);
+    });
+  }
+
+  async function verifyBackendReceipt(endpoint, responseId) {
+    if (!responseId) return false;
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      if (attempt > 0) await wait(900);
+      const result = await jsonpBackendRequest(endpoint, {
+        action: "verify_response",
+        response_id: responseId,
+      });
+      if (result?.ok && result.found) return true;
+      if (!result) return false;
+    }
+    return false;
+  }
+
+  function jsonpBackendRequest(endpoint, params, timeoutMs = 5000) {
+    return new Promise((resolve) => {
+      const callbackName = `__dcc_backend_${Math.random().toString(36).slice(2)}_${Date.now()}`;
+      let settled = false;
+      const script = document.createElement("script");
+      const cleanup = () => {
+        delete window[callbackName];
+        script.remove();
+      };
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timer);
+        cleanup();
+        resolve(value || null);
+      };
+      const timer = window.setTimeout(() => finish(null), timeoutMs);
+
+      try {
+        const url = new URL(endpoint);
+        Object.entries(params).forEach(([key, value]) => {
+          url.searchParams.set(key, value);
+        });
+        url.searchParams.set("callback", callbackName);
+        url.searchParams.set("_", String(Date.now()));
+        window[callbackName] = finish;
+        script.async = true;
+        script.src = url.toString();
+        script.onerror = () => finish(null);
+        document.head.append(script);
+      } catch {
+        finish(null);
+      }
+    });
   }
 
   function showDone() {
@@ -1125,6 +1192,7 @@
   function responsesCsv() {
     const fields = [
       "session_id",
+      "response_id",
       "reviewer_id",
       "manifest_version",
       "mode",
