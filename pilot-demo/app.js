@@ -66,8 +66,8 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "Which video feels more consistent with the speech?",
-      taskLine: "Review every A/B pair in order, choose the motion that looks more natural and coherent with the speech, then add doubts if useful.",
+      pageTitle: "Which fits the speech better?",
+      taskLine: "Choose the motion that looks more natural and coherent.",
       transcriptLabel: "Speech transcript",
       videoA: "Video A",
       videoB: "Video B",
@@ -123,8 +123,8 @@
       themeNeutral: "清爽",
       themeSage: "浅绿",
       themePaper: "纸感",
-      pageTitle: "哪个视频和语音更一致？",
-      taskLine: "按顺序检查每一组 A/B，选择动作更自然、更和谐、更贴合语音的视频；有疑惑再补充标记。",
+      pageTitle: "哪个更贴合语音？",
+      taskLine: "选择动作更自然、更和谐的视频。",
       transcriptLabel: "台词文本",
       videoA: "视频 A",
       videoB: "视频 B",
@@ -180,8 +180,8 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "発話とより一貫している動画はどちらですか？",
-      taskLine: "A/B ペアを順番に確認し、発話により自然で一貫して見える動きを選び、必要なら疑問点を追加してください。",
+      pageTitle: "発話に合うのはどちら？",
+      taskLine: "より自然で一貫して見える動きを選んでください。",
       transcriptLabel: "発話テキスト",
       videoA: "動画 A",
       videoB: "動画 B",
@@ -237,8 +237,8 @@
       themeNeutral: "Neutral",
       themeSage: "Verde suave",
       themePaper: "Papel",
-      pageTitle: "¿Cuál video se siente más consistente con el habla?",
-      taskLine: "Revisa cada par A/B en orden, elige el movimiento que se ve más natural y coherente con el habla y añade dudas si hace falta.",
+      pageTitle: "¿Cuál encaja mejor con el habla?",
+      taskLine: "Elige el movimiento que se ve más natural y coherente.",
       transcriptLabel: "Transcripción",
       videoA: "Video A",
       videoB: "Video B",
@@ -309,7 +309,7 @@
   }
 
   function initialTheme() {
-    const requested = params.get("theme") || localStorage.getItem(THEME_STORAGE_KEY) || "neutral";
+    const requested = params.get("theme") || "neutral";
     return THEMES.includes(requested) ? requested : "neutral";
   }
 
@@ -439,7 +439,7 @@
       button.classList.toggle("active", selected);
       button.setAttribute("aria-pressed", String(selected));
     });
-    els.themeLabel.textContent = text("themeLabel");
+    if (els.themeLabel) els.themeLabel.textContent = text("themeLabel");
     if (els.themeSelect) {
       els.themeSelect.querySelector('option[value="neutral"]').textContent = text("themeNeutral");
       els.themeSelect.querySelector('option[value="sage"]').textContent = text("themeSage");
@@ -1332,15 +1332,17 @@
     });
   });
 
-  els.themeSelect.addEventListener("change", () => {
-    currentTheme = THEMES.includes(els.themeSelect.value) ? els.themeSelect.value : "neutral";
-    localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
-    if (session) {
-      session.ui_theme = currentTheme;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    }
-    applyTheme();
-  });
+  if (els.themeSelect) {
+    els.themeSelect.addEventListener("change", () => {
+      currentTheme = THEMES.includes(els.themeSelect.value) ? els.themeSelect.value : "neutral";
+      localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
+      if (session) {
+        session.ui_theme = currentTheme;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+      }
+      applyTheme();
+    });
+  }
 
   applyTheme();
   applyLocale();

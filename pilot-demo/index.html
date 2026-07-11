@@ -12,8 +12,8 @@
         <div class="trial-topbar">
           <div>
             <p class="eyebrow" id="trialMeta">Trial</p>
-            <h1 id="pageTitle">Which video feels more consistent with the speech?</h1>
-            <p class="task-line" id="taskLine">Choose the motion that looks more natural and coherent with the speech.</p>
+            <h1 id="pageTitle">Which fits the speech better?</h1>
+            <p class="task-line" id="taskLine">Choose the motion that looks more natural and coherent.</p>
           </div>
           <div class="top-side">
             <div class="top-controls" aria-label="Display options">
@@ -26,15 +26,6 @@
                   <button type="button" data-locale="es" aria-label="Spanish">ES</button>
                 </div>
               </div>
-
-              <label class="compact-field theme-field review-only">
-                <span id="themeLabel">Theme</span>
-                <select id="themeSelect">
-                  <option value="neutral">Neutral</option>
-                  <option value="sage">Sage</option>
-                  <option value="paper">Paper</option>
-                </select>
-              </label>
             </div>
 
             <div class="progress-wrap" aria-label="Progress">
@@ -80,7 +71,10 @@
         <div class="media-status" id="mediaStatus">Loading videos...</div>
 
         <div class="response-panel pending" id="responsePanel">
-          <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
+          <div class="response-head">
+            <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
+            <button type="button" class="secondary-action not-sure-action" id="notSureButton">Not sure</button>
+          </div>
 
           <div class="question-block confidence-block followup-content">
             <span class="question-label" id="confidenceLabel">Confidence in your answer</span>
@@ -110,7 +104,6 @@
         </label>
 
         <div class="trial-actions">
-          <button type="button" class="secondary-action" id="notSureButton">Not sure</button>
           <button type="button" class="primary-action" id="nextButton" disabled>Next</button>
         </div>
         <div class="submission-status" id="submissionStatus">Backend not configured.</div>
