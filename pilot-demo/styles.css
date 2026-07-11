@@ -466,22 +466,9 @@ video {
   margin-top: 12px;
 }
 
-.not-sure-action {
+.not-sure-row .choice-button {
   width: 100%;
-  min-height: 46px;
-  color: var(--blue);
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  border-radius: 7px;
-  font-weight: 780;
-  letter-spacing: 0;
-}
-
-.not-sure-action:hover:not(:disabled),
-.not-sure-action.selected {
-  color: var(--teal-dark);
-  background: var(--soft-teal);
-  border-color: rgba(15, 118, 110, 0.44);
+  margin: 0;
 }
 
 .response-panel {
