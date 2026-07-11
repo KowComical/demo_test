@@ -79,9 +79,9 @@
       pauseBoth: "Pause",
       restartBoth: "Restart",
       timelineLabel: "Timeline",
-      responseChoose: "Choose which video feels more consistent first.",
+      responseChoose: "Choose A, B, or Not sure first.",
       responseSelected: (side) => `Selected Video ${side}. Now rate your confidence and add optional doubts.`,
-      responseNotSure: "You selected Not sure. You can continue.",
+      responseNotSure: "You selected Not sure. Add optional doubts if useful, then continue.",
       confidenceLabel: "Confidence in your answer",
       low: "Low",
       high: "High",
@@ -136,9 +136,9 @@
       pauseBoth: "暂停",
       restartBoth: "重新播放",
       timelineLabel: "时间轴",
-      responseChoose: "请先选择哪个视频更一致。",
+      responseChoose: "请先选择 A、B，或不确定。",
       responseSelected: (side) => `已选择视频 ${side}。请给出信心评分；有疑惑可勾选。`,
-      responseNotSure: "你选择了不确定，可以继续。",
+      responseNotSure: "你选择了不确定。可以勾选疑惑原因，然后继续。",
       confidenceLabel: "对本次判断的信心",
       low: "低",
       high: "高",
@@ -193,9 +193,9 @@
       pauseBoth: "一時停止",
       restartBoth: "最初から再生",
       timelineLabel: "タイムライン",
-      responseChoose: "まず発話とより一貫している動画を選んでください。",
+      responseChoose: "まず A、B、または「わからない」を選んでください。",
       responseSelected: (side) => `動画 ${side} を選択しました。自信度と任意の疑問点を入力してください。`,
-      responseNotSure: "「わからない」を選択しました。続行できます。",
+      responseNotSure: "「わからない」を選択しました。必要なら疑問点を選んでから進んでください。",
       confidenceLabel: "判断への自信度",
       low: "低い",
       high: "高い",
@@ -250,9 +250,9 @@
       pauseBoth: "Pausar",
       restartBoth: "Reiniciar",
       timelineLabel: "Línea de tiempo",
-      responseChoose: "Primero elige cuál video se siente más consistente.",
+      responseChoose: "Primero elige A, B o No estoy seguro/a.",
       responseSelected: (side) => `Elegiste Video ${side}. Ahora indica tu confianza y dudas opcionales.`,
-      responseNotSure: "Elegiste No estoy seguro/a. Puedes continuar.",
+      responseNotSure: "Elegiste No estoy seguro/a. Añade dudas opcionales si hace falta y continúa.",
       confidenceLabel: "Confianza en tu respuesta",
       low: "Baja",
       high: "Alta",
@@ -586,7 +586,7 @@
       label.append(input, span);
       els.doubtOptions.append(label);
     });
-    setDoubtOptionsEnabled(Boolean(draft?.choice_side && draft.choice_side !== "not_sure" && mediaReady));
+    setDoubtOptionsEnabled(Boolean(draft?.choice_side && mediaReady));
   }
 
   async function loadManifest() {
@@ -732,6 +732,7 @@
     els.cardA.classList.toggle("selected", choice === "A");
     els.cardB.classList.toggle("selected", choice === "B");
     els.notSureButton.classList.toggle("selected", choice === "not_sure");
+    els.responsePanel.classList.toggle("not-sure-selected", choice === "not_sure");
     $$("[data-choice]").forEach((button) => {
       const selected = button.dataset.choice === choice;
       button.classList.toggle("selected", selected);
@@ -739,10 +740,9 @@
     updateChoiceButtonLabels();
     if (choice === "not_sure") {
       draft.confidence = "";
-      draft.doubt_tags = [];
-      clearDoubtSelections();
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
-      setFollowupControlsEnabled(false);
+      setConfidenceControlsEnabled(false);
+      setDoubtOptionsEnabled(mediaReady);
       setResponseGuidance(text("responseNotSure"), true);
     } else if (choice) {
       setFollowupControlsEnabled(true);
@@ -911,6 +911,7 @@
     els.cardA.classList.remove("selected");
     els.cardB.classList.remove("selected");
     els.notSureButton.classList.remove("selected");
+    els.responsePanel.classList.remove("not-sure-selected");
     $$("[data-choice]").forEach((button) => {
       button.classList.remove("selected");
     });
@@ -1216,10 +1217,14 @@
     setFollowupControlsEnabled(false);
   }
 
-  function setFollowupControlsEnabled(enabled) {
+  function setConfidenceControlsEnabled(enabled) {
     $$("[data-confidence]").forEach((button) => {
       button.disabled = !enabled;
     });
+  }
+
+  function setFollowupControlsEnabled(enabled) {
+    setConfidenceControlsEnabled(enabled);
     setDoubtOptionsEnabled(enabled);
   }
 
