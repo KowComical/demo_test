@@ -1,6 +1,6 @@
 {
-  "version": "pilot_demo_v1_20",
-  "built_at": "2026-07-11T06:49:29+08:00",
+  "version": "pilot_demo_v1_20_sync",
+  "built_at": "2026-07-12T00:29:11+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "review",
@@ -12,6 +12,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_window_transcript": "newest doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_start_sec": 406.811,
+      "audio_end_sec": 413.811,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_positive.mp4"
     },
@@ -22,6 +25,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_window_transcript": "newest doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_start_sec": 406.811,
+      "audio_end_sec": 413.811,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_context_swap.mp4"
     },
@@ -32,6 +38,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_window_transcript": "newest doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
+      "audio_start_sec": 406.811,
+      "audio_end_sec": 413.811,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_arms_swap.mp4"
     },
@@ -42,6 +51,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
+      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
+      "audio_start_sec": 12.841,
+      "audio_end_sec": 19.841,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item002_scott_both_surprised_see_each_positive.mp4"
     },
@@ -52,6 +64,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
+      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
+      "audio_start_sec": 12.841,
+      "audio_end_sec": 19.841,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item002_scott_both_surprised_see_each_context_swap.mp4"
     },
@@ -62,6 +77,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
+      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
+      "audio_start_sec": 12.841,
+      "audio_end_sec": 19.841,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item002_scott_both_surprised_see_each_arms_swap.mp4"
     },
@@ -72,6 +90,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
+      "audio_window_transcript": "i'm happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier remember how i said bruce campbell is an",
+      "audio_start_sec": 379.893,
+      "audio_end_sec": 386.893,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item003_scott_happy_see_new_movie_positive.mp4"
     },
@@ -82,6 +103,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
+      "audio_window_transcript": "i'm happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier remember how i said bruce campbell is an",
+      "audio_start_sec": 379.893,
+      "audio_end_sec": 386.893,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item003_scott_happy_see_new_movie_context_swap.mp4"
     },
@@ -92,6 +116,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
+      "audio_window_transcript": "i'm happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier remember how i said bruce campbell is an",
+      "audio_start_sec": 379.893,
+      "audio_end_sec": 386.893,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item003_scott_happy_see_new_movie_arms_swap.mp4"
     },
@@ -102,6 +129,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
+      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
+      "audio_start_sec": 171.791,
+      "audio_end_sec": 178.791,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item004_scott_life_front_row_people_positive.mp4"
     },
@@ -112,6 +142,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
+      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
+      "audio_start_sec": 171.791,
+      "audio_end_sec": 178.791,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item004_scott_life_front_row_people_context_swap.mp4"
     },
@@ -122,6 +155,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
+      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
+      "audio_start_sec": 171.791,
+      "audio_end_sec": 178.791,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item004_scott_life_front_row_people_arms_swap.mp4"
     },
@@ -132,6 +168,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_start_sec": 36.765,
+      "audio_end_sec": 43.765,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item005_lu_stood_before_people_different_positive.mp4"
     },
@@ -142,6 +181,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_start_sec": 36.765,
+      "audio_end_sec": 43.765,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item005_lu_stood_before_people_different_context_swap.mp4"
     },
@@ -152,6 +194,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
+      "audio_start_sec": 36.765,
+      "audio_end_sec": 43.765,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item005_lu_stood_before_people_different_arms_swap.mp4"
     },
@@ -162,6 +207,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
+      "audio_start_sec": 127.967,
+      "audio_end_sec": 134.967,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_positive.mp4"
     },
@@ -172,6 +220,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
+      "audio_start_sec": 127.967,
+      "audio_end_sec": 134.967,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_context_swap.mp4"
     },
@@ -182,6 +233,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
+      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
+      "audio_start_sec": 127.967,
+      "audio_end_sec": 134.967,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_arms_swap.mp4"
     },
@@ -192,6 +246,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_window_transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_start_sec": 30.164,
+      "audio_end_sec": 37.164,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_positive.mp4"
     },
@@ -202,6 +259,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_window_transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_start_sec": 30.164,
+      "audio_end_sec": 37.164,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_context_swap.mp4"
     },
@@ -212,6 +272,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_window_transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
+      "audio_start_sec": 30.164,
+      "audio_end_sec": 37.164,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_arms_swap.mp4"
     },
@@ -222,6 +285,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_start_sec": 42.514,
+      "audio_end_sec": 49.514,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_positive.mp4"
     },
@@ -232,6 +298,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_start_sec": 42.514,
+      "audio_end_sec": 49.514,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_context_swap.mp4"
     },
@@ -242,6 +311,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
+      "audio_start_sec": 42.514,
+      "audio_end_sec": 49.514,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_arms_swap.mp4"
     },
@@ -252,6 +324,9 @@
       "speaker": "nidal",
       "language": "english",
       "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_window_transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_start_sec": 197.662,
+      "audio_end_sec": 204.662,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_positive.mp4"
     },
@@ -262,6 +337,9 @@
       "speaker": "nidal",
       "language": "english",
       "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_window_transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_start_sec": 197.662,
+      "audio_end_sec": 204.662,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_context_swap.mp4"
     },
@@ -272,6 +350,9 @@
       "speaker": "nidal",
       "language": "english",
       "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_window_transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
+      "audio_start_sec": 197.662,
+      "audio_end_sec": 204.662,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_arms_swap.mp4"
     },
@@ -282,6 +363,9 @@
       "speaker": "hailing",
       "language": "english",
       "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_start_sec": 37.491,
+      "audio_end_sec": 44.491,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_positive.mp4"
     },
@@ -292,6 +376,9 @@
       "speaker": "hailing",
       "language": "english",
       "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_start_sec": 37.491,
+      "audio_end_sec": 44.491,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_context_swap.mp4"
     },
@@ -302,6 +389,9 @@
       "speaker": "hailing",
       "language": "english",
       "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
+      "audio_start_sec": 37.491,
+      "audio_end_sec": 44.491,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_arms_swap.mp4"
     },
@@ -312,6 +402,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_window_transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_start_sec": 94.166,
+      "audio_end_sec": 101.166,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item011_wayne_school_youll_outside_able_positive.mp4"
     },
@@ -322,6 +415,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_window_transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_start_sec": 94.166,
+      "audio_end_sec": 101.166,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item011_wayne_school_youll_outside_able_context_swap.mp4"
     },
@@ -332,6 +428,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_window_transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
+      "audio_start_sec": 94.166,
+      "audio_end_sec": 101.166,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item011_wayne_school_youll_outside_able_arms_swap.mp4"
     },
@@ -342,6 +441,9 @@
       "speaker": "yingqing",
       "language": "english",
       "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_window_transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_start_sec": 64.651,
+      "audio_end_sec": 71.651,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_positive.mp4"
     },
@@ -352,6 +454,9 @@
       "speaker": "yingqing",
       "language": "english",
       "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_window_transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_start_sec": 64.651,
+      "audio_end_sec": 71.651,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_context_swap.mp4"
     },
@@ -362,6 +467,9 @@
       "speaker": "yingqing",
       "language": "english",
       "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_window_transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
+      "audio_start_sec": 64.651,
+      "audio_end_sec": 71.651,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_arms_swap.mp4"
     },
@@ -372,6 +480,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
+      "audio_start_sec": 102.485,
+      "audio_end_sec": 109.485,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_positive.mp4"
     },
@@ -382,6 +493,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
+      "audio_start_sec": 102.485,
+      "audio_end_sec": 109.485,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_context_swap.mp4"
     },
@@ -392,6 +506,9 @@
       "speaker": "wayne",
       "language": "english",
       "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
+      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
+      "audio_start_sec": 102.485,
+      "audio_end_sec": 109.485,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_arms_swap.mp4"
     },
@@ -402,6 +519,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "audio_window_transcript": "animations i put have picture that i like on my blue wall i like to keep my toys on the floor where i'm free",
+      "audio_start_sec": 56.256,
+      "audio_end_sec": 63.256,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item014_lu_put_have_picture_blue_positive.mp4"
     },
@@ -412,6 +532,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "audio_window_transcript": "animations i put have picture that i like on my blue wall i like to keep my toys on the floor where i'm free",
+      "audio_start_sec": 56.256,
+      "audio_end_sec": 63.256,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item014_lu_put_have_picture_blue_context_swap.mp4"
     },
@@ -422,6 +545,9 @@
       "speaker": "lu",
       "language": "english",
       "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
+      "audio_window_transcript": "animations i put have picture that i like on my blue wall i like to keep my toys on the floor where i'm free",
+      "audio_start_sec": 56.256,
+      "audio_end_sec": 63.256,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item014_lu_put_have_picture_blue_arms_swap.mp4"
     },
@@ -432,6 +558,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "audio_window_transcript": "two people be careful about what you write and post up like adults share and unkind personal comments or",
+      "audio_start_sec": 65.974,
+      "audio_end_sec": 72.974,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item015_luqi_two_people_careful_about_positive.mp4"
     },
@@ -442,6 +571,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "audio_window_transcript": "two people be careful about what you write and post up like adults share and unkind personal comments or",
+      "audio_start_sec": 65.974,
+      "audio_end_sec": 72.974,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item015_luqi_two_people_careful_about_context_swap.mp4"
     },
@@ -452,6 +584,9 @@
       "speaker": "luqi",
       "language": "english",
       "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
+      "audio_window_transcript": "two people be careful about what you write and post up like adults share and unkind personal comments or",
+      "audio_start_sec": 65.974,
+      "audio_end_sec": 72.974,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item015_luqi_two_people_careful_about_arms_swap.mp4"
     },
@@ -462,6 +597,9 @@
       "speaker": "jorge",
       "language": "english",
       "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
+      "audio_start_sec": 427.375,
+      "audio_end_sec": 434.375,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item016_jorge_want_have_one_type_positive.mp4"
     },
@@ -472,6 +610,9 @@
       "speaker": "jorge",
       "language": "english",
       "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
+      "audio_start_sec": 427.375,
+      "audio_end_sec": 434.375,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item016_jorge_want_have_one_type_context_swap.mp4"
     },
@@ -482,6 +623,9 @@
       "speaker": "jorge",
       "language": "english",
       "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
+      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
+      "audio_start_sec": 427.375,
+      "audio_end_sec": 434.375,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item016_jorge_want_have_one_type_arms_swap.mp4"
     },
@@ -492,6 +636,9 @@
       "speaker": "solomon",
       "language": "english",
       "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_start_sec": 74.177,
+      "audio_end_sec": 81.177,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_positive.mp4"
     },
@@ -502,6 +649,9 @@
       "speaker": "solomon",
       "language": "english",
       "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_start_sec": 74.177,
+      "audio_end_sec": 81.177,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_context_swap.mp4"
     },
@@ -512,6 +662,9 @@
       "speaker": "solomon",
       "language": "english",
       "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
+      "audio_start_sec": 74.177,
+      "audio_end_sec": 81.177,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_arms_swap.mp4"
     },
@@ -522,6 +675,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_window_transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_start_sec": 5.844,
+      "audio_end_sec": 12.844,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item018_scott_free_free_sport_anyone_positive.mp4"
     },
@@ -532,6 +688,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_window_transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_start_sec": 5.844,
+      "audio_end_sec": 12.844,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item018_scott_free_free_sport_anyone_context_swap.mp4"
     },
@@ -542,6 +701,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_window_transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
+      "audio_start_sec": 5.844,
+      "audio_end_sec": 12.844,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item018_scott_free_free_sport_anyone_arms_swap.mp4"
     },
@@ -552,6 +714,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
+      "audio_start_sec": 341.216,
+      "audio_end_sec": 348.216,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item019_scott_past_two_theres_halflife_positive.mp4"
     },
@@ -562,6 +727,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
+      "audio_start_sec": 341.216,
+      "audio_end_sec": 348.216,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item019_scott_past_two_theres_halflife_context_swap.mp4"
     },
@@ -572,6 +740,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
+      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
+      "audio_start_sec": 341.216,
+      "audio_end_sec": 348.216,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item019_scott_past_two_theres_halflife_arms_swap.mp4"
     },
@@ -582,6 +753,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "audio_window_transcript": "forgot about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future the phone rang",
+      "audio_start_sec": 17.741,
+      "audio_end_sec": 24.741,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item020_scott_about_three_months_later_positive.mp4"
     },
@@ -592,6 +766,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "audio_window_transcript": "forgot about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future the phone rang",
+      "audio_start_sec": 17.741,
+      "audio_end_sec": 24.741,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item020_scott_about_three_months_later_context_swap.mp4"
     },
@@ -602,6 +779,9 @@
       "speaker": "scott",
       "language": "english",
       "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
+      "audio_window_transcript": "forgot about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future the phone rang",
+      "audio_start_sec": 17.741,
+      "audio_end_sec": 24.741,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item020_scott_about_three_months_later_arms_swap.mp4"
     }

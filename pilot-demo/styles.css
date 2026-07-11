@@ -129,8 +129,13 @@ html[data-mode="review"] .review-only {
   margin-bottom: 14px;
 }
 
+.trial-topbar > * {
+  min-width: 0;
+}
+
 .top-side {
   display: grid;
+  min-width: 0;
   gap: 12px;
 }
 
@@ -219,14 +224,14 @@ h2 {
 }
 
 h1 {
-  max-width: 760px;
+  max-width: min(760px, 100%);
   font-size: 22px;
   line-height: 1.18;
   overflow-wrap: break-word;
 }
 
 .task-line {
-  max-width: 620px;
+  max-width: min(620px, 100%);
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 14px;
@@ -274,6 +279,7 @@ h2 {
 }
 
 .transcript-card {
+  min-width: 0;
   margin-bottom: 18px;
   padding: 14px 16px;
   background: var(--surface);
@@ -354,6 +360,54 @@ video {
   aspect-ratio: 16 / 9;
   background: var(--video-bg);
   object-fit: contain;
+}
+
+.playback-controls {
+  display: grid;
+  grid-template-columns: 132px 132px minmax(220px, 1fr) 92px;
+  gap: 12px;
+  align-items: end;
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.playback-button {
+  width: 100%;
+  min-width: 0;
+}
+
+.timeline-control {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.timeline-control span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 740;
+  line-height: 16px;
+}
+
+.timeline-control input {
+  width: 100%;
+  accent-color: var(--teal);
+}
+
+.time-readout {
+  min-height: 28px;
+  display: inline-grid;
+  align-items: center;
+  justify-content: end;
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 740;
+  line-height: 16px;
+  white-space: nowrap;
 }
 
 .choice-button {
@@ -683,13 +737,36 @@ textarea {
 
 @media (max-width: 900px) {
   .shell {
-    width: calc(100% - 28px);
+    width: 100%;
     max-width: 720px;
+    padding-right: 14px;
+    padding-left: 14px;
     padding-top: 22px;
   }
 
   .trial-topbar,
+  .transcript-card,
   .video-grid,
+  .video-card,
+  .playback-controls,
+  .response-panel,
+  .notes-field,
+  .trial-actions {
+    width: 100%;
+    max-width: calc(100vw - 28px);
+  }
+
+  h1,
+  .task-line,
+  .transcript-card p {
+    max-width: calc(100vw - 28px);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .trial-topbar,
+  .video-grid,
+  .playback-controls,
   .trial-actions,
   .summary-grid {
     grid-template-columns: 1fr;
@@ -702,6 +779,7 @@ textarea {
 
   .top-controls {
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .compact-field {
@@ -736,6 +814,10 @@ textarea {
   .export-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .time-readout {
+    justify-content: start;
   }
 
   #notSureButton,

@@ -56,7 +56,7 @@
             <div class="video-heading">
               <span id="videoALabel">Video A</span>
             </div>
-            <video id="videoA" controls playsinline preload="metadata"></video>
+            <video id="videoA" playsinline preload="metadata"></video>
             <button type="button" class="choice-button" data-choice="A">Choose A</button>
           </article>
 
@@ -64,9 +64,18 @@
             <div class="video-heading">
               <span id="videoBLabel">Video B</span>
             </div>
-            <video id="videoB" controls playsinline preload="metadata"></video>
+            <video id="videoB" playsinline preload="metadata"></video>
             <button type="button" class="choice-button" data-choice="B">Choose B</button>
           </article>
+        </div>
+        <div class="playback-controls" id="playbackControls" aria-label="Synchronized playback controls">
+          <button type="button" class="secondary-action playback-button" id="playBothButton" disabled>Play both</button>
+          <button type="button" class="secondary-action playback-button" id="restartBothButton" disabled>Restart both</button>
+          <label class="timeline-control">
+            <span id="timelineLabel">Timeline</span>
+            <input type="range" id="syncTimeline" min="0" max="0" value="0" step="0.01" disabled />
+          </label>
+          <span class="time-readout" id="syncTime">0:00 / 0:00</span>
         </div>
         <div class="media-status" id="mediaStatus">Loading videos...</div>
 

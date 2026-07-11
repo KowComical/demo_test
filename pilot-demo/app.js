@@ -9,6 +9,7 @@
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
   const params = new URLSearchParams(window.location.search);
   const requestedMode = params.get("mode");
+  const inspectMode = ["1", "true", "yes"].includes((params.get("inspect") || "").toLowerCase());
   const sessionMode =
     requestedMode === "participant" || requestedMode === "review"
       ? requestedMode
@@ -73,6 +74,11 @@
       chooseChoice: (side) => `${side} is real`,
       selectedChoice: (side) => `Selected ${side} as real`,
       loadingVideos: "Loading videos...",
+      videosReady: "Ready. Synced playback uses Video A audio.",
+      playBoth: "Play both",
+      pauseBoth: "Pause both",
+      restartBoth: "Restart both",
+      timelineLabel: "Timeline",
       responseChoose: "Choose which video is real first.",
       responseSelected: (side) => `Selected Video ${side} as real. Now rate your confidence and add optional doubts.`,
       responseNotSure: "You selected Not sure. You can continue.",
@@ -125,6 +131,11 @@
       chooseChoice: (side) => `${side} 是真的`,
       selectedChoice: (side) => `已选 ${side} 为真实`,
       loadingVideos: "正在加载视频...",
+      videosReady: "已就绪。同步播放使用视频 A 的音频。",
+      playBoth: "同时播放",
+      pauseBoth: "同时暂停",
+      restartBoth: "重新播放",
+      timelineLabel: "时间轴",
       responseChoose: "请先选择哪个视频是真实同步的。",
       responseSelected: (side) => `已选择视频 ${side} 为真实。请给出信心评分；有疑惑可勾选。`,
       responseNotSure: "你选择了不确定，可以继续。",
@@ -177,6 +188,11 @@
       chooseChoice: (side) => `${side} が本物`,
       selectedChoice: (side) => `${side} を本物として選択`,
       loadingVideos: "動画を読み込み中...",
+      videosReady: "準備完了。同期再生では動画 A の音声を使用します。",
+      playBoth: "同時再生",
+      pauseBoth: "一時停止",
+      restartBoth: "最初から再生",
+      timelineLabel: "タイムライン",
       responseChoose: "まず本物だと思う動画を選んでください。",
       responseSelected: (side) => `動画 ${side} を本物として選択しました。自信度と任意の疑問点を入力してください。`,
       responseNotSure: "「わからない」を選択しました。続行できます。",
@@ -229,6 +245,11 @@
       chooseChoice: (side) => `${side} es real`,
       selectedChoice: (side) => `${side} elegido como real`,
       loadingVideos: "Cargando videos...",
+      videosReady: "Listo. La reproducción sincronizada usa el audio del Video A.",
+      playBoth: "Reproducir ambos",
+      pauseBoth: "Pausar ambos",
+      restartBoth: "Reiniciar ambos",
+      timelineLabel: "Línea de tiempo",
       responseChoose: "Primero elige cuál video es real.",
       responseSelected: (side) => `Elegiste Video ${side} como real. Ahora indica tu confianza y dudas opcionales.`,
       responseNotSure: "Elegiste No estoy seguro/a. Puedes continuar.",
@@ -320,6 +341,11 @@
     cardB: $("#cardB"),
     videoA: $("#videoA"),
     videoB: $("#videoB"),
+    playBothButton: $("#playBothButton"),
+    restartBothButton: $("#restartBothButton"),
+    syncTimeline: $("#syncTimeline"),
+    syncTime: $("#syncTime"),
+    timelineLabel: $("#timelineLabel"),
     confidenceRow: $("#confidenceRow"),
     confidenceLabel: $("#confidenceLabel"),
     lowLabel: $("#lowLabel"),
@@ -348,6 +374,9 @@
   let mediaReady = false;
   let currentVideoToken = 0;
   let videoReady = { A: false, B: false };
+  let syncDuration = 0;
+  let timelineDragging = false;
+  let timelineFrame = 0;
 
   function nowIso() {
     return new Date().toISOString();
@@ -421,6 +450,9 @@
     els.transcriptLabel.textContent = text("transcriptLabel");
     els.videoALabel.textContent = text("videoA");
     els.videoBLabel.textContent = text("videoB");
+    els.playBothButton.textContent = isAnyVideoPlaying() ? text("pauseBoth") : text("playBoth");
+    els.restartBothButton.textContent = text("restartBoth");
+    els.timelineLabel.textContent = text("timelineLabel");
     els.confidenceLabel.textContent = text("confidenceLabel");
     els.lowLabel.textContent = text("low");
     els.highLabel.textContent = text("high");
@@ -616,7 +648,9 @@
       base_id: pool.base_id,
       speaker: pool.speaker,
       language: pool.language,
-      transcript: pool.transcript,
+      transcript: positive.audio_window_transcript || pool.transcript,
+      segment_transcript: pool.transcript,
+      audio_window_transcript: positive.audio_window_transcript || "",
       negative_type: pool.negative_type,
       positive_sample_id: positive.sample_id,
       negative_sample_id: negative.sample_id,
@@ -732,6 +766,97 @@
     updateNextState();
   }
 
+  function videos() {
+    return [els.videoA, els.videoB];
+  }
+
+  function isAnyVideoPlaying() {
+    return videos().some((video) => !video.paused && !video.ended);
+  }
+
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+    const whole = Math.floor(seconds);
+    const minutes = Math.floor(whole / 60);
+    const secs = String(whole % 60).padStart(2, "0");
+    return `${minutes}:${secs}`;
+  }
+
+  function setPlaybackControlsEnabled(enabled) {
+    els.playBothButton.disabled = !enabled;
+    els.restartBothButton.disabled = !enabled;
+    els.syncTimeline.disabled = !enabled;
+  }
+
+  function updatePlaybackLabels() {
+    els.playBothButton.textContent = isAnyVideoPlaying() ? text("pauseBoth") : text("playBoth");
+    const current = Number(els.videoA.currentTime || 0);
+    els.syncTime.textContent = `${formatTime(current)} / ${formatTime(syncDuration)}`;
+    if (!timelineDragging) {
+      els.syncTimeline.value = String(Math.min(current, syncDuration || current));
+    }
+  }
+
+  function scheduleTimelineUpdate() {
+    cancelAnimationFrame(timelineFrame);
+    const tick = () => {
+      updatePlaybackLabels();
+      if (isAnyVideoPlaying()) {
+        timelineFrame = requestAnimationFrame(tick);
+      }
+    };
+    timelineFrame = requestAnimationFrame(tick);
+  }
+
+  function syncVideosTo(time) {
+    const target = Math.max(0, Math.min(Number(time) || 0, syncDuration || Number(time) || 0));
+    videos().forEach((video) => {
+      if (Number.isFinite(video.duration) && Math.abs(video.currentTime - target) > 0.05) {
+        video.currentTime = target;
+      }
+    });
+    updatePlaybackLabels();
+  }
+
+  function pauseBothVideos() {
+    videos().forEach((video) => video.pause());
+    updatePlaybackLabels();
+  }
+
+  async function playBothVideos() {
+    if (!mediaReady) return;
+    const atEnd = syncDuration && els.videoA.currentTime >= syncDuration - 0.08;
+    if (atEnd) syncVideosTo(0);
+    els.videoA.muted = false;
+    els.videoB.muted = true;
+    try {
+      syncVideosTo(els.videoA.currentTime || els.videoB.currentTime || 0);
+      await Promise.all(videos().map((video) => video.play()));
+      scheduleTimelineUpdate();
+    } catch (error) {
+      pauseBothVideos();
+      console.error(error);
+    }
+  }
+
+  function restartBothVideos() {
+    if (!mediaReady) return;
+    pauseBothVideos();
+    syncVideosTo(0);
+  }
+
+  function resetPlaybackControls() {
+    cancelAnimationFrame(timelineFrame);
+    syncDuration = 0;
+    timelineDragging = false;
+    els.syncTimeline.min = "0";
+    els.syncTimeline.max = "0";
+    els.syncTimeline.value = "0";
+    els.syncTime.textContent = "0:00 / 0:00";
+    els.playBothButton.textContent = text("playBoth");
+    setPlaybackControlsEnabled(false);
+  }
+
   function clearVideo(video) {
     video.pause();
     video.removeAttribute("src");
@@ -748,6 +873,7 @@
     currentVideoToken += 1;
     videoReady = { A: false, B: false };
     mediaReady = false;
+    resetPlaybackControls();
     const trial = currentTrial();
     const completed = session.current_index;
     const total = session.trial_count;
@@ -769,6 +895,10 @@
     els.videoB.dataset.side = "B";
     els.videoA.dataset.token = String(currentVideoToken);
     els.videoB.dataset.token = String(currentVideoToken);
+    els.videoA.controls = inspectMode;
+    els.videoB.controls = inspectMode;
+    els.videoA.muted = false;
+    els.videoB.muted = true;
     els.videoA.src = trial.video_a_path;
     els.videoB.src = trial.video_b_path;
     els.videoA.load();
@@ -1006,6 +1136,8 @@
       "ui_locale",
       "ui_theme",
       "transcript",
+      "segment_transcript",
+      "audio_window_transcript",
       "negative_type",
       "positive_sample_id",
       "negative_sample_id",
@@ -1041,6 +1173,8 @@
       session_completed_at: session.completed_at,
       trial_count: session.trial_count,
       transcript: trialByIndex.get(row.trial_index)?.transcript || "",
+      segment_transcript: trialByIndex.get(row.trial_index)?.segment_transcript || "",
+      audio_window_transcript: trialByIndex.get(row.trial_index)?.audio_window_transcript || "",
       video_a_path: trialByIndex.get(row.trial_index)?.video_a_path || "",
       video_b_path: trialByIndex.get(row.trial_index)?.video_b_path || "",
     }));
@@ -1102,7 +1236,14 @@
     videoReady[video.dataset.side] = true;
     if (videoReady.A && videoReady.B) {
       mediaReady = true;
-      setMediaStatus("", true);
+      syncDuration = Math.min(
+        Number.isFinite(els.videoA.duration) ? els.videoA.duration : 0,
+        Number.isFinite(els.videoB.duration) ? els.videoB.duration : 0,
+      );
+      els.syncTimeline.max = String(syncDuration || 0);
+      syncVideosTo(0);
+      setPlaybackControlsEnabled(true);
+      setMediaStatus(text("videosReady"), false);
       setResponseControlsEnabled(true);
       setResponseGuidance(text("responseChoose"), false);
       updateNextState();
@@ -1113,6 +1254,7 @@
     const token = Number(video.dataset.token || 0);
     if (token !== currentVideoToken) return;
     mediaReady = false;
+    resetPlaybackControls();
     setResponseControlsEnabled(false);
     setMediaStatus(text("videoLoadError"), false);
     updateNextState();
@@ -1135,11 +1277,29 @@
   [els.videoA, els.videoB].forEach((video) => {
     video.addEventListener("loadedmetadata", () => markVideoReady(video));
     video.addEventListener("error", () => markVideoError(video));
-    video.addEventListener("play", () => {
-      [els.videoA, els.videoB].forEach((other) => {
-        if (other !== video) other.pause();
-      });
-    });
+    video.addEventListener("pause", updatePlaybackLabels);
+    video.addEventListener("play", scheduleTimelineUpdate);
+    video.addEventListener("ended", pauseBothVideos);
+  });
+
+  els.playBothButton.addEventListener("click", () => {
+    if (isAnyVideoPlaying()) {
+      pauseBothVideos();
+    } else {
+      playBothVideos();
+    }
+  });
+
+  els.restartBothButton.addEventListener("click", restartBothVideos);
+
+  els.syncTimeline.addEventListener("input", () => {
+    timelineDragging = true;
+    syncVideosTo(els.syncTimeline.value);
+  });
+
+  els.syncTimeline.addEventListener("change", () => {
+    timelineDragging = false;
+    syncVideosTo(els.syncTimeline.value);
   });
 
   els.downloadJson.addEventListener("click", () => {
