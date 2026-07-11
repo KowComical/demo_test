@@ -364,25 +364,53 @@ video {
 
 .playback-controls {
   display: grid;
-  grid-template-columns: 132px 132px minmax(220px, 1fr) 92px;
-  gap: 12px;
-  align-items: end;
+  grid-template-columns: 104px 112px minmax(220px, 1fr) 96px;
+  gap: 10px;
+  align-items: center;
   margin-top: 14px;
-  padding: 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  padding: 10px;
+  background: var(--surface-soft);
+  border: 1px solid rgba(47, 77, 114, 0.14);
   border-radius: 8px;
 }
 
-.playback-button {
+.secondary-action.playback-button {
   width: 100%;
   min-width: 0;
+  min-height: 40px;
+  border-radius: 999px;
+  box-shadow: 0 5px 14px rgba(31, 42, 55, 0.08);
+}
+
+.secondary-action.playback-main {
+  color: white;
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.secondary-action.playback-main:hover:not(:disabled),
+.secondary-action.playback-main.is-playing {
+  color: white;
+  background: var(--teal-dark);
+  border-color: var(--teal-dark);
+}
+
+.secondary-action.playback-button:not(.playback-main) {
+  color: var(--blue);
+  background: var(--surface);
+  border-color: rgba(47, 77, 114, 0.2);
+}
+
+.secondary-action.playback-button:not(.playback-main):hover:not(:disabled) {
+  background: var(--soft-blue);
+  border-color: rgba(52, 73, 106, 0.38);
 }
 
 .timeline-control {
   min-width: 0;
   display: grid;
-  gap: 6px;
+  gap: 5px;
+  padding: 0 4px;
 }
 
 .timeline-control span {
@@ -395,6 +423,7 @@ video {
 .timeline-control input {
   width: 100%;
   accent-color: var(--teal);
+  cursor: pointer;
 }
 
 .time-readout {

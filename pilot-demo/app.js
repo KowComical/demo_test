@@ -26,11 +26,11 @@
     },
     {
       value: "both_plausible",
-      labels: { en: "Both look plausible", zh: "两个都像真的", ja: "両方あり得る", es: "Ambos parecen plausibles" },
+      labels: { en: "Both look plausible", zh: "两个都合理", ja: "両方あり得る", es: "Ambos parecen plausibles" },
     },
     {
       value: "neither_plausible",
-      labels: { en: "Neither looks real", zh: "两个都不像真的", ja: "どちらも本物に見えない", es: "Ninguno parece real" },
+      labels: { en: "Neither feels natural", zh: "两个都不自然", ja: "どちらも自然に見えない", es: "Ninguno parece natural" },
     },
     {
       value: "mismatch_not_obvious",
@@ -66,21 +66,21 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "Which video is the real synchronized motion?",
-      taskLine: "Review every A/B pair in order, choose the real captured motion, then add doubts if useful.",
+      pageTitle: "Which video feels more consistent with the speech?",
+      taskLine: "Review every A/B pair in order, choose the motion that looks more natural and coherent with the speech, then add doubts if useful.",
       transcriptLabel: "Speech transcript",
       videoA: "Video A",
       videoB: "Video B",
-      chooseChoice: (side) => `${side} is real`,
-      selectedChoice: (side) => `Selected ${side} as real`,
+      chooseChoice: (side) => `${side} fits better`,
+      selectedChoice: (side) => `Selected ${side}`,
       loadingVideos: "Loading videos...",
       videosReady: "Ready. Synced playback uses Video A audio.",
-      playBoth: "Play both",
-      pauseBoth: "Pause both",
-      restartBoth: "Restart both",
+      playBoth: "Play",
+      pauseBoth: "Pause",
+      restartBoth: "Restart",
       timelineLabel: "Timeline",
-      responseChoose: "Choose which video is real first.",
-      responseSelected: (side) => `Selected Video ${side} as real. Now rate your confidence and add optional doubts.`,
+      responseChoose: "Choose which video feels more consistent first.",
+      responseSelected: (side) => `Selected Video ${side}. Now rate your confidence and add optional doubts.`,
       responseNotSure: "You selected Not sure. You can continue.",
       confidenceLabel: "Confidence in your answer",
       low: "Low",
@@ -88,7 +88,7 @@
       diagnosticLabel: "Optional doubts",
       diagnosticHint: "Select any doubts or skip this section.",
       reviewNote: "Doubts / notes",
-      reviewPlaceholder: "Write anything confusing: unclear real one, artifact, cut transcript, or reason to discard this item",
+      reviewPlaceholder: "Write anything confusing: unclear consistency, artifact, cut transcript, or reason to discard this item",
       notSure: "Not sure",
       next: "Next",
       finish: "Finish",
@@ -123,21 +123,21 @@
       themeNeutral: "清爽",
       themeSage: "浅绿",
       themePaper: "纸感",
-      pageTitle: "哪个视频是真实同步的？",
-      taskLine: "按顺序检查每一组 A/B，选择真实采集同步的视频；有疑惑再补充标记。",
+      pageTitle: "哪个视频和语音更一致？",
+      taskLine: "按顺序检查每一组 A/B，选择动作更自然、更和谐、更贴合语音的视频；有疑惑再补充标记。",
       transcriptLabel: "台词文本",
       videoA: "视频 A",
       videoB: "视频 B",
-      chooseChoice: (side) => `${side} 是真的`,
-      selectedChoice: (side) => `已选 ${side} 为真实`,
+      chooseChoice: (side) => `${side} 更一致`,
+      selectedChoice: (side) => `已选择 ${side}`,
       loadingVideos: "正在加载视频...",
       videosReady: "已就绪。同步播放使用视频 A 的音频。",
-      playBoth: "同时播放",
-      pauseBoth: "同时暂停",
+      playBoth: "播放",
+      pauseBoth: "暂停",
       restartBoth: "重新播放",
       timelineLabel: "时间轴",
-      responseChoose: "请先选择哪个视频是真实同步的。",
-      responseSelected: (side) => `已选择视频 ${side} 为真实。请给出信心评分；有疑惑可勾选。`,
+      responseChoose: "请先选择哪个视频更一致。",
+      responseSelected: (side) => `已选择视频 ${side}。请给出信心评分；有疑惑可勾选。`,
       responseNotSure: "你选择了不确定，可以继续。",
       confidenceLabel: "对本次判断的信心",
       low: "低",
@@ -145,7 +145,7 @@
       diagnosticLabel: "可选疑惑",
       diagnosticHint: "有疑惑就多选；没有可以跳过。",
       reviewNote: "疑惑 / 备注",
-      reviewPlaceholder: "写下任何困惑：哪个是真的不明显、技术破绽、音频/文本截断，或需要丢弃的原因",
+      reviewPlaceholder: "写下任何困惑：一致性不明显、技术破绽、音频/文本截断，或需要丢弃的原因",
       notSure: "不确定",
       next: "下一题",
       finish: "完成",
@@ -180,21 +180,21 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "本物の同期モーションはどちらですか？",
-      taskLine: "A/B ペアを順番に確認し、本物の収録モーションを選び、必要なら疑問点を追加してください。",
+      pageTitle: "発話とより一貫している動画はどちらですか？",
+      taskLine: "A/B ペアを順番に確認し、発話により自然で一貫して見える動きを選び、必要なら疑問点を追加してください。",
       transcriptLabel: "発話テキスト",
       videoA: "動画 A",
       videoB: "動画 B",
-      chooseChoice: (side) => `${side} が本物`,
-      selectedChoice: (side) => `${side} を本物として選択`,
+      chooseChoice: (side) => `${side} がより一致`,
+      selectedChoice: (side) => `${side} を選択`,
       loadingVideos: "動画を読み込み中...",
       videosReady: "準備完了。同期再生では動画 A の音声を使用します。",
-      playBoth: "同時再生",
+      playBoth: "再生",
       pauseBoth: "一時停止",
       restartBoth: "最初から再生",
       timelineLabel: "タイムライン",
-      responseChoose: "まず本物だと思う動画を選んでください。",
-      responseSelected: (side) => `動画 ${side} を本物として選択しました。自信度と任意の疑問点を入力してください。`,
+      responseChoose: "まず発話とより一貫している動画を選んでください。",
+      responseSelected: (side) => `動画 ${side} を選択しました。自信度と任意の疑問点を入力してください。`,
       responseNotSure: "「わからない」を選択しました。続行できます。",
       confidenceLabel: "判断への自信度",
       low: "低い",
@@ -237,21 +237,21 @@
       themeNeutral: "Neutral",
       themeSage: "Verde suave",
       themePaper: "Papel",
-      pageTitle: "¿Cuál video es el movimiento real sincronizado?",
-      taskLine: "Revisa cada par A/B en orden, elige el movimiento real capturado y añade dudas si hace falta.",
+      pageTitle: "¿Cuál video se siente más consistente con el habla?",
+      taskLine: "Revisa cada par A/B en orden, elige el movimiento que se ve más natural y coherente con el habla y añade dudas si hace falta.",
       transcriptLabel: "Transcripción",
       videoA: "Video A",
       videoB: "Video B",
-      chooseChoice: (side) => `${side} es real`,
-      selectedChoice: (side) => `${side} elegido como real`,
+      chooseChoice: (side) => `${side} encaja mejor`,
+      selectedChoice: (side) => `${side} elegido`,
       loadingVideos: "Cargando videos...",
       videosReady: "Listo. La reproducción sincronizada usa el audio del Video A.",
-      playBoth: "Reproducir ambos",
-      pauseBoth: "Pausar ambos",
-      restartBoth: "Reiniciar ambos",
+      playBoth: "Reproducir",
+      pauseBoth: "Pausar",
+      restartBoth: "Reiniciar",
       timelineLabel: "Línea de tiempo",
-      responseChoose: "Primero elige cuál video es real.",
-      responseSelected: (side) => `Elegiste Video ${side} como real. Ahora indica tu confianza y dudas opcionales.`,
+      responseChoose: "Primero elige cuál video se siente más consistente.",
+      responseSelected: (side) => `Elegiste Video ${side}. Ahora indica tu confianza y dudas opcionales.`,
       responseNotSure: "Elegiste No estoy seguro/a. Puedes continuar.",
       confidenceLabel: "Confianza en tu respuesta",
       low: "Baja",
@@ -259,7 +259,7 @@
       diagnosticLabel: "Dudas opcionales",
       diagnosticHint: "Marca cualquier duda o deja esta sección vacía.",
       reviewNote: "Dudas / notas",
-      reviewPlaceholder: "Escribe lo que confunde: cuál es real, artefacto, audio/texto cortado o razón para descartar",
+      reviewPlaceholder: "Escribe lo que confunde: consistencia poco clara, artefacto, audio/texto cortado o razón para descartar",
       notSure: "No estoy seguro/a",
       next: "Siguiente",
       finish: "Finalizar",
@@ -451,6 +451,7 @@
     els.videoALabel.textContent = text("videoA");
     els.videoBLabel.textContent = text("videoB");
     els.playBothButton.textContent = isAnyVideoPlaying() ? text("pauseBoth") : text("playBoth");
+    els.playBothButton.classList.toggle("is-playing", isAnyVideoPlaying());
     els.restartBothButton.textContent = text("restartBoth");
     els.timelineLabel.textContent = text("timelineLabel");
     els.confidenceLabel.textContent = text("confidenceLabel");
@@ -789,7 +790,9 @@
   }
 
   function updatePlaybackLabels() {
-    els.playBothButton.textContent = isAnyVideoPlaying() ? text("pauseBoth") : text("playBoth");
+    const playing = isAnyVideoPlaying();
+    els.playBothButton.textContent = playing ? text("pauseBoth") : text("playBoth");
+    els.playBothButton.classList.toggle("is-playing", playing);
     const current = Number(els.videoA.currentTime || 0);
     els.syncTime.textContent = `${formatTime(current)} / ${formatTime(syncDuration)}`;
     if (!timelineDragging) {
@@ -854,6 +857,7 @@
     els.syncTimeline.value = "0";
     els.syncTime.textContent = "0:00 / 0:00";
     els.playBothButton.textContent = text("playBoth");
+    els.playBothButton.classList.remove("is-playing");
     setPlaybackControlsEnabled(false);
   }
 

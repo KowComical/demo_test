@@ -12,8 +12,8 @@
         <div class="trial-topbar">
           <div>
             <p class="eyebrow" id="trialMeta">Trial</p>
-            <h1 id="pageTitle">Which motion fits better?</h1>
-            <p class="task-line" id="taskLine">Watch both videos with the same speech audio, then answer.</p>
+            <h1 id="pageTitle">Which video feels more consistent with the speech?</h1>
+            <p class="task-line" id="taskLine">Choose the motion that looks more natural and coherent with the speech.</p>
           </div>
           <div class="top-side">
             <div class="top-controls" aria-label="Display options">
@@ -69,8 +69,8 @@
           </article>
         </div>
         <div class="playback-controls" id="playbackControls" aria-label="Synchronized playback controls">
-          <button type="button" class="secondary-action playback-button" id="playBothButton" disabled>Play both</button>
-          <button type="button" class="secondary-action playback-button" id="restartBothButton" disabled>Restart both</button>
+          <button type="button" class="secondary-action playback-button playback-main" id="playBothButton" disabled>Play</button>
+          <button type="button" class="secondary-action playback-button" id="restartBothButton" disabled>Restart</button>
           <label class="timeline-control">
             <span id="timelineLabel">Timeline</span>
             <input type="range" id="syncTimeline" min="0" max="0" value="0" step="0.01" disabled />
@@ -106,7 +106,7 @@
 
         <label class="notes-field review-only">
           <span id="reviewNoteLabel">Doubts / notes</span>
-          <textarea id="noteText" rows="2" placeholder="Write anything confusing: unclear real one, artifact, cut transcript, or reason to discard this item"></textarea>
+          <textarea id="noteText" rows="2" placeholder="Write anything confusing: unclear consistency, artifact, cut transcript, or reason to discard this item"></textarea>
         </label>
 
         <div class="trial-actions">
