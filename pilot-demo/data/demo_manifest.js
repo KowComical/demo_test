@@ -1,6 +1,6 @@
 window.DEMO_MANIFEST = {
-  "version": "pilot_demo_v1_20_new_backend_verified",
-  "built_at": "2026-07-12T02:50:59+08:00",
+  "version": "pilot_demo_v1_1_clean_candidate",
+  "built_at": "2026-07-12T04:42:20+08:00",
   "title": "Co-speech Motion Consistency Pilot",
   "description": "A static 2AFC demo for testing whether observers can distinguish real synchronized motion from controlled mismatches.",
   "default_mode": "review",
@@ -44,45 +44,6 @@ window.DEMO_MANIFEST = {
       "duration_sec": 7.0,
       "render_path": "assets/videos/item001_scott_doctor_strange_movie_excited_arms_swap.mp4"
     },
-    "item002_scott_both_surprised_see_each_positive": {
-      "sample_id": "item002_scott_both_surprised_see_each_positive",
-      "base_id": "item002_scott_both_surprised_see_each",
-      "condition": "positive",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
-      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
-      "audio_start_sec": 12.841,
-      "audio_end_sec": 19.841,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_both_surprised_see_each_positive.mp4"
-    },
-    "item002_scott_both_surprised_see_each_context_swap": {
-      "sample_id": "item002_scott_both_surprised_see_each_context_swap",
-      "base_id": "item002_scott_both_surprised_see_each",
-      "condition": "context_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
-      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
-      "audio_start_sec": 12.841,
-      "audio_end_sec": 19.841,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_both_surprised_see_each_context_swap.mp4"
-    },
-    "item002_scott_both_surprised_see_each_arms_swap": {
-      "sample_id": "item002_scott_both_surprised_see_each_arms_swap",
-      "base_id": "item002_scott_both_surprised_see_each",
-      "condition": "arms_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
-      "audio_window_transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45 years",
-      "audio_start_sec": 12.841,
-      "audio_end_sec": 19.841,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item002_scott_both_surprised_see_each_arms_swap.mp4"
-    },
     "item003_scott_happy_see_new_movie_positive": {
       "sample_id": "item003_scott_happy_see_new_movie_positive",
       "base_id": "item003_scott_happy_see_new_movie",
@@ -121,123 +82,6 @@ window.DEMO_MANIFEST = {
       "audio_end_sec": 386.893,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item003_scott_happy_see_new_movie_arms_swap.mp4"
-    },
-    "item004_scott_life_front_row_people_positive": {
-      "sample_id": "item004_scott_life_front_row_people_positive",
-      "base_id": "item004_scott_life_front_row_people",
-      "condition": "positive",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
-      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
-      "audio_start_sec": 171.791,
-      "audio_end_sec": 178.791,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_life_front_row_people_positive.mp4"
-    },
-    "item004_scott_life_front_row_people_context_swap": {
-      "sample_id": "item004_scott_life_front_row_people_context_swap",
-      "base_id": "item004_scott_life_front_row_people",
-      "condition": "context_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
-      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
-      "audio_start_sec": 171.791,
-      "audio_end_sec": 178.791,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_life_front_row_people_context_swap.mp4"
-    },
-    "item004_scott_life_front_row_people_arms_swap": {
-      "sample_id": "item004_scott_life_front_row_people_arms_swap",
-      "base_id": "item004_scott_life_front_row_people",
-      "condition": "arms_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
-      "audio_window_transcript": "represent life the front row would be people who are born into really good situations second row are born in a good situations but not the best",
-      "audio_start_sec": 171.791,
-      "audio_end_sec": 178.791,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item004_scott_life_front_row_people_arms_swap.mp4"
-    },
-    "item005_lu_stood_before_people_different_positive": {
-      "sample_id": "item005_lu_stood_before_people_different_positive",
-      "base_id": "item005_lu_stood_before_people_different",
-      "condition": "positive",
-      "speaker": "lu",
-      "language": "english",
-      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_start_sec": 36.765,
-      "audio_end_sec": 43.765,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_lu_stood_before_people_different_positive.mp4"
-    },
-    "item005_lu_stood_before_people_different_context_swap": {
-      "sample_id": "item005_lu_stood_before_people_different_context_swap",
-      "base_id": "item005_lu_stood_before_people_different",
-      "condition": "context_swap",
-      "speaker": "lu",
-      "language": "english",
-      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_start_sec": 36.765,
-      "audio_end_sec": 43.765,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_lu_stood_before_people_different_context_swap.mp4"
-    },
-    "item005_lu_stood_before_people_different_arms_swap": {
-      "sample_id": "item005_lu_stood_before_people_different_arms_swap",
-      "base_id": "item005_lu_stood_before_people_different",
-      "condition": "arms_swap",
-      "speaker": "lu",
-      "language": "english",
-      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_window_transcript": "peyton stood up when he was before me people of different ages that here once things that disgust me is here",
-      "audio_start_sec": 36.765,
-      "audio_end_sec": 43.765,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item005_lu_stood_before_people_different_arms_swap.mp4"
-    },
-    "item006_scott_tosses_paper_bucket_easily_positive": {
-      "sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
-      "base_id": "item006_scott_tosses_paper_bucket_easily",
-      "condition": "positive",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
-      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
-      "audio_start_sec": 127.967,
-      "audio_end_sec": 134.967,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_positive.mp4"
-    },
-    "item006_scott_tosses_paper_bucket_easily_context_swap": {
-      "sample_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
-      "base_id": "item006_scott_tosses_paper_bucket_easily",
-      "condition": "context_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
-      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
-      "audio_start_sec": 127.967,
-      "audio_end_sec": 134.967,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_context_swap.mp4"
-    },
-    "item006_scott_tosses_paper_bucket_easily_arms_swap": {
-      "sample_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
-      "base_id": "item006_scott_tosses_paper_bucket_easily",
-      "condition": "arms_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
-      "audio_window_transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four people",
-      "audio_start_sec": 127.967,
-      "audio_end_sec": 134.967,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item006_scott_tosses_paper_bucket_easily_arms_swap.mp4"
     },
     "item007_wayne_have_ball_feet_perhaps_positive": {
       "sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
@@ -278,45 +122,6 @@ window.DEMO_MANIFEST = {
       "duration_sec": 7.0,
       "render_path": "assets/videos/item007_wayne_have_ball_feet_perhaps_arms_swap.mp4"
     },
-    "item008_luqi_next_attraction_regretted_discussion_positive": {
-      "sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
-      "base_id": "item008_luqi_next_attraction_regretted_discussion",
-      "condition": "positive",
-      "speaker": "luqi",
-      "language": "english",
-      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_start_sec": 42.514,
-      "audio_end_sec": 49.514,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_positive.mp4"
-    },
-    "item008_luqi_next_attraction_regretted_discussion_context_swap": {
-      "sample_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
-      "base_id": "item008_luqi_next_attraction_regretted_discussion",
-      "condition": "context_swap",
-      "speaker": "luqi",
-      "language": "english",
-      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_start_sec": 42.514,
-      "audio_end_sec": 49.514,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_context_swap.mp4"
-    },
-    "item008_luqi_next_attraction_regretted_discussion_arms_swap": {
-      "sample_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
-      "base_id": "item008_luqi_next_attraction_regretted_discussion",
-      "condition": "arms_swap",
-      "speaker": "luqi",
-      "language": "english",
-      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_window_transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "audio_start_sec": 42.514,
-      "audio_end_sec": 49.514,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item008_luqi_next_attraction_regretted_discussion_arms_swap.mp4"
-    },
     "item009_nidal_want_start_comparing_themselves_positive": {
       "sample_id": "item009_nidal_want_start_comparing_themselves_positive",
       "base_id": "item009_nidal_want_start_comparing_themselves",
@@ -355,45 +160,6 @@ window.DEMO_MANIFEST = {
       "audio_end_sec": 204.662,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item009_nidal_want_start_comparing_themselves_arms_swap.mp4"
-    },
-    "item010_hailing_its_gonna_take_lot_positive": {
-      "sample_id": "item010_hailing_its_gonna_take_lot_positive",
-      "base_id": "item010_hailing_its_gonna_take_lot",
-      "condition": "positive",
-      "speaker": "hailing",
-      "language": "english",
-      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_start_sec": 37.491,
-      "audio_end_sec": 44.491,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_positive.mp4"
-    },
-    "item010_hailing_its_gonna_take_lot_context_swap": {
-      "sample_id": "item010_hailing_its_gonna_take_lot_context_swap",
-      "base_id": "item010_hailing_its_gonna_take_lot",
-      "condition": "context_swap",
-      "speaker": "hailing",
-      "language": "english",
-      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_start_sec": 37.491,
-      "audio_end_sec": 44.491,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_context_swap.mp4"
-    },
-    "item010_hailing_its_gonna_take_lot_arms_swap": {
-      "sample_id": "item010_hailing_its_gonna_take_lot_arms_swap",
-      "base_id": "item010_hailing_its_gonna_take_lot",
-      "condition": "arms_swap",
-      "speaker": "hailing",
-      "language": "english",
-      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_window_transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "audio_start_sec": 37.491,
-      "audio_end_sec": 44.491,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item010_hailing_its_gonna_take_lot_arms_swap.mp4"
     },
     "item011_wayne_school_youll_outside_able_positive": {
       "sample_id": "item011_wayne_school_youll_outside_able_positive",
@@ -473,45 +239,6 @@ window.DEMO_MANIFEST = {
       "duration_sec": 7.0,
       "render_path": "assets/videos/item012_yingqing_toys_floor_free_play_arms_swap.mp4"
     },
-    "item013_wayne_quickly_easy_can_walk_positive": {
-      "sample_id": "item013_wayne_quickly_easy_can_walk_positive",
-      "base_id": "item013_wayne_quickly_easy_can_walk",
-      "condition": "positive",
-      "speaker": "wayne",
-      "language": "english",
-      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
-      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
-      "audio_start_sec": 102.485,
-      "audio_end_sec": 109.485,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_positive.mp4"
-    },
-    "item013_wayne_quickly_easy_can_walk_context_swap": {
-      "sample_id": "item013_wayne_quickly_easy_can_walk_context_swap",
-      "base_id": "item013_wayne_quickly_easy_can_walk",
-      "condition": "context_swap",
-      "speaker": "wayne",
-      "language": "english",
-      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
-      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
-      "audio_start_sec": 102.485,
-      "audio_end_sec": 109.485,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_context_swap.mp4"
-    },
-    "item013_wayne_quickly_easy_can_walk_arms_swap": {
-      "sample_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
-      "base_id": "item013_wayne_quickly_easy_can_walk",
-      "condition": "arms_swap",
-      "speaker": "wayne",
-      "language": "english",
-      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
-      "audio_window_transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move quickly",
-      "audio_start_sec": 102.485,
-      "audio_end_sec": 109.485,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item013_wayne_quickly_easy_can_walk_arms_swap.mp4"
-    },
     "item014_lu_put_have_picture_blue_positive": {
       "sample_id": "item014_lu_put_have_picture_blue_positive",
       "base_id": "item014_lu_put_have_picture_blue",
@@ -590,84 +317,6 @@ window.DEMO_MANIFEST = {
       "duration_sec": 7.0,
       "render_path": "assets/videos/item015_luqi_two_people_careful_about_arms_swap.mp4"
     },
-    "item016_jorge_want_have_one_type_positive": {
-      "sample_id": "item016_jorge_want_have_one_type_positive",
-      "base_id": "item016_jorge_want_have_one_type",
-      "condition": "positive",
-      "speaker": "jorge",
-      "language": "english",
-      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
-      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
-      "audio_start_sec": 427.375,
-      "audio_end_sec": 434.375,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item016_jorge_want_have_one_type_positive.mp4"
-    },
-    "item016_jorge_want_have_one_type_context_swap": {
-      "sample_id": "item016_jorge_want_have_one_type_context_swap",
-      "base_id": "item016_jorge_want_have_one_type",
-      "condition": "context_swap",
-      "speaker": "jorge",
-      "language": "english",
-      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
-      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
-      "audio_start_sec": 427.375,
-      "audio_end_sec": 434.375,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item016_jorge_want_have_one_type_context_swap.mp4"
-    },
-    "item016_jorge_want_have_one_type_arms_swap": {
-      "sample_id": "item016_jorge_want_have_one_type_arms_swap",
-      "base_id": "item016_jorge_want_have_one_type",
-      "condition": "arms_swap",
-      "speaker": "jorge",
-      "language": "english",
-      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
-      "audio_window_transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both defenses",
-      "audio_start_sec": 427.375,
-      "audio_end_sec": 434.375,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item016_jorge_want_have_one_type_arms_swap.mp4"
-    },
-    "item017_solomon_doing_yoga_about_three_positive": {
-      "sample_id": "item017_solomon_doing_yoga_about_three_positive",
-      "base_id": "item017_solomon_doing_yoga_about_three",
-      "condition": "positive",
-      "speaker": "solomon",
-      "language": "english",
-      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_start_sec": 74.177,
-      "audio_end_sec": 81.177,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_positive.mp4"
-    },
-    "item017_solomon_doing_yoga_about_three_context_swap": {
-      "sample_id": "item017_solomon_doing_yoga_about_three_context_swap",
-      "base_id": "item017_solomon_doing_yoga_about_three",
-      "condition": "context_swap",
-      "speaker": "solomon",
-      "language": "english",
-      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_start_sec": 74.177,
-      "audio_end_sec": 81.177,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_context_swap.mp4"
-    },
-    "item017_solomon_doing_yoga_about_three_arms_swap": {
-      "sample_id": "item017_solomon_doing_yoga_about_three_arms_swap",
-      "base_id": "item017_solomon_doing_yoga_about_three",
-      "condition": "arms_swap",
-      "speaker": "solomon",
-      "language": "english",
-      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_window_transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "audio_start_sec": 74.177,
-      "audio_end_sec": 81.177,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item017_solomon_doing_yoga_about_three_arms_swap.mp4"
-    },
     "item018_scott_free_free_sport_anyone_positive": {
       "sample_id": "item018_scott_free_free_sport_anyone_positive",
       "base_id": "item018_scott_free_free_sport_anyone",
@@ -706,45 +355,6 @@ window.DEMO_MANIFEST = {
       "audio_end_sec": 12.844,
       "duration_sec": 7.0,
       "render_path": "assets/videos/item018_scott_free_free_sport_anyone_arms_swap.mp4"
-    },
-    "item019_scott_past_two_theres_halflife_positive": {
-      "sample_id": "item019_scott_past_two_theres_halflife_positive",
-      "base_id": "item019_scott_past_two_theres_halflife",
-      "condition": "positive",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
-      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
-      "audio_start_sec": 341.216,
-      "audio_end_sec": 348.216,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_positive.mp4"
-    },
-    "item019_scott_past_two_theres_halflife_context_swap": {
-      "sample_id": "item019_scott_past_two_theres_halflife_context_swap",
-      "base_id": "item019_scott_past_two_theres_halflife",
-      "condition": "context_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
-      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
-      "audio_start_sec": 341.216,
-      "audio_end_sec": 348.216,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_context_swap.mp4"
-    },
-    "item019_scott_past_two_theres_halflife_arms_swap": {
-      "sample_id": "item019_scott_past_two_theres_halflife_arms_swap",
-      "base_id": "item019_scott_past_two_theres_halflife",
-      "condition": "arms_swap",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
-      "audio_window_transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third games",
-      "audio_start_sec": 341.216,
-      "audio_end_sec": 348.216,
-      "duration_sec": 7.0,
-      "render_path": "assets/videos/item019_scott_past_two_theres_halflife_arms_swap.mp4"
     },
     "item020_scott_about_three_months_later_positive": {
       "sample_id": "item020_scott_about_three_months_later_positive",
@@ -795,7 +405,10 @@ window.DEMO_MANIFEST = {
       "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
       "positive_sample_id": "item001_scott_doctor_strange_movie_excited_positive",
       "negative_sample_id": "item001_scott_doctor_strange_movie_excited_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; repeated negative-source comment is a review-all artifact."
     },
     {
       "trial_pool_id": "item001_scott_doctor_strange_movie_excited_arms_swap",
@@ -805,27 +418,10 @@ window.DEMO_MANIFEST = {
       "transcript": "doctor strange movie and i'm really excited to see that as a horror movie fan but i'm sure it's going to be a little",
       "positive_sample_id": "item001_scott_doctor_strange_movie_excited_positive",
       "negative_sample_id": "item001_scott_doctor_strange_movie_excited_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item002_scott_both_surprised_see_each_context_swap",
-      "base_id": "item002_scott_both_surprised_see_each",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
-      "positive_sample_id": "item002_scott_both_surprised_see_each_positive",
-      "negative_sample_id": "item002_scott_both_surprised_see_each_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item002_scott_both_surprised_see_each_arms_swap",
-      "base_id": "item002_scott_both_surprised_see_each",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "we were both very surprised to see each other wow what are you doing here long time no see it's been like 45",
-      "positive_sample_id": "item002_scott_both_surprised_see_each_positive",
-      "negative_sample_id": "item002_scott_both_surprised_see_each_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; repeated negative-source comment is a review-all artifact."
     },
     {
       "trial_pool_id": "item003_scott_happy_see_new_movie_context_swap",
@@ -835,7 +431,10 @@ window.DEMO_MANIFEST = {
       "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
       "positive_sample_id": "item003_scott_happy_see_new_movie_positive",
       "negative_sample_id": "item003_scott_happy_see_new_movie_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; previous transcript display issue is handled by audio-window transcript."
     },
     {
       "trial_pool_id": "item003_scott_happy_see_new_movie_arms_swap",
@@ -845,67 +444,10 @@ window.DEMO_MANIFEST = {
       "transcript": "happy to see him there and that new movie hey this is goes back to stuff like i talked about earlier",
       "positive_sample_id": "item003_scott_happy_see_new_movie_positive",
       "negative_sample_id": "item003_scott_happy_see_new_movie_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item004_scott_life_front_row_people_context_swap",
-      "base_id": "item004_scott_life_front_row_people",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
-      "positive_sample_id": "item004_scott_life_front_row_people_positive",
-      "negative_sample_id": "item004_scott_life_front_row_people_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item004_scott_life_front_row_people_arms_swap",
-      "base_id": "item004_scott_life_front_row_people",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "life the front row would be people who are born into really good situations second row are born in a good",
-      "positive_sample_id": "item004_scott_life_front_row_people_positive",
-      "negative_sample_id": "item004_scott_life_front_row_people_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item005_lu_stood_before_people_different_context_swap",
-      "base_id": "item005_lu_stood_before_people_different",
-      "speaker": "lu",
-      "language": "english",
-      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
-      "positive_sample_id": "item005_lu_stood_before_people_different_positive",
-      "negative_sample_id": "item005_lu_stood_before_people_different_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item005_lu_stood_before_people_different_arms_swap",
-      "base_id": "item005_lu_stood_before_people_different",
-      "speaker": "lu",
-      "language": "english",
-      "transcript": "stood up when he was before me people of different ages that here once things that disgust me is here",
-      "positive_sample_id": "item005_lu_stood_before_people_different_positive",
-      "negative_sample_id": "item005_lu_stood_before_people_different_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
-      "base_id": "item006_scott_tosses_paper_bucket_easily",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
-      "positive_sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
-      "negative_sample_id": "item006_scott_tosses_paper_bucket_easily_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
-      "base_id": "item006_scott_tosses_paper_bucket_easily",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "tosses there are there their paper into the bucket easily everyone gets it second row three of the four",
-      "positive_sample_id": "item006_scott_tosses_paper_bucket_easily_positive",
-      "negative_sample_id": "item006_scott_tosses_paper_bucket_easily_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; previous transcript display issue is handled by audio-window transcript."
     },
     {
       "trial_pool_id": "item007_wayne_have_ball_feet_perhaps_context_swap",
@@ -915,7 +457,10 @@ window.DEMO_MANIFEST = {
       "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
       "positive_sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
       "negative_sample_id": "item007_wayne_have_ball_feet_perhaps_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; repeated negative-source comment is a review-all artifact."
     },
     {
       "trial_pool_id": "item007_wayne_have_ball_feet_perhaps_arms_swap",
@@ -925,27 +470,10 @@ window.DEMO_MANIFEST = {
       "transcript": "have the ball at his feet for perhaps only two minutes of the whole match that's a very small amount",
       "positive_sample_id": "item007_wayne_have_ball_feet_perhaps_positive",
       "negative_sample_id": "item007_wayne_have_ball_feet_perhaps_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
-      "base_id": "item008_luqi_next_attraction_regretted_discussion",
-      "speaker": "luqi",
-      "language": "english",
-      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "positive_sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
-      "negative_sample_id": "item008_luqi_next_attraction_regretted_discussion_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
-      "base_id": "item008_luqi_next_attraction_regretted_discussion",
-      "speaker": "luqi",
-      "language": "english",
-      "transcript": "next attraction we regretted the discussion not to take the bus since we couldn't find the right weight",
-      "positive_sample_id": "item008_luqi_next_attraction_regretted_discussion_positive",
-      "negative_sample_id": "item008_luqi_next_attraction_regretted_discussion_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct high-confidence pair; repeated negative-source comment is a review-all artifact."
     },
     {
       "trial_pool_id": "item009_nidal_want_start_comparing_themselves_context_swap",
@@ -955,7 +483,10 @@ window.DEMO_MANIFEST = {
       "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
       "positive_sample_id": "item009_nidal_want_start_comparing_themselves_positive",
       "negative_sample_id": "item009_nidal_want_start_comparing_themselves_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Visible hand motion made differences easier; useful clean candidate."
     },
     {
       "trial_pool_id": "item009_nidal_want_start_comparing_themselves_arms_swap",
@@ -965,27 +496,10 @@ window.DEMO_MANIFEST = {
       "transcript": "want to they start comparing themselves with other people and seeing that everyone is happy everyone is doing great and they start hating",
       "positive_sample_id": "item009_nidal_want_start_comparing_themselves_positive",
       "negative_sample_id": "item009_nidal_want_start_comparing_themselves_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item010_hailing_its_gonna_take_lot_context_swap",
-      "base_id": "item010_hailing_its_gonna_take_lot",
-      "speaker": "hailing",
-      "language": "english",
-      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "positive_sample_id": "item010_hailing_its_gonna_take_lot_positive",
-      "negative_sample_id": "item010_hailing_its_gonna_take_lot_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item010_hailing_its_gonna_take_lot_arms_swap",
-      "base_id": "item010_hailing_its_gonna_take_lot",
-      "speaker": "hailing",
-      "language": "english",
-      "transcript": "it's gonna take a lot of time for example like you how to decide it where you want to go",
-      "positive_sample_id": "item010_hailing_its_gonna_take_lot_positive",
-      "negative_sample_id": "item010_hailing_its_gonna_take_lot_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Visible hand motion made differences easier; useful clean candidate."
     },
     {
       "trial_pool_id": "item011_wayne_school_youll_outside_able_context_swap",
@@ -995,7 +509,10 @@ window.DEMO_MANIFEST = {
       "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
       "positive_sample_id": "item011_wayne_school_youll_outside_able_positive",
       "negative_sample_id": "item011_wayne_school_youll_outside_able_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item011_wayne_school_youll_outside_able_arms_swap",
@@ -1005,7 +522,10 @@ window.DEMO_MANIFEST = {
       "transcript": "school you'll go outside and be able to have something to talk about what did kids do before tv",
       "positive_sample_id": "item011_wayne_school_youll_outside_able_positive",
       "negative_sample_id": "item011_wayne_school_youll_outside_able_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item012_yingqing_toys_floor_free_play_context_swap",
@@ -1015,7 +535,10 @@ window.DEMO_MANIFEST = {
       "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
       "positive_sample_id": "item012_yingqing_toys_floor_free_play_positive",
       "negative_sample_id": "item012_yingqing_toys_floor_free_play_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item012_yingqing_toys_floor_free_play_arms_swap",
@@ -1025,27 +548,10 @@ window.DEMO_MANIFEST = {
       "transcript": "my toys on the floor and when free i like to play with them and i've been in my room",
       "positive_sample_id": "item012_yingqing_toys_floor_free_play_positive",
       "negative_sample_id": "item012_yingqing_toys_floor_free_play_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item013_wayne_quickly_easy_can_walk_context_swap",
-      "base_id": "item013_wayne_quickly_easy_can_walk",
-      "speaker": "wayne",
-      "language": "english",
-      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
-      "positive_sample_id": "item013_wayne_quickly_easy_can_walk_positive",
-      "negative_sample_id": "item013_wayne_quickly_easy_can_walk_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
-      "base_id": "item013_wayne_quickly_easy_can_walk",
-      "speaker": "wayne",
-      "language": "english",
-      "transcript": "very quickly very easy you can walk to places faster you go up and down stairs quicker you can move",
-      "positive_sample_id": "item013_wayne_quickly_easy_can_walk_positive",
-      "negative_sample_id": "item013_wayne_quickly_easy_can_walk_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item014_lu_put_have_picture_blue_context_swap",
@@ -1055,7 +561,10 @@ window.DEMO_MANIFEST = {
       "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
       "positive_sample_id": "item014_lu_put_have_picture_blue_positive",
       "negative_sample_id": "item014_lu_put_have_picture_blue_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct pair; previous transcript-window risk is handled by audio-window transcript."
     },
     {
       "trial_pool_id": "item014_lu_put_have_picture_blue_arms_swap",
@@ -1065,7 +574,10 @@ window.DEMO_MANIFEST = {
       "transcript": "i put have picture that i like on my blue wall i like to keep my toys on the floor",
       "positive_sample_id": "item014_lu_put_have_picture_blue_positive",
       "negative_sample_id": "item014_lu_put_have_picture_blue_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Correct pair; previous transcript-window risk is handled by audio-window transcript."
     },
     {
       "trial_pool_id": "item015_luqi_two_people_careful_about_context_swap",
@@ -1075,7 +587,10 @@ window.DEMO_MANIFEST = {
       "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
       "positive_sample_id": "item015_luqi_two_people_careful_about_positive",
       "negative_sample_id": "item015_luqi_two_people_careful_about_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item015_luqi_two_people_careful_about_arms_swap",
@@ -1085,47 +600,10 @@ window.DEMO_MANIFEST = {
       "transcript": "two people be careful about what you write and post up like adults share and unkind personal comments",
       "positive_sample_id": "item015_luqi_two_people_careful_about_positive",
       "negative_sample_id": "item015_luqi_two_people_careful_about_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item016_jorge_want_have_one_type_context_swap",
-      "base_id": "item016_jorge_want_have_one_type",
-      "speaker": "jorge",
-      "language": "english",
-      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
-      "positive_sample_id": "item016_jorge_want_have_one_type_positive",
-      "negative_sample_id": "item016_jorge_want_have_one_type_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item016_jorge_want_have_one_type_arms_swap",
-      "base_id": "item016_jorge_want_have_one_type",
-      "speaker": "jorge",
-      "language": "english",
-      "transcript": "you want to have one type of attack hi so attack or a special attack and then you want to have both",
-      "positive_sample_id": "item016_jorge_want_have_one_type_positive",
-      "negative_sample_id": "item016_jorge_want_have_one_type_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item017_solomon_doing_yoga_about_three_context_swap",
-      "base_id": "item017_solomon_doing_yoga_about_three",
-      "speaker": "solomon",
-      "language": "english",
-      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "positive_sample_id": "item017_solomon_doing_yoga_about_three_positive",
-      "negative_sample_id": "item017_solomon_doing_yoga_about_three_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item017_solomon_doing_yoga_about_three_arms_swap",
-      "base_id": "item017_solomon_doing_yoga_about_three",
-      "speaker": "solomon",
-      "language": "english",
-      "transcript": "doing yoga about three days a week now and it puts me in a good mood all the time",
-      "positive_sample_id": "item017_solomon_doing_yoga_about_three_positive",
-      "negative_sample_id": "item017_solomon_doing_yoga_about_three_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item018_scott_free_free_sport_anyone_context_swap",
@@ -1135,7 +613,10 @@ window.DEMO_MANIFEST = {
       "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
       "positive_sample_id": "item018_scott_free_free_sport_anyone_positive",
       "negative_sample_id": "item018_scott_free_free_sport_anyone_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item018_scott_free_free_sport_anyone_arms_swap",
@@ -1145,27 +626,10 @@ window.DEMO_MANIFEST = {
       "transcript": "free and free sport that anyone can try started about three or five months ago and i try to keep as healthy as possible",
       "positive_sample_id": "item018_scott_free_free_sport_anyone_positive",
       "negative_sample_id": "item018_scott_free_free_sport_anyone_arms_swap",
-      "negative_type": "arms_swap"
-    },
-    {
-      "trial_pool_id": "item019_scott_past_two_theres_halflife_context_swap",
-      "base_id": "item019_scott_past_two_theres_halflife",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
-      "positive_sample_id": "item019_scott_past_two_theres_halflife_positive",
-      "negative_sample_id": "item019_scott_past_two_theres_halflife_context_swap",
-      "negative_type": "context_swap"
-    },
-    {
-      "trial_pool_id": "item019_scott_past_two_theres_halflife_arms_swap",
-      "base_id": "item019_scott_past_two_theres_halflife",
-      "speaker": "scott",
-      "language": "english",
-      "transcript": "past two because there's half-life 2 team fortress 2 to portal 2 but there's never a third one they never make third",
-      "positive_sample_id": "item019_scott_past_two_theres_halflife_positive",
-      "negative_sample_id": "item019_scott_past_two_theres_halflife_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair with no doubts."
     },
     {
       "trial_pool_id": "item020_scott_about_three_months_later_context_swap",
@@ -1175,7 +639,10 @@ window.DEMO_MANIFEST = {
       "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
       "positive_sample_id": "item020_scott_about_three_months_later_positive",
       "negative_sample_id": "item020_scott_about_three_months_later_context_swap",
-      "negative_type": "context_swap"
+      "negative_type": "context_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair; previous transcript-window risk is handled by audio-window transcript."
     },
     {
       "trial_pool_id": "item020_scott_about_three_months_later_arms_swap",
@@ -1185,12 +652,15 @@ window.DEMO_MANIFEST = {
       "transcript": "about it three months later i was sitting on my couch trust still trying to figure out what i should do in the future",
       "positive_sample_id": "item020_scott_about_three_months_later_positive",
       "negative_sample_id": "item020_scott_about_three_months_later_arms_swap",
-      "negative_type": "arms_swap"
+      "negative_type": "arms_swap",
+      "v1_1_tier": "clean_candidate",
+      "v1_1_base_tier": "clean_candidate",
+      "v1_1_rationale": "Clean correct pair; previous transcript-window risk is handled by audio-window transcript."
     }
   ],
   "ui": {
     "participant_trial_count": 10,
-    "review_trial_count": 40,
+    "review_trial_count": 20,
     "response_endpoint": "https://script.google.com/macros/s/AKfycbyZ-gIEAfwE5No5SyqganGJTnN-TgAX92tywXu4gG0mFJtp59NuyZBMobRqpJwSDeMXdw/exec",
     "response_endpoint_mode": "no-cors",
     "doubt_options": [
