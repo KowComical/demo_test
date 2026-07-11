@@ -1,6 +1,6 @@
 (() => {
   const MANIFEST_URL = "data/demo_manifest.json";
-  const STORAGE_KEY = "dcc_pilot_demo_v0_session";
+  const STORAGE_KEY = "dcc_pilot_demo_v1_session";
   const LOCALE_STORAGE_KEY = "dcc_pilot_demo_locale";
   const THEME_STORAGE_KEY = "dcc_pilot_demo_theme";
 
@@ -17,26 +17,42 @@
   const LOCALES = ["en", "zh", "ja", "es"];
   const THEMES = ["neutral", "sage", "paper"];
   const LANG_ATTR = { en: "en", zh: "zh-Hans", ja: "ja", es: "es" };
-  const MISMATCH_OPTIONS = [
+  const DOUBT_OPTIONS = [
     {
-      value: "hands_arms",
-      labels: { en: "Hands / arms", zh: "手 / 手臂", ja: "手 / 腕", es: "Manos / brazos" },
+      value: "hard_to_tell",
+      labels: { en: "Hard to tell", zh: "很难判断", ja: "判断が難しい", es: "Difícil de decidir" },
     },
     {
-      value: "head_body",
-      labels: { en: "Head / body movement", zh: "头部 / 身体动作", ja: "頭 / 体の動き", es: "Cabeza / cuerpo" },
+      value: "both_plausible",
+      labels: { en: "Both look plausible", zh: "两个都像真的", ja: "両方あり得る", es: "Ambos parecen plausibles" },
+    },
+    {
+      value: "neither_plausible",
+      labels: { en: "Neither looks real", zh: "两个都不像真的", ja: "どちらも本物に見えない", es: "Ninguno parece real" },
+    },
+    {
+      value: "mismatch_not_obvious",
+      labels: { en: "Mismatch not obvious", zh: "错配不明显", ja: "不一致が目立たない", es: "El desajuste no es claro" },
+    },
+    {
+      value: "audio_or_text_cut",
+      labels: { en: "Audio/text feels cut", zh: "音频或文本像被截断", ja: "音声/テキストが途切れる", es: "Audio/texto cortado" },
+    },
+    {
+      value: "technical_artifact",
+      labels: { en: "Technical artifact", zh: "技术破绽", ja: "技術的な破綻", es: "Artefacto técnico" },
+    },
+    {
+      value: "motion_too_weak",
+      labels: { en: "Motion too weak/flat", zh: "动作太弱或太平", ja: "動きが弱い/平坦", es: "Movimiento muy débil" },
     },
     {
       value: "timing_rhythm",
-      labels: { en: "Timing / rhythm", zh: "时机 / 节奏", ja: "タイミング / リズム", es: "Tiempo / ritmo" },
+      labels: { en: "Timing/rhythm issue", zh: "时机或节奏问题", ja: "タイミング/リズム", es: "Tiempo/ritmo raro" },
     },
     {
       value: "gesture_meaning",
-      labels: { en: "Gesture meaning vs words", zh: "手势含义和台词不符", ja: "ジェスチャーの意味と発話", es: "Gesto vs palabras" },
-    },
-    {
-      value: "not_sure",
-      labels: { en: "Not sure", zh: "不确定", ja: "わからない", es: "No estoy seguro/a" },
+      labels: { en: "Gesture meaning issue", zh: "手势含义问题", ja: "ジェスチャー意味", es: "Problema de gesto" },
     },
   ];
 
@@ -48,25 +64,24 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "Which motion fits better?",
-      taskLine: "Watch both videos with the same speech audio, then answer.",
+      pageTitle: "Which video is the real synchronized motion?",
+      taskLine: "Review every A/B pair in order, choose the real captured motion, then add doubts if useful.",
       transcriptLabel: "Speech transcript",
       videoA: "Video A",
       videoB: "Video B",
-      chooseChoice: (side) => `Choose ${side}`,
-      selectedChoice: (side) => `Selected ${side}`,
+      chooseChoice: (side) => `${side} is real`,
+      selectedChoice: (side) => `Selected ${side} as real`,
       loadingVideos: "Loading videos...",
-      responseChoose: "Choose Video A or Video B above first.",
-      responseSelected: (side) => `Selected Video ${side}. Now rate how confident you are.`,
+      responseChoose: "Choose which video is real first.",
+      responseSelected: (side) => `Selected Video ${side} as real. Now rate your confidence and add optional doubts.`,
       responseNotSure: "You selected Not sure. You can continue.",
-      confidenceLabel: "Confidence in your choice",
+      confidenceLabel: "Confidence in your answer",
       low: "Low",
       high: "High",
-      diagnosticLabel: "Optional diagnostic",
-      selectOne: "Select one",
-      diagnosticHint: "What made the less fitting video feel off? Skip if unclear.",
-      reviewNote: "Review note",
-      reviewPlaceholder: "For internal screening: unclear mismatch, technical artifact, or reason to discard this item",
+      diagnosticLabel: "Optional doubts",
+      diagnosticHint: "Select any doubts or skip this section.",
+      reviewNote: "Doubts / notes",
+      reviewPlaceholder: "Write anything confusing: unclear real one, artifact, cut transcript, or reason to discard this item",
       notSure: "Not sure",
       next: "Next",
       finish: "Finish",
@@ -95,25 +110,24 @@
       themeNeutral: "清爽",
       themeSage: "浅绿",
       themePaper: "纸感",
-      pageTitle: "哪个动作更匹配？",
-      taskLine: "请观看两段使用同一语音的视频，然后作答。",
+      pageTitle: "哪个视频是真实同步的？",
+      taskLine: "按顺序检查每一组 A/B，选择真实采集同步的视频；有疑惑再补充标记。",
       transcriptLabel: "台词文本",
       videoA: "视频 A",
       videoB: "视频 B",
-      chooseChoice: (side) => `选择 ${side}`,
-      selectedChoice: (side) => `已选择 ${side}`,
+      chooseChoice: (side) => `${side} 是真的`,
+      selectedChoice: (side) => `已选 ${side} 为真实`,
       loadingVideos: "正在加载视频...",
-      responseChoose: "请先在上方选择视频 A 或视频 B。",
-      responseSelected: (side) => `已选择视频 ${side}。请给出你的信心评分。`,
+      responseChoose: "请先选择哪个视频是真实同步的。",
+      responseSelected: (side) => `已选择视频 ${side} 为真实。请给出信心评分；有疑惑可勾选。`,
       responseNotSure: "你选择了不确定，可以继续。",
-      confidenceLabel: "对本次选择的信心",
+      confidenceLabel: "对本次判断的信心",
       low: "低",
       high: "高",
-      diagnosticLabel: "可选诊断",
-      selectOne: "请选择",
-      diagnosticHint: "较差视频哪里不对？不清楚可以跳过。",
-      reviewNote: "内部备注",
-      reviewPlaceholder: "内部筛题用：不明显、技术破绽，或需要丢弃的原因",
+      diagnosticLabel: "可选疑惑",
+      diagnosticHint: "有疑惑就多选；没有可以跳过。",
+      reviewNote: "疑惑 / 备注",
+      reviewPlaceholder: "写下任何困惑：哪个是真的不明显、技术破绽、音频/文本截断，或需要丢弃的原因",
       notSure: "不确定",
       next: "下一题",
       finish: "完成",
@@ -142,25 +156,24 @@
       themeNeutral: "Neutral",
       themeSage: "Sage",
       themePaper: "Paper",
-      pageTitle: "どちらの動きがより合っていますか？",
-      taskLine: "同じ音声の2つの動画を見てから回答してください。",
+      pageTitle: "本物の同期モーションはどちらですか？",
+      taskLine: "A/B ペアを順番に確認し、本物の収録モーションを選び、必要なら疑問点を追加してください。",
       transcriptLabel: "発話テキスト",
       videoA: "動画 A",
       videoB: "動画 B",
-      chooseChoice: (side) => `${side} を選ぶ`,
-      selectedChoice: (side) => `${side} を選択中`,
+      chooseChoice: (side) => `${side} が本物`,
+      selectedChoice: (side) => `${side} を本物として選択`,
       loadingVideos: "動画を読み込み中...",
-      responseChoose: "まず上の動画 A または動画 B を選んでください。",
-      responseSelected: (side) => `動画 ${side} を選択しました。自信度を評価してください。`,
+      responseChoose: "まず本物だと思う動画を選んでください。",
+      responseSelected: (side) => `動画 ${side} を本物として選択しました。自信度と任意の疑問点を入力してください。`,
       responseNotSure: "「わからない」を選択しました。続行できます。",
-      confidenceLabel: "選択への自信度",
+      confidenceLabel: "判断への自信度",
       low: "低い",
       high: "高い",
-      diagnosticLabel: "任意の診断",
-      selectOne: "選択してください",
-      diagnosticHint: "合わない動画の違和感の原因です。不明なら空欄で構いません。",
-      reviewNote: "レビュー用メモ",
-      reviewPlaceholder: "内部確認用：違いが不明瞭、技術的問題、除外理由など",
+      diagnosticLabel: "任意の疑問点",
+      diagnosticHint: "気になる点があれば複数選択できます。なければ空欄で構いません。",
+      reviewNote: "疑問 / メモ",
+      reviewPlaceholder: "迷った理由、技術的問題、音声/テキストの途切れ、除外理由など",
       notSure: "わからない",
       next: "次へ",
       finish: "完了",
@@ -189,25 +202,24 @@
       themeNeutral: "Neutral",
       themeSage: "Verde suave",
       themePaper: "Papel",
-      pageTitle: "¿Qué movimiento encaja mejor?",
-      taskLine: "Mira ambos videos con el mismo audio y luego responde.",
+      pageTitle: "¿Cuál video es el movimiento real sincronizado?",
+      taskLine: "Revisa cada par A/B en orden, elige el movimiento real capturado y añade dudas si hace falta.",
       transcriptLabel: "Transcripción",
       videoA: "Video A",
       videoB: "Video B",
-      chooseChoice: (side) => `Elegir ${side}`,
-      selectedChoice: (side) => `${side} elegido`,
+      chooseChoice: (side) => `${side} es real`,
+      selectedChoice: (side) => `${side} elegido como real`,
       loadingVideos: "Cargando videos...",
-      responseChoose: "Primero elige Video A o Video B arriba.",
-      responseSelected: (side) => `Elegiste Video ${side}. Ahora indica tu confianza.`,
+      responseChoose: "Primero elige cuál video es real.",
+      responseSelected: (side) => `Elegiste Video ${side} como real. Ahora indica tu confianza y dudas opcionales.`,
       responseNotSure: "Elegiste No estoy seguro/a. Puedes continuar.",
-      confidenceLabel: "Confianza en tu elección",
+      confidenceLabel: "Confianza en tu respuesta",
       low: "Baja",
       high: "Alta",
-      diagnosticLabel: "Diagnóstico opcional",
-      selectOne: "Selecciona una opción",
-      diagnosticHint: "¿Qué se sintió raro en el video menos adecuado? Puedes omitirlo.",
-      reviewNote: "Nota de revisión",
-      reviewPlaceholder: "Para revisión interna: caso ambiguo, artefacto técnico o razón para descartarlo",
+      diagnosticLabel: "Dudas opcionales",
+      diagnosticHint: "Marca cualquier duda o deja esta sección vacía.",
+      reviewNote: "Dudas / notas",
+      reviewPlaceholder: "Escribe lo que confunde: cuál es real, artefacto, audio/texto cortado o razón para descartar",
       notSure: "No estoy seguro/a",
       next: "Siguiente",
       finish: "Finalizar",
@@ -288,7 +300,7 @@
     lowLabel: $("#lowLabel"),
     highLabel: $("#highLabel"),
     diagnosticLabel: $("#diagnosticLabel"),
-    mismatchSelect: $("#mismatchSelect"),
+    doubtOptions: $("#doubtOptions"),
     diagnosticHint: $("#diagnosticHint"),
     reviewNoteLabel: $("#reviewNoteLabel"),
     noteText: $("#noteText"),
@@ -397,7 +409,7 @@
     els.doneEyebrow.textContent = text("doneEyebrow");
     els.doneTitle.textContent = text("doneTitle");
     els.doneLead.textContent = text("doneLead");
-    populateMismatchOptions();
+    populateDoubtOptions();
     updateChoiceButtonLabels();
     refreshProgressText();
     refreshResponseGuidance();
@@ -448,22 +460,39 @@
     els.doneView.classList.toggle("hidden", viewName !== "done");
   }
 
-  function populateMismatchOptions() {
-    const previous = els.mismatchSelect.value;
-    els.mismatchSelect.replaceChildren();
-    const first = document.createElement("option");
-    first.value = "";
-    first.textContent = text("selectOne");
-    els.mismatchSelect.append(first);
-    MISMATCH_OPTIONS.forEach((item) => {
-      const option = document.createElement("option");
-      option.value = item.value;
-      option.textContent = item.labels[currentLocale] || item.labels.en;
-      els.mismatchSelect.append(option);
+  function selectedDoubtTags() {
+    return $$("[data-doubt-option]:checked").map((input) => input.value);
+  }
+
+  function setDoubtOptionsEnabled(enabled) {
+    $$("[data-doubt-option]").forEach((input) => {
+      input.disabled = !enabled;
     });
-    if (previous && MISMATCH_OPTIONS.some((item) => item.value === previous)) {
-      els.mismatchSelect.value = previous;
-    }
+  }
+
+  function clearDoubtSelections() {
+    $$("[data-doubt-option]").forEach((input) => {
+      input.checked = false;
+    });
+  }
+
+  function populateDoubtOptions() {
+    const previous = new Set(selectedDoubtTags());
+    els.doubtOptions.replaceChildren();
+    DOUBT_OPTIONS.forEach((item) => {
+      const label = document.createElement("label");
+      label.className = "doubt-option";
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.value = item.value;
+      input.dataset.doubtOption = "true";
+      input.checked = previous.has(item.value);
+      const span = document.createElement("span");
+      span.textContent = item.labels[currentLocale] || item.labels.en;
+      label.append(input, span);
+      els.doubtOptions.append(label);
+    });
+    setDoubtOptionsEnabled(Boolean(draft?.choice_side && draft.choice_side !== "not_sure" && mediaReady));
   }
 
   async function loadManifest() {
@@ -475,7 +504,7 @@
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         manifest = await response.json();
       }
-      populateMismatchOptions();
+      populateDoubtOptions();
       applyLocale();
       if (!restoreSession()) startSession(sessionMode);
     } catch (error) {
@@ -494,7 +523,7 @@
     $$("[data-choice], [data-confidence]").forEach((button) => {
       button.disabled = true;
     });
-    els.mismatchSelect.disabled = true;
+    setDoubtOptionsEnabled(false);
     els.noteText.disabled = true;
     els.notSureButton.disabled = true;
     els.nextButton.disabled = true;
@@ -502,8 +531,7 @@
 
   function selectTrialPools(mode) {
     if (mode === "review") {
-      const count = manifest.ui?.review_trial_count || manifest.trial_pools.length;
-      return shuffle(manifest.trial_pools).slice(0, count);
+      return manifest.trial_pools.slice();
     }
 
     const groups = groupByBase(manifest.trial_pools);
@@ -586,7 +614,7 @@
     draft = {
       choice_side: "",
       confidence: "",
-      mismatch_location: "",
+      doubt_tags: [],
       note: "",
       started_at: nowIso(),
     };
@@ -609,7 +637,8 @@
     updateChoiceButtonLabels();
     if (choice === "not_sure") {
       draft.confidence = "";
-      els.mismatchSelect.value = "";
+      draft.doubt_tags = [];
+      clearDoubtSelections();
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
       setFollowupControlsEnabled(false);
       setResponseGuidance(text("responseNotSure"), true);
@@ -618,7 +647,8 @@
       setResponseGuidance(text("responseSelected", choice), true);
     } else {
       draft.confidence = "";
-      els.mismatchSelect.value = "";
+      draft.doubt_tags = [];
+      clearDoubtSelections();
       $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
       setFollowupControlsEnabled(false);
       setResponseGuidance(text("responseChoose"), false);
@@ -685,7 +715,8 @@
     });
     updateChoiceButtonLabels();
     $$("[data-confidence]").forEach((button) => button.classList.remove("selected"));
-    els.mismatchSelect.value = "";
+    draft.doubt_tags = [];
+    clearDoubtSelections();
     els.noteText.value = "";
     setFollowupControlsEnabled(false);
     updateNextState();
@@ -712,6 +743,7 @@
           : "";
     const correct =
       draft.choice_side === "not_sure" ? null : draft.choice_side === trial.positive_side;
+    const doubtTags = selectedDoubtTags();
 
     session.responses.push({
       session_id: session.session_id,
@@ -732,7 +764,8 @@
       chosen_sample_id: chosenSampleId,
       correct,
       confidence: draft.confidence ? Number(draft.confidence) : null,
-      mismatch_location: els.mismatchSelect.value,
+      doubt_tags: doubtTags,
+      mismatch_location: doubtTags.join(";"),
       note: els.noteText.value.trim(),
       response_time_ms: responseTimeMs,
       shown_at: draft.started_at,
@@ -839,6 +872,7 @@
       "chosen_sample_id",
       "correct",
       "confidence",
+      "doubt_tags",
       "mismatch_location",
       "note",
       "response_time_ms",
@@ -848,6 +882,7 @@
     const trialByIndex = new Map(session.trials.map((trial) => [trial.trial_index, trial]));
     const rows = session.responses.map((row) => ({
       ...row,
+      doubt_tags: Array.isArray(row.doubt_tags) ? row.doubt_tags.join(";") : row.doubt_tags || "",
       manifest_version: session.manifest_version,
       mode: session.mode,
       session_ui_locale: session.ui_locale || "",
@@ -897,7 +932,7 @@
     $$("[data-confidence]").forEach((button) => {
       button.disabled = !enabled;
     });
-    els.mismatchSelect.disabled = !enabled;
+    setDoubtOptionsEnabled(enabled);
   }
 
   function setResponseGuidance(message, ready) {

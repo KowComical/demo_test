@@ -74,7 +74,7 @@
           <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
 
           <div class="question-block confidence-block followup-content">
-            <span class="question-label" id="confidenceLabel">Confidence in your choice</span>
+            <span class="question-label" id="confidenceLabel">Confidence in your answer</span>
             <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
               <button type="button" data-confidence="1">1</button>
               <button type="button" data-confidence="2">2</button>
@@ -89,17 +89,15 @@
           </div>
 
           <label class="diagnostic-block followup-content">
-            <span class="question-label" id="diagnosticLabel">Optional diagnostic</span>
-            <select id="mismatchSelect">
-              <option value="">Select one</option>
-            </select>
-            <span class="field-hint" id="diagnosticHint">What made the less fitting video feel off? Skip if unclear.</span>
+            <span class="question-label" id="diagnosticLabel">Optional doubts</span>
+            <div class="doubt-options" id="doubtOptions" role="group" aria-label="Optional doubts"></div>
+            <span class="field-hint" id="diagnosticHint">Select any doubts or skip this section.</span>
           </label>
         </div>
 
         <label class="notes-field review-only">
-          <span id="reviewNoteLabel">Review note</span>
-          <textarea id="noteText" rows="2" placeholder="For internal screening: unclear mismatch, technical artifact, or reason to discard this item"></textarea>
+          <span id="reviewNoteLabel">Doubts / notes</span>
+          <textarea id="noteText" rows="2" placeholder="Write anything confusing: unclear real one, artifact, cut transcript, or reason to discard this item"></textarea>
         </label>
 
         <div class="trial-actions">

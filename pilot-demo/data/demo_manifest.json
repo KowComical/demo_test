@@ -1011,12 +1011,16 @@
   "ui": {
     "participant_trial_count": 10,
     "review_trial_count": 40,
-    "mismatch_locations": [
-      "Hands / arms",
-      "Head / body movement",
-      "Timing / rhythm",
-      "Gesture meaning vs words",
-      "Not sure"
+    "doubt_options": [
+      "hard_to_tell",
+      "both_plausible",
+      "neither_plausible",
+      "mismatch_not_obvious",
+      "audio_or_text_cut",
+      "technical_artifact",
+      "motion_too_weak",
+      "timing_rhythm",
+      "gesture_meaning"
     ]
   }
 }

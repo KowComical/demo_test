@@ -427,8 +427,8 @@ video {
 }
 
 .diagnostic-block {
-  max-width: 520px;
-  grid-template-rows: 18px 40px auto;
+  max-width: 100%;
+  grid-template-rows: auto auto auto;
   gap: 8px;
   padding-top: 2px;
   border-top: 1px solid var(--line);
@@ -443,7 +443,7 @@ video {
 }
 
 .question-label,
-.diagnostic-block > span,
+.diagnostic-block > .question-label,
 .notes-field > span {
   color: var(--muted);
   font-size: 13px;
@@ -474,6 +474,44 @@ video {
   color: var(--blue);
   background: var(--soft-blue);
   border-color: rgba(52, 73, 106, 0.46);
+}
+
+.doubt-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(178px, 1fr));
+  gap: 8px;
+}
+
+.doubt-option {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 10px;
+  color: var(--ink);
+  background: #fffefa;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 680;
+  line-height: 1.25;
+}
+
+.doubt-option:hover {
+  border-color: rgba(52, 73, 106, 0.34);
+  background: var(--surface-soft);
+}
+
+.doubt-option input {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--teal);
+}
+
+.doubt-option input:disabled + span {
+  color: var(--muted);
 }
 
 .scale-labels {

@@ -10,7 +10,7 @@ Static GitHub Pages demo for the first 2AFC human-perception pilot.
 
 ## Modes
 
-- Review all: 40 trials, all current candidate A/B pairs for internal screening. This is the default mode at `pilot-demo/`.
+- Review all: all current A/B trial pools in manifest order for internal screening. This is the default mode at `pilot-demo/`.
 - Participant: 10 trials, one randomized negative type per sampled base item. Use `pilot-demo/?mode=participant`.
 
 ## Current Scope
@@ -28,4 +28,4 @@ Before external participant collection, connect a backend, Google Sheets/API end
 
 The demo does not collect participant background fields. If background information is needed later, collect it after the task or through the recruitment/survey system.
 
-The primary task is the A/B choice. The mismatch reason field is optional and should be treated as a lightweight diagnostic tag, not as the main outcome.
+The primary task is the A/B choice: select which video is the real synchronized motion. Optional doubt tags and notes are lightweight diagnostics for deciding which candidate items to keep or discard.
