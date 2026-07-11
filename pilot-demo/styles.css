@@ -563,6 +563,37 @@ textarea {
   margin-top: 16px;
 }
 
+.submission-status {
+  margin-top: 12px;
+  padding: 10px 12px;
+  color: var(--muted);
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.submission-status[data-status="ready"],
+.submission-status[data-status="sent"] {
+  color: var(--teal-dark);
+  background: var(--soft-teal);
+  border-color: rgba(15, 118, 110, 0.24);
+}
+
+.submission-status[data-status="saving"] {
+  color: var(--blue);
+  background: var(--soft-blue);
+  border-color: rgba(52, 73, 106, 0.2);
+}
+
+.submission-status[data-status="failed"] {
+  color: #8a3a2a;
+  background: #fff1ec;
+  border-color: #f1c5b8;
+}
+
 .export-actions {
   display: flex;
   align-items: center;

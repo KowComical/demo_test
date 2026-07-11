@@ -3,6 +3,7 @@
   const STORAGE_KEY = "dcc_pilot_demo_v1_session";
   const LOCALE_STORAGE_KEY = "dcc_pilot_demo_locale";
   const THEME_STORAGE_KEY = "dcc_pilot_demo_theme";
+  const REVIEWER_STORAGE_KEY = "dcc_pilot_demo_reviewer_id";
 
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -102,6 +103,12 @@
       summaryAnswered: "Answered",
       summaryAccuracy: "Accuracy",
       summaryAvgConfidence: "Avg confidence",
+      backendDisabled: "Backend not configured. Responses are saved in this browser and export files.",
+      backendReady: "Backend collection is enabled.",
+      backendSaving: "Saving response to backend...",
+      backendSaved: "Response sent to backend.",
+      backendUnconfirmed: "Response sent to backend. Confirmation is unavailable for this endpoint.",
+      backendFailed: "Backend save failed. Response remains saved in this browser.",
     },
     zh: {
       documentTitle: "共语音动作一致性试测",
@@ -148,6 +155,12 @@
       summaryAnswered: "已答",
       summaryAccuracy: "正确率",
       summaryAvgConfidence: "平均信心",
+      backendDisabled: "后端尚未配置。回答会保存在本浏览器和导出文件中。",
+      backendReady: "后端收集已启用。",
+      backendSaving: "正在提交本题回答到后端...",
+      backendSaved: "本题回答已提交到后端。",
+      backendUnconfirmed: "本题回答已发送到后端；此端点无法返回确认状态。",
+      backendFailed: "后端保存失败。本题回答仍保存在本浏览器。",
     },
     ja: {
       documentTitle: "共発話モーション一貫性パイロット",
@@ -194,6 +207,12 @@
       summaryAnswered: "回答数",
       summaryAccuracy: "正答率",
       summaryAvgConfidence: "平均自信度",
+      backendDisabled: "バックエンド未設定です。回答はこのブラウザと書き出しファイルに保存されます。",
+      backendReady: "バックエンド収集が有効です。",
+      backendSaving: "回答をバックエンドに保存中...",
+      backendSaved: "回答をバックエンドに送信しました。",
+      backendUnconfirmed: "回答をバックエンドに送信しました。このエンドポイントでは確認できません。",
+      backendFailed: "バックエンド保存に失敗しました。回答はこのブラウザに残っています。",
     },
     es: {
       documentTitle: "Piloto de consistencia de movimiento",
@@ -240,6 +259,12 @@
       summaryAnswered: "Respondidas",
       summaryAccuracy: "Precisión",
       summaryAvgConfidence: "Confianza media",
+      backendDisabled: "Backend no configurado. Las respuestas se guardan en este navegador y en los archivos exportados.",
+      backendReady: "La recolección backend está activada.",
+      backendSaving: "Guardando respuesta en el backend...",
+      backendSaved: "Respuesta enviada al backend.",
+      backendUnconfirmed: "Respuesta enviada al backend. Este endpoint no permite confirmación.",
+      backendFailed: "Falló el guardado backend. La respuesta sigue guardada en este navegador.",
     },
   };
 
@@ -313,6 +338,7 @@
     downloadJson: $("#downloadJson"),
     downloadCsv: $("#downloadCsv"),
     restartButton: $("#restartButton"),
+    submissionStatus: $("#submissionStatus"),
   };
 
   let manifest = null;
@@ -413,6 +439,7 @@
     updateChoiceButtonLabels();
     refreshProgressText();
     refreshResponseGuidance();
+    refreshSubmissionStatus();
     if (!els.doneView.classList.contains("hidden") && session) renderSummary();
   }
 
@@ -424,6 +451,40 @@
             .join("")
         : Math.random().toString(16).slice(2);
     return `${prefix}_${Date.now().toString(36)}_${random}`;
+  }
+
+  function getReviewerId() {
+    const requested = (params.get("reviewer") || params.get("participant") || "").trim();
+    if (requested) {
+      localStorage.setItem(REVIEWER_STORAGE_KEY, requested);
+      return requested;
+    }
+    const stored = localStorage.getItem(REVIEWER_STORAGE_KEY);
+    if (stored) return stored;
+    const generated = makeId("reviewer");
+    localStorage.setItem(REVIEWER_STORAGE_KEY, generated);
+    return generated;
+  }
+
+  function responseEndpoint() {
+    return (params.get("endpoint") || manifest?.ui?.response_endpoint || "").trim();
+  }
+
+  function responseEndpointMode() {
+    const mode = (params.get("endpointMode") || manifest?.ui?.response_endpoint_mode || "cors").trim();
+    return mode === "no-cors" ? "no-cors" : "cors";
+  }
+
+  function setSubmissionStatus(kind, message) {
+    if (!els.submissionStatus) return;
+    els.submissionStatus.dataset.status = kind;
+    els.submissionStatus.textContent = message;
+  }
+
+  function refreshSubmissionStatus() {
+    if (!manifest) return;
+    const endpoint = responseEndpoint();
+    setSubmissionStatus(endpoint ? "ready" : "disabled", endpoint ? text("backendReady") : text("backendDisabled"));
   }
 
   function shuffle(items) {
@@ -577,8 +638,11 @@
       started_at: nowIso(),
       completed_at: "",
       mode,
+      reviewer_id: getReviewerId(),
       ui_locale: currentLocale,
       ui_theme: currentTheme,
+      response_endpoint_configured: Boolean(responseEndpoint()),
+      response_endpoint_mode: responseEndpointMode(),
       trial_count: pools.length,
       trials: pools.map(makeTrial),
       current_index: 0,
@@ -598,6 +662,9 @@
       session = saved;
       session.ui_locale = session.ui_locale || currentLocale;
       session.ui_theme = session.ui_theme || currentTheme;
+      session.reviewer_id = session.reviewer_id || getReviewerId();
+      session.response_endpoint_configured = Boolean(responseEndpoint());
+      session.response_endpoint_mode = responseEndpointMode();
       if (session.completed_at || session.current_index >= session.trial_count) {
         showDone();
       } else {
@@ -745,8 +812,9 @@
       draft.choice_side === "not_sure" ? null : draft.choice_side === trial.positive_side;
     const doubtTags = selectedDoubtTags();
 
-    session.responses.push({
+    const response = {
       session_id: session.session_id,
+      reviewer_id: session.reviewer_id || "",
       trial_index: trial.trial_index,
       trial_pool_id: trial.trial_pool_id,
       base_id: trial.base_id,
@@ -770,11 +838,87 @@
       response_time_ms: responseTimeMs,
       shown_at: draft.started_at,
       answered_at: nowIso(),
-    });
+      backend_status: responseEndpoint() ? "pending" : "disabled",
+      backend_error: "",
+      backend_submitted_at: "",
+    };
+
+    session.responses.push(response);
 
     session.current_index += 1;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+    submitResponseToBackend(response, trial);
     showTrial();
+  }
+
+  function markBackendStatus(response, status, error = "") {
+    response.backend_status = status;
+    response.backend_error = error;
+    response.backend_submitted_at = nowIso();
+    const saved = session.responses.find((row) => row.trial_index === response.trial_index);
+    if (saved) {
+      saved.backend_status = response.backend_status;
+      saved.backend_error = response.backend_error;
+      saved.backend_submitted_at = response.backend_submitted_at;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+  }
+
+  async function submitResponseToBackend(response, trial) {
+    const endpoint = responseEndpoint();
+    if (!endpoint) {
+      markBackendStatus(response, "disabled");
+      setSubmissionStatus("disabled", text("backendDisabled"));
+      return;
+    }
+
+    setSubmissionStatus("saving", text("backendSaving"));
+    const mode = responseEndpointMode();
+    const payload = {
+      event_type: "trial_response",
+      submitted_at: nowIso(),
+      manifest: {
+        version: manifest.version,
+        built_at: manifest.built_at,
+      },
+      session: {
+        session_id: session.session_id,
+        reviewer_id: session.reviewer_id || "",
+        mode: session.mode,
+        ui_locale: currentLocale,
+        ui_theme: currentTheme,
+        started_at: session.started_at,
+        trial_count: session.trial_count,
+      },
+      trial,
+      response,
+    };
+
+    try {
+      if (mode === "no-cors") {
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload),
+        });
+        markBackendStatus(response, "sent_unconfirmed");
+        setSubmissionStatus("sent", text("backendUnconfirmed"));
+        return;
+      }
+
+      const result = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!result.ok) throw new Error(`HTTP ${result.status}`);
+      markBackendStatus(response, "sent");
+      setSubmissionStatus("sent", text("backendSaved"));
+    } catch (error) {
+      markBackendStatus(response, "failed", error instanceof Error ? error.message : String(error));
+      setSubmissionStatus("failed", text("backendFailed"));
+    }
   }
 
   function showDone() {
@@ -828,6 +972,7 @@
         built_at: manifest.built_at,
         sample_count: Object.keys(manifest.samples).length,
         trial_pool_count: manifest.trial_pools.length,
+        response_endpoint_configured: Boolean(responseEndpoint()),
       },
       session,
     };
@@ -845,6 +990,7 @@
   function responsesCsv() {
     const fields = [
       "session_id",
+      "reviewer_id",
       "manifest_version",
       "mode",
       "session_ui_locale",
@@ -878,11 +1024,15 @@
       "response_time_ms",
       "shown_at",
       "answered_at",
+      "backend_status",
+      "backend_error",
+      "backend_submitted_at",
     ];
     const trialByIndex = new Map(session.trials.map((trial) => [trial.trial_index, trial]));
     const rows = session.responses.map((row) => ({
       ...row,
       doubt_tags: Array.isArray(row.doubt_tags) ? row.doubt_tags.join(";") : row.doubt_tags || "",
+      reviewer_id: row.reviewer_id || session.reviewer_id || "",
       manifest_version: session.manifest_version,
       mode: session.mode,
       session_ui_locale: session.ui_locale || "",

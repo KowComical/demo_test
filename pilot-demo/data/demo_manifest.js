@@ -1011,6 +1011,8 @@ window.DEMO_MANIFEST = {
   "ui": {
     "participant_trial_count": 10,
     "review_trial_count": 40,
+    "response_endpoint": "",
+    "response_endpoint_mode": "no-cors",
     "doubt_options": [
       "hard_to_tell",
       "both_plausible",

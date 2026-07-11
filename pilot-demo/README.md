@@ -22,9 +22,9 @@ Static GitHub Pages demo for the first 2AFC human-perception pilot.
 
 ## Data Recording
 
-This version is static. It stores responses in the browser and exports JSON/CSV from the completion page.
+This version stores responses in the browser and exports JSON/CSV from the completion page. It can also POST every answered trial to a backend endpoint when `ui.response_endpoint` is configured in the manifest.
 
-Before external participant collection, connect a backend, Google Sheets/API endpoint, or survey platform so participants do not need to manually download and return files.
+The included lightweight backend template is `backend/google_apps_script_collect.gs`, which appends one row per answered trial to a Google Sheet.
 
 The demo does not collect participant background fields. If background information is needed later, collect it after the task or through the recruitment/survey system.
 
