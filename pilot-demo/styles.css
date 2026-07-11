@@ -366,7 +366,7 @@ video {
 
 .playback-controls {
   display: grid;
-  grid-template-columns: 104px 112px minmax(220px, 1fr) 96px;
+  grid-template-columns: 104px minmax(220px, 1fr) 96px;
   gap: 10px;
   align-items: center;
   margin-top: 14px;

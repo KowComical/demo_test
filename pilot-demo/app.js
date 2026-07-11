@@ -346,7 +346,6 @@
     videoA: $("#videoA"),
     videoB: $("#videoB"),
     playBothButton: $("#playBothButton"),
-    restartBothButton: $("#restartBothButton"),
     syncTimeline: $("#syncTimeline"),
     syncTime: $("#syncTime"),
     timelineLabel: $("#timelineLabel"),
@@ -457,7 +456,6 @@
     els.videoBLabel.textContent = text("videoB");
     els.playBothButton.textContent = isAnyVideoPlaying() ? text("pauseBoth") : text("playBoth");
     els.playBothButton.classList.toggle("is-playing", isAnyVideoPlaying());
-    els.restartBothButton.textContent = text("restartBoth");
     els.timelineLabel.textContent = text("timelineLabel");
     els.confidenceLabel.textContent = text("confidenceLabel");
     els.lowLabel.textContent = text("low");
@@ -833,7 +831,6 @@
 
   function setPlaybackControlsEnabled(enabled) {
     els.playBothButton.disabled = !enabled;
-    els.restartBothButton.disabled = !enabled;
     els.syncTimeline.disabled = !enabled;
   }
 
@@ -890,12 +887,6 @@
       pauseBothVideos();
       console.error(error);
     }
-  }
-
-  function restartBothVideos() {
-    if (!mediaReady) return;
-    pauseBothVideos();
-    syncVideosTo(0);
   }
 
   function resetPlaybackControls() {
@@ -1429,11 +1420,6 @@
       playbackStats().play_count += 1;
       playBothVideos();
     }
-  });
-
-  els.restartBothButton.addEventListener("click", () => {
-    playbackStats().restart_count += 1;
-    restartBothVideos();
   });
 
   els.syncTimeline.addEventListener("input", () => {
