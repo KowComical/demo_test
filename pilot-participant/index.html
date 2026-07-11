@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Co-speech Motion Consistency Pilot - Participant</title>
+    <link rel="stylesheet" href="styles.css?v=participant-clean-url-20260712" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="trialView" class="panel trial-panel hidden">
+        <div class="trial-topbar">
+          <div>
+            <p class="eyebrow" id="trialMeta">Trial</p>
+            <h1 id="pageTitle">Which fits the speech better?</h1>
+            <p class="task-line" id="taskLine">Choose the motion that looks more natural and coherent.</p>
+          </div>
+          <div class="top-side">
+            <div class="top-controls" aria-label="Display options">
+              <div class="compact-field language-field">
+                <span id="languageLabel">Language</span>
+                <div class="language-toggle" id="languageToggle" role="group" aria-label="Language">
+                  <button type="button" data-locale="en" aria-label="English">EN</button>
+                  <button type="button" data-locale="zh" aria-label="Chinese">中文</button>
+                  <button type="button" data-locale="ja" aria-label="Japanese">日</button>
+                  <button type="button" data-locale="es" aria-label="Spanish">ES</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="progress-wrap" aria-label="Progress">
+              <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <span id="progressText">0 / 0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="transcript-card">
+          <span id="transcriptLabel">Speech transcript</span>
+          <p id="transcriptText"></p>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card" id="cardA">
+            <div class="video-heading">
+              <span id="videoALabel">Video A</span>
+            </div>
+            <video id="videoA" playsinline preload="metadata"></video>
+          </article>
+
+          <article class="video-card" id="cardB">
+            <div class="video-heading">
+              <span id="videoBLabel">Video B</span>
+            </div>
+            <video id="videoB" playsinline preload="metadata"></video>
+          </article>
+        </div>
+        <div class="choice-row">
+          <button type="button" class="choice-button" data-choice="A">Choose A</button>
+          <button type="button" class="choice-button not-sure-action" id="notSureButton">Not sure</button>
+          <button type="button" class="choice-button" data-choice="B">Choose B</button>
+        </div>
+        <div class="playback-controls" id="playbackControls" aria-label="Synchronized playback controls">
+          <button type="button" class="secondary-action playback-button playback-main" id="playBothButton" disabled>Play</button>
+          <label class="timeline-control">
+            <span id="timelineLabel">Timeline</span>
+            <input type="range" id="syncTimeline" min="0" max="0" value="0" step="0.01" disabled />
+          </label>
+          <span class="time-readout" id="syncTime">0:00 / 0:00</span>
+        </div>
+        <div class="media-status" id="mediaStatus">Loading videos...</div>
+
+        <div class="response-panel pending" id="responsePanel">
+          <div class="response-head">
+            <div class="response-guidance" id="responseGuidance">Choose Video A or Video B above first.</div>
+          </div>
+
+          <div class="question-block confidence-block followup-content">
+            <span class="question-label" id="confidenceLabel">Confidence in your answer</span>
+            <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
+              <button type="button" data-confidence="1">1</button>
+              <button type="button" data-confidence="2">2</button>
+              <button type="button" data-confidence="3">3</button>
+              <button type="button" data-confidence="4">4</button>
+              <button type="button" data-confidence="5">5</button>
+            </div>
+            <div class="scale-labels" aria-hidden="true">
+              <span id="lowLabel">Low</span>
+              <span id="highLabel">High</span>
+            </div>
+          </div>
+
+          <label class="diagnostic-block followup-content">
+            <span class="question-label" id="diagnosticLabel">Optional doubts</span>
+            <div class="doubt-options" id="doubtOptions" role="group" aria-label="Optional doubts"></div>
+            <span class="field-hint" id="diagnosticHint">Select any doubts or skip this section.</span>
+          </label>
+        </div>
+
+        <label class="notes-field review-only">
+          <span id="reviewNoteLabel">Doubts / notes</span>
+          <textarea id="noteText" rows="2" placeholder="Write anything confusing: unclear consistency, artifact, cut transcript, or reason to discard this item"></textarea>
+        </label>
+
+        <div class="trial-actions">
+          <button type="button" class="primary-action" id="nextButton" disabled>Next</button>
+        </div>
+        <div class="submission-status" id="submissionStatus">Backend not configured.</div>
+      </section>
+
+      <section id="doneView" class="panel done-panel hidden">
+        <p class="eyebrow" id="doneEyebrow">Complete</p>
+        <h2 id="doneTitle">Responses saved in this browser</h2>
+        <p class="lead small" id="doneLead">
+          GitHub Pages is static, so this demo stores responses locally. Download the files below after testing.
+        </p>
+        <div class="summary-grid" id="summaryGrid"></div>
+        <div class="export-actions">
+          <button type="button" class="primary-action" id="downloadJson">Download JSON</button>
+          <button type="button" class="secondary-action" id="downloadCsv">Download CSV</button>
+          <button type="button" class="secondary-action" id="restartButton">Start new session</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="data/demo_manifest.js?v=participant-clean-url-20260712"></script>
+    <script src="app.js?v=participant-clean-url-20260712"></script>
+  </body>
+</html>
