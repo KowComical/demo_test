@@ -33,6 +33,10 @@ Each trial shows one video and its speech transcript. The participant chooses
 mismatch location, doubt reason, or comment. Correct labels are not shown at
 completion.
 
+Submitting a trial advances immediately. Sheet submission and receipt
+verification run in the background; the completion page asks the participant
+to keep it open only while any final receipts remain pending.
+
 The existing Google Apps Script collector remains compatible by encoding the
 form in `mode`, the opaque trial in `trial_pool_id`, the opaque single-video
 key in `video_a_sample_id`, and the participant decision in `choice_side`.

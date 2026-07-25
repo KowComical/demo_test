@@ -1,6 +1,6 @@
 window.SINGLE_VIDEO_MANIFEST = {
-  "version": "dice_3d_single_video_v0_4forms_6trials",
-  "built_at": "2026-07-25T16:24:32+08:00",
+  "version": "dice_3d_single_video_v0_1_async_4forms_6trials",
+  "built_at": "2026-07-25T16:48:02+08:00",
   "title": "DICE-3D Single-Video Pilot",
   "description": "A counterbalanced single-video judgment task for internal consistency between speech, text and 3D co-speech motion.",
   "samples": {

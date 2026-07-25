@@ -67,7 +67,12 @@
       backendFailed: "Could not confirm the save. A local copy is still retained.",
       doneEyebrow: "Complete",
       doneTitle: "Thank you for completing the check.",
-      doneLead: "Your answers have been saved. Correct labels are intentionally not shown.",
+      doneLead: "Correct labels are intentionally not shown.",
+      doneSaving: "Saving {count} remaining response(s) in the background. Please keep this page open.",
+      doneSaved: "All responses have been saved and confirmed.",
+      doneUnconfirmed: "All responses were sent; some receipts could not be confirmed. A local copy is retained.",
+      doneFailed: "Some responses could not be sent. A local copy is retained for download.",
+      doneLocalOnly: "Backend saving is disabled; responses are retained only in this browser.",
       summaryAnswered: "Answered",
       summaryVersion: "Study version",
       summaryConfidence: "Average confidence",
@@ -133,7 +138,12 @@
       backendFailed: "未能确认保存；本地副本仍然保留。",
       doneEyebrow: "已完成",
       doneTitle: "感谢你完成本次检查。",
-      doneLead: "回答已经保存。为避免影响后续测试，此处不会显示正确答案。",
+      doneLead: "为避免影响后续测试，此处不会显示正确答案。",
+      doneSaving: "正在后台保存剩余的{count}条回答，请暂时不要关闭页面。",
+      doneSaved: "所有回答均已保存并确认收到。",
+      doneUnconfirmed: "所有回答均已发送，但部分回执未能确认；浏览器中仍保留本地副本。",
+      doneFailed: "部分回答未能发送；浏览器中仍保留可下载的本地副本。",
+      doneLocalOnly: "本次关闭了后端提交，回答只保存在当前浏览器中。",
       summaryAnswered: "已回答",
       summaryVersion: "测试版本",
       summaryConfidence: "平均信心",
@@ -199,7 +209,12 @@
       backendFailed: "保存を確認できませんでした。ローカルコピーは保持されています。",
       doneEyebrow: "完了",
       doneTitle: "ご協力ありがとうございました。",
-      doneLead: "回答は保存されました。後続の判断に影響しないよう、正解は表示しません。",
+      doneLead: "後続の判断に影響しないよう、正解は表示しません。",
+      doneSaving: "残り{count}件の回答をバックグラウンドで保存しています。このページを閉じないでください。",
+      doneSaved: "すべての回答が保存され、受信確認されました。",
+      doneUnconfirmed: "すべての回答を送信しましたが、一部の受信確認ができませんでした。ローカルコピーは保持されています。",
+      doneFailed: "一部の回答を送信できませんでした。ダウンロード可能なローカルコピーは保持されています。",
+      doneLocalOnly: "バックエンド送信は無効です。回答はこのブラウザ内にのみ保存されています。",
       summaryAnswered: "回答数",
       summaryVersion: "調査バージョン",
       summaryConfidence: "平均確信度",
@@ -219,7 +234,7 @@
     "highLabel", "locationLabel", "locationOptions", "locationHint", "doubtLabel", "doubtOptions",
     "doubtHint", "noteLabel", "noteText", "submissionStatus", "inspectBadge", "nextButton",
     "doneEyebrow", "doneTitle", "doneLead", "summaryGrid", "downloadJson", "downloadCsv",
-    "restartButton", "languageToggle",
+    "restartButton", "languageToggle", "doneSaveStatus",
   ];
   const els = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
 
@@ -233,6 +248,7 @@
   let watchStartedAt = 0;
   let trialStartedAt = 0;
   let saving = false;
+  const pendingResponseIds = new Set();
 
   const nowIso = () => new Date().toISOString();
   const tr = () => translations[currentLocale] || translations.en;
@@ -296,6 +312,7 @@
       refreshSubmissionStatus();
     } else if (session?.completed_at) {
       renderSummary();
+      refreshDoneSaveStatus();
     }
   }
 
@@ -400,6 +417,7 @@
       if (params.get("reset") === "1") localStorage.removeItem(storageKey);
       renderOptionGroups();
       restoreSession();
+      resumePendingSubmissions();
       els.startButton.disabled = false;
       els.loadStatus.classList.add("hidden");
       if (session?.completed_at) {
@@ -614,7 +632,7 @@
     setSubmissionStatus(responseEndpoint() ? "ready" : "disabled", responseEndpoint() ? tr().backendReady : tr().backendDisabled);
   }
 
-  async function submitCurrentTrial() {
+  function submitCurrentTrial() {
     if (els.nextButton.disabled || saving) return;
     saving = true;
     updateNextState();
@@ -666,12 +684,50 @@
       backend_submitted_at: "",
     };
     session.responses.push(response);
-    saveSession();
-    await submitToBackend(response, trial);
     session.current_index += 1;
     saveSession();
+    queueSubmission(response, trial);
     saving = false;
     showTrial();
+  }
+
+  function queueSubmission(response, trial, recovering = false) {
+    if (pendingResponseIds.has(response.response_id)) return;
+    pendingResponseIds.add(response.response_id);
+    const job = recovering
+      ? recoverOrSubmit(response, trial)
+      : submitToBackend(response, trial);
+    job.finally(() => {
+      pendingResponseIds.delete(response.response_id);
+      refreshDoneSaveStatus();
+    });
+    refreshDoneSaveStatus();
+  }
+
+  async function recoverOrSubmit(response, trial) {
+    const endpoint = responseEndpoint();
+    if (!endpoint) {
+      markBackend(response, "disabled");
+      return;
+    }
+    const verified = await verifyReceipt(endpoint, response.response_id);
+    if (verified) {
+      markBackend(response, "sent_verified");
+      return;
+    }
+    await submitToBackend(response, trial);
+  }
+
+  function resumePendingSubmissions() {
+    if (!session) return;
+    session.responses
+      .filter((response) => response.backend_status === "pending")
+      .forEach((response) => {
+        const trial = session.trials.find(
+          (item) => item.public_trial_id === response.trial_pool_id,
+        );
+        if (trial) queueSubmission(response, trial, true);
+      });
   }
 
   function markBackend(response, status, error = "") {
@@ -679,6 +735,7 @@
     response.backend_error = error;
     response.backend_submitted_at = nowIso();
     saveSession();
+    refreshDoneSaveStatus();
   }
 
   async function submitToBackend(response, trial) {
@@ -787,6 +844,31 @@
     return false;
   }
 
+  function refreshDoneSaveStatus() {
+    if (!session || !els.doneSaveStatus) return;
+    const responses = session.responses || [];
+    const pending = responses.filter((row) => row.backend_status === "pending").length;
+    const failed = responses.filter((row) => row.backend_status === "failed").length;
+    const unconfirmed = responses.filter((row) => row.backend_status === "sent_unconfirmed").length;
+    let status = "saved";
+    let message = tr().doneSaved;
+    if (!responseEndpoint()) {
+      status = "local";
+      message = tr().doneLocalOnly;
+    } else if (pending > 0) {
+      status = "saving";
+      message = tr().doneSaving.replace("{count}", String(pending));
+    } else if (failed > 0) {
+      status = "failed";
+      message = tr().doneFailed;
+    } else if (unconfirmed > 0) {
+      status = "unconfirmed";
+      message = tr().doneUnconfirmed;
+    }
+    els.doneSaveStatus.dataset.status = status;
+    els.doneSaveStatus.textContent = message;
+  }
+
   function showDone() {
     flushWatch();
     els.trialVideo.pause();
@@ -794,6 +876,7 @@
     saveSession();
     showView("done");
     renderSummary();
+    refreshDoneSaveStatus();
     window.scrollTo({ top: 0, behavior: "instant" });
   }
 

@@ -317,6 +317,10 @@ h2 { font-size: 1rem; }
 
 .done-panel { padding: clamp(38px, 7vw, 76px); text-align: center; }
 .done-mark { display: grid; place-items: center; width: 54px; height: 54px; margin: 0 auto 18px; border-radius: 50%; color: white; background: var(--accent); font-size: 1.5rem; }
+.done-save-status { max-width: 620px; margin: -12px auto 24px; color: var(--muted); font-size: 0.88rem; }
+.done-save-status[data-status="saving"] { color: var(--warn); }
+.done-save-status[data-status="saved"] { color: var(--accent); }
+.done-save-status[data-status="failed"] { color: #9e2e2e; }
 .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 650px; margin: 28px auto; }
 .summary-item { padding: 16px; border: 1px solid var(--line); border-radius: 13px; background: #fbfcfb; }
 .summary-item span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 0.76rem; }
