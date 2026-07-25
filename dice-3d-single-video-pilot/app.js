@@ -268,9 +268,6 @@
     if (translations[requested]) return requested;
     const stored = localStorage.getItem(localeStorageKey);
     if (translations[stored]) return stored;
-    const browser = (navigator.language || "en").toLowerCase();
-    if (browser.startsWith("zh")) return "zh";
-    if (browser.startsWith("ja")) return "ja";
     return "en";
   }
 

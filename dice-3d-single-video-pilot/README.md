@@ -33,6 +33,10 @@ Each trial shows one video and its speech transcript. The participant chooses
 mismatch location, doubt reason, or comment. Correct labels are not shown at
 completion.
 
+The first visit defaults to English regardless of the browser language. An
+explicit `?lang=zh` / `?lang=ja` parameter or a participant's saved manual
+language choice still takes precedence.
+
 Submitting a trial advances immediately. Sheet submission and receipt
 verification run in the background; the completion page asks the participant
 to keep it open only while any final receipts remain pending.
