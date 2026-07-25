@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>DICE-3D Single-Video Pilot</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css?v=single-v0" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="DICE-3D home">
+          <span class="brand-mark">D3</span>
+          <span>DICE-3D</span>
+        </a>
+        <div class="language-toggle" id="languageToggle" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button>
+          <button type="button" data-locale="zh">中文</button>
+          <button type="button" data-locale="ja">日本語</button>
+        </div>
+      </header>
+
+      <section id="introView" class="panel intro-panel">
+        <p class="eyebrow" id="introEyebrow">Single-video perception check</p>
+        <h1 id="introTitle">Do the speech and 3D motion feel consistent?</h1>
+        <p class="lead" id="introLead">
+          You will see six short videos, one at a time. Judge each video on its own; there is no A/B comparison.
+        </p>
+
+        <div class="instruction-grid">
+          <article class="instruction-card">
+            <span class="step-number">1</span>
+            <h2 id="watchTitle">Watch with sound</h2>
+            <p id="watchText">Use headphones if possible and play the full clip before answering.</p>
+          </article>
+          <article class="instruction-card">
+            <span class="step-number">2</span>
+            <h2 id="judgeTitle">Judge internal consistency</h2>
+            <p id="judgeText">Consider whether the visible face, hands and body fit the speech and transcript.</p>
+          </article>
+          <article class="instruction-card">
+            <span class="step-number">3</span>
+            <h2 id="uncertainTitle">Uncertainty is useful</h2>
+            <p id="uncertainText">Choose Not sure when the evidence is weak. Do not try to guess the study label.</p>
+          </article>
+        </div>
+
+        <div class="privacy-note" id="privacyNote">
+          Responses are stored using an anonymous browser-generated code. No correct answers are shown.
+        </div>
+        <button type="button" class="primary-action start-action" id="startButton" disabled>Start</button>
+        <p class="resume-note hidden" id="resumeNote">An unfinished session was found on this browser.</p>
+        <p class="load-status" id="loadStatus">Loading study data…</p>
+      </section>
+
+      <section id="trialView" class="panel trial-panel hidden">
+        <div class="trial-header">
+          <div>
+            <p class="eyebrow" id="trialLabel">Single-video judgment</p>
+            <h1 id="trialQuestion">Does this motion fit the speech and transcript?</h1>
+          </div>
+          <div class="progress-block" aria-label="Progress">
+            <span id="progressText">1 / 6</span>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          </div>
+        </div>
+
+        <div class="transcript-card">
+          <span id="transcriptLabel">Speech transcript</span>
+          <p id="transcriptText"></p>
+        </div>
+
+        <article class="video-card">
+          <video id="trialVideo" controls playsinline preload="metadata"></video>
+          <div class="media-status" id="mediaStatus">Loading video…</div>
+        </article>
+
+        <section class="answer-section">
+          <h2 id="answerPrompt">Your judgment</h2>
+          <div class="choice-row" id="choiceRow" role="radiogroup" aria-label="Consistency judgment">
+            <button type="button" class="choice-button consistent" data-choice="consistent" disabled>
+              Consistent
+            </button>
+            <button type="button" class="choice-button inconsistent" data-choice="inconsistent" disabled>
+              Inconsistent
+            </button>
+            <button type="button" class="choice-button not-sure" data-choice="not_sure" disabled>
+              Not sure
+            </button>
+          </div>
+
+          <div class="followup hidden" id="followupPanel">
+            <div class="question-block">
+              <span class="question-label" id="confidenceLabel">How confident are you in this judgment?</span>
+              <div class="confidence-row" id="confidenceRow" role="radiogroup" aria-label="Confidence">
+                <button type="button" data-confidence="1">1</button>
+                <button type="button" data-confidence="2">2</button>
+                <button type="button" data-confidence="3">3</button>
+                <button type="button" data-confidence="4">4</button>
+                <button type="button" data-confidence="5">5</button>
+              </div>
+              <div class="scale-labels"><span id="lowLabel">Low</span><span id="highLabel">High</span></div>
+            </div>
+
+            <div class="question-block">
+              <span class="question-label" id="locationLabel">If anything felt inconsistent or unclear, where?</span>
+              <div class="option-grid" id="locationOptions"></div>
+              <span class="field-hint" id="locationHint">Optional; select all that apply.</span>
+            </div>
+
+            <div class="question-block">
+              <span class="question-label" id="doubtLabel">Anything else affected your judgment?</span>
+              <div class="option-grid" id="doubtOptions"></div>
+              <span class="field-hint" id="doubtHint">Optional; select all that apply.</span>
+            </div>
+
+            <label class="notes-field">
+              <span class="question-label" id="noteLabel">Optional comment</span>
+              <textarea id="noteText" rows="2" maxlength="500"></textarea>
+            </label>
+          </div>
+        </section>
+
+        <div class="trial-footer">
+          <div>
+            <div class="submission-status" id="submissionStatus">Responses will be saved automatically.</div>
+            <div class="inspect-badge hidden" id="inspectBadge"></div>
+          </div>
+          <button type="button" class="primary-action" id="nextButton" disabled>Next</button>
+        </div>
+      </section>
+
+      <section id="doneView" class="panel done-panel hidden">
+        <div class="done-mark">✓</div>
+        <p class="eyebrow" id="doneEyebrow">Complete</p>
+        <h1 id="doneTitle">Thank you for completing the check.</h1>
+        <p class="lead small" id="doneLead">
+          Your answers have been saved. Correct labels are intentionally not shown.
+        </p>
+        <div class="summary-grid" id="summaryGrid"></div>
+        <div class="export-actions">
+          <button type="button" class="secondary-action" id="downloadJson">Download JSON</button>
+          <button type="button" class="secondary-action" id="downloadCsv">Download CSV</button>
+          <button type="button" class="text-action" id="restartButton">Start a new session</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="data/single_video_manifest.js?v=single-v0"></script>
+    <script src="app.js?v=single-v0"></script>
+  </body>
+</html>
