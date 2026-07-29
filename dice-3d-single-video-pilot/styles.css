@@ -223,6 +223,8 @@ h2 { font-size: 1rem; }
 
 .transcript-card span { color: var(--muted); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
 .transcript-card p { margin: 7px 0 0; line-height: 1.52; }
+.transcript-block + .transcript-block { margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--line); }
+.transcript-translation p { color: #33443d; }
 
 .video-card {
   position: relative;

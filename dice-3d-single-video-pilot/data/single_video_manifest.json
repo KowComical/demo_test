@@ -1,6 +1,6 @@
 {
-  "version": "dice_3d_single_video_v0_2_localized_4forms_6trials",
-  "built_at": "2026-07-29T17:22:05+08:00",
+  "version": "dice_3d_single_video_v0_2_1_bilingual_subtitles_4forms_6trials",
+  "built_at": "2026-07-29T17:52:41+08:00",
   "translation_version": "dice_3d_single_video_display_transcripts_v1",
   "title": "DICE-3D Single-Video Pilot",
   "description": "A counterbalanced single-video judgment task for internal consistency between speech, text and 3D co-speech motion.",
