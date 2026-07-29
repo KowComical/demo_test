@@ -28,7 +28,7 @@
       loadFailed: "The study data could not be loaded. Please refresh or contact the researcher.",
       trialLabel: "Single-video judgment",
       trialQuestion: "Does this motion fit the speech and transcript?",
-      transcriptLabel: "Speech transcript",
+      transcriptLabel: "Speech subtitle",
       loadingVideo: "Loading video…",
       playFirst: "Play the video to enable the answer buttons.",
       videoError: "The video could not be loaded.",
@@ -99,7 +99,7 @@
       loadFailed: "无法加载测试数据，请刷新页面或联系研究者。",
       trialLabel: "单视频判断",
       trialQuestion: "这个动作与语音和字幕一致吗？",
-      transcriptLabel: "语音字幕",
+      transcriptLabel: "语音字幕（中文翻译）",
       loadingVideo: "正在加载视频……",
       playFirst: "请先播放视频，之后才可作答。",
       videoError: "视频加载失败。",
@@ -170,7 +170,7 @@
       loadFailed: "データを読み込めませんでした。ページを再読み込みするか、研究者に連絡してください。",
       trialLabel: "単一動画の判断",
       trialQuestion: "このモーションは音声と字幕に合っていますか？",
-      transcriptLabel: "音声字幕",
+      transcriptLabel: "音声字幕（日本語訳）",
       loadingVideo: "動画を読み込んでいます…",
       playFirst: "回答する前に動画を再生してください。",
       videoError: "動画を読み込めませんでした。",
@@ -275,6 +275,19 @@
     if (els[id]) els[id].textContent = value;
   }
 
+  function displayTranscript(trial, locale = currentLocale) {
+    if (!trial) return "";
+    return trial.display_transcripts?.[locale]
+      || trial.display_transcripts?.en
+      || trial.transcript
+      || "";
+  }
+
+  function updateDisplayedTranscript() {
+    if (!session || session.completed_at) return;
+    setText("transcriptText", displayTranscript(currentTrial()));
+  }
+
   function applyLocale() {
     const t = tr();
     document.documentElement.lang = currentLocale === "zh" ? "zh-CN" : currentLocale;
@@ -306,6 +319,7 @@
     }
     if (session && !session.completed_at) {
       updateTrialLabels();
+      updateDisplayedTranscript();
       refreshSubmissionStatus();
     } else if (session?.completed_at) {
       renderSummary();
@@ -539,7 +553,7 @@
     resetDraft();
     showView("trial");
     const trial = currentTrial();
-    setText("transcriptText", trial.transcript);
+    setText("transcriptText", displayTranscript(trial));
     updateTrialLabels();
     setMediaStatus("loading", tr().loadingVideo);
     els.trialVideo.removeAttribute("src");
@@ -653,6 +667,9 @@
       positive_sample_id: "",
       negative_sample_id: "",
       shown_sample_id: trial.sample_key,
+      transcript_source: trial.transcript,
+      transcript_displayed: displayTranscript(trial),
+      transcript_locale: currentLocale,
       shown_label: "",
       ground_truth: "",
       video_a_sample_id: trial.sample_key,
@@ -743,11 +760,14 @@
       return;
     }
     setSubmissionStatus("saving", tr().backendSaving);
+    const { display_transcripts: _displayTranscripts, ...publicTrial } = trial;
     const backendTrial = {
-      ...trial,
+      ...publicTrial,
       trial_index: response.trial_index,
       trial_pool_id: trial.public_trial_id,
       transcript: trial.transcript,
+      transcript_displayed: response.transcript_displayed,
+      transcript_locale: response.transcript_locale,
       video_a_sample_id: trial.sample_key,
       video_b_sample_id: "",
       positive_side: "",
@@ -922,6 +942,7 @@
     const fields = [
       "session_id", "response_id", "reviewer_id", "manifest_version", "form_id", "mode",
       "trial_index", "trial_pool_id", "base_id", "shown_sample_id", "choice_side", "confidence",
+      "transcript_source", "transcript_displayed", "transcript_locale",
       "mismatch_locations", "doubt_tags", "note",
       "response_time_ms", "play_count", "pause_count", "seek_count", "watched_time_ms",
       "max_video_time_sec", "shown_at", "answered_at", "ui_locale", "backend_status",

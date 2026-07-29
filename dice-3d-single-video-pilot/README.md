@@ -1,4 +1,4 @@
-# DICE-3D Counterbalanced Single-Video Pilot v0
+# DICE-3D Counterbalanced Single-Video Pilot v0.2
 
 This site is the next gate after the internal v2/v2.1 A/B candidate review.
 It tests whether a video can be judged without a side-by-side reference.
@@ -28,7 +28,15 @@ inspect mode reveals ground truth and must never be sent to participants.
 
 ## Participant task
 
-Each trial shows one video and its speech transcript. The participant chooses
+Each trial shows one video and a subtitle in the selected interface language.
+English participant subtitles are lightly edited from the raw audio-window
+transcript so that visible text ends on complete thoughts rather than abrupt
+half-sentences. Chinese and Japanese subtitles translate that edited English
+text. Raw source transcripts remain in the manifest and response record for
+auditability; visible subtitle text and locale are recorded separately. The
+translation source is
+`configs/dice_3d_single_video_translations.json` and the build fails if any
+active transcript lacks EN/zh/ja text. The participant chooses
 `consistent`, `inconsistent`, or `not sure`, rates confidence, and may mark a
 mismatch location, doubt reason, or comment. Correct labels are not shown at
 completion.
